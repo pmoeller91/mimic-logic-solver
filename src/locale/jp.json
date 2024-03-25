@@ -1,0 +1,9 @@
+{
+  "translation": {
+    "test": "試し",
+    "languages": {
+      "en": "<flag /> 英語",
+      "jp": "<flag /> 日本語"
+    }
+  }
+}
