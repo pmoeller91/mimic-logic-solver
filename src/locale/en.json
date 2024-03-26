@@ -2,8 +2,8 @@
   "translation": {
     "test": "Test",
     "languages": {
-      "en": "<flag /> English",
-      "jp": "<flag /> Japanese"
+      "en": "English",
+      "jp": "Japanese"
     }
   }
 }

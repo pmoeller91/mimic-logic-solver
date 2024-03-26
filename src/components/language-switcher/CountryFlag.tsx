@@ -16,7 +16,11 @@ interface CountryFlagProps {
 function CountryFlag({ langCode, className }: CountryFlagProps) {
   const flag = flags[langCode] ?? defaultFlag;
   const classNames = clsx(styles.flag, className);
-  return <span className={classNames}>{flag}</span>;
+  return (
+    <div className={classNames} aria-hidden="true">
+      {flag}
+    </div>
+  );
 }
 
 export { CountryFlag };

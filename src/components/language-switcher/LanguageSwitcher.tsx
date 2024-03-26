@@ -1,31 +1,62 @@
 import { supportedLngs } from '@/i18n';
-import { ChangeEventHandler, useCallback } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { useCallback, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CountryFlag } from './CountryFlag';
+import Select, { ActionMeta, SingleValue } from 'react-select';
+
+type OnChangeHandler<T> = (
+  newValue: SingleValue<T>,
+  actionMeta: ActionMeta<T>
+) => void;
+
+interface LanguageOption {
+  value: string;
+}
 
 function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
-  const handleSelectLanguage = useCallback<
-    ChangeEventHandler<HTMLSelectElement>
+  const options: LanguageOption[] = useMemo(
+    () =>
+      supportedLngs.map((lng) => ({
+        value: lng,
+      })),
+    []
+  );
+
+  const [selectedLanguage, setSelectedLanguage] = useState<
+    SingleValue<LanguageOption>
   >(
-    (e) => {
-      void i18n.changeLanguage(e.target.value);
+    options.find(
+      (option) => option.value === (i18n.resolvedLanguage ?? i18n.language)
+    ) ?? options[0]
+  );
+
+  const handleOnChange = useCallback<OnChangeHandler<LanguageOption>>(
+    (newSelectedLanguage) => {
+      setSelectedLanguage(newSelectedLanguage);
+      if (newSelectedLanguage) {
+        void i18n.changeLanguage(newSelectedLanguage.value);
+      }
     },
     [i18n]
   );
 
   return (
-    <select value={i18n.resolvedLanguage} onChange={handleSelectLanguage}>
-      {supportedLngs.map((lng) => (
-        <option value={lng} key={lng}>
-          <Trans
-            i18nKey={`languages.${lng}`}
-            components={{ flag: <CountryFlag langCode={lng} /> }}
-          />
-        </option>
-      ))}
-    </select>
+    <Select
+      options={options}
+      onChange={handleOnChange}
+      value={selectedLanguage}
+      styles={{
+        menu: (baseStyles) => ({ ...baseStyles, color: 'black' }),
+      }}
+      formatOptionLabel={(option) => (
+        <div>
+          <CountryFlag langCode={option.value} className="inline-block mr-4" />
+          {t(`languages.${option.value}`)}
+        </div>
+      )}
+    />
   );
 }
 
