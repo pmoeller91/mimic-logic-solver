@@ -1,10 +1,10 @@
-const CHEST_COLOR = {
-  red: 'RED',
-  blue: 'BLUE',
-  black: 'BLACK',
-} as const;
+import { ChestColor, ChestContents } from './chestProperties';
+import { ChestHint } from './chestHint';
 
-type ChestColor = (typeof CHEST_COLOR)[keyof typeof CHEST_COLOR];
+interface Chest {
+  hint?: ChestHint;
+  contents?: ChestContents;
+  color: ChestColor;
+}
 
-export { CHEST_COLOR };
-export type { ChestColor };
+export type { Chest };

@@ -1,9 +1,9 @@
-import { CHEST_COLOR, ChestColor } from '@/types/chest';
+import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
 import chestRed from '@/assets/chest-red.svg';
 import chestBlack from '@/assets/chest-black.svg';
 import chestBlue from '@/assets/chest-blue.svg';
 
-interface ChestProps {
+interface ChestIconProps {
   color: ChestColor;
   className?: string;
 }
@@ -14,8 +14,8 @@ const chestImage: Record<ChestColor, string> = {
   [CHEST_COLOR.black]: chestBlack,
 };
 
-function Chest({ color, className }: ChestProps) {
+function ChestIcon({ color, className }: ChestIconProps) {
   return <img src={chestImage[color]} className={className} />;
 }
 
-export { Chest };
+export { ChestIcon };

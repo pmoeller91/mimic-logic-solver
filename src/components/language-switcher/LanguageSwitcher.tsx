@@ -56,6 +56,7 @@ function LanguageSwitcher() {
           {t(`languages.${option.value}`)}
         </div>
       )}
+      getOptionLabel={(option) => t(`languages.${option.value}`)}
     />
   );
 }
