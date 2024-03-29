@@ -1,26 +1,32 @@
-import './App.css';
+import { ChestGrid } from './components/chest-grid/ChestGrid';
+import { FooterContainer } from './components/footer/FooterContainer';
+import { HeaderContainer } from './components/header/HeaderContainer';
 import { LanguageSwitcher } from './components/language-switcher/LanguageSwitcher';
+import { MiniChestGrid } from './components/mini-chest-grid/MiniChestGrid';
+import { createChestGrid } from './util/createChestGrid';
 
 function App() {
   return (
-    <>
-      <h1>Mimic Logic Solver</h1>
-      <div className="flex flex-row w-full">
-        <div className="w-32 h-32 bg-pdd" />
-        <div className="w-32 h-32 bg-pd" />
-        <div className="w-32 h-32 bg-p" />
-        <div className="w-32 h-32 bg-pl" />
-        <div className="w-32 h-32 bg-pll" />
-        <div className="w-32 h-32 bg-cdd" />
-        <div className="w-32 h-32 bg-cd" />
-        <div className="w-32 h-32 bg-c" />
-        <div className="w-32 h-32 bg-cl" />
-        <div className="w-32 h-32 bg-cll" />
-      </div>
-      <div className="card">
+    <div className="min-h-screen container bg-bg-dark flex flex-col">
+      <HeaderContainer />
+      <div className="p-8">
         <LanguageSwitcher />
       </div>
-    </>
+      <div className="flex flex-row flex-wrap gap-4 justify-center items-center">
+        <MiniChestGrid grid={createChestGrid({ numChests: 4 })} />
+        <MiniChestGrid grid={createChestGrid({ numChests: 6 })} />
+        <MiniChestGrid grid={createChestGrid({ numChests: 7 })} />
+        <MiniChestGrid grid={createChestGrid({ numChests: 9 })} />
+      </div>
+      <div className="mt-4 flex flex-row flex-wrap gap-16 justify-center items-center">
+        <ChestGrid grid={createChestGrid({ numChests: 4 })} />
+        <ChestGrid grid={createChestGrid({ numChests: 6 })} />
+        <ChestGrid grid={createChestGrid({ numChests: 7 })} />
+        <ChestGrid grid={createChestGrid({ numChests: 9 })} />
+      </div>
+      <div className="flex-grow" />
+      <FooterContainer />
+    </div>
   );
 }
 

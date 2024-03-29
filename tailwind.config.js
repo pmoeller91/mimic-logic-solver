@@ -5,7 +5,6 @@ export default {
     extend: {
       container: {
         center: true,
-        padding: '2rem',
       },
       /* p = primary. c = contrast. d = darker. l = lighter. */
       colors: {
@@ -19,6 +18,9 @@ export default {
         c: '#2a6960',
         cl: '#457e76',
         cll: '#6c9a93',
+        'bg-light': '#282830',
+        'bg-dark': '#161620',
+        'text-primary': '#fcf1e8',
       },
     },
   },

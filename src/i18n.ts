@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import enJSON from '@/locale/en.json';
 import jpJSON from '@/locale/jp.json';
 
-export const supportedLngs = ['en', 'jp'];
+const supportedLngs = ['en', 'jp'];
 
 void i18n
   .use(initReactI18next)
@@ -26,3 +26,5 @@ void i18n
     },
     supportedLngs,
   });
+
+export { i18n, supportedLngs };

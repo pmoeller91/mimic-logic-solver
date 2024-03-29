@@ -1,9 +1,33 @@
 {
   "translation": {
-    "test": "試し",
+    "test": "テスト",
     "languages": {
-      "en": "英語",
+      "en": "English",
       "jp": "日本語"
+    },
+    "header": {
+      "gameMode": "ゲームモード",
+      "chests": "宝箱",
+      "items": "消費アイテム",
+      "gold": "お金",
+      "gear": "装備",
+      "mimics": "ミミック"
+    },
+    "footer": {
+      "copyrightNotice": "Copyright ©2024 Patrick Moeller",
+      "sourceCode": "<sourceLink>ソースコード</sourceLink>"
+    },
+    "gameMode": {
+      "standard": "スタンダード"
+    },
+    "chestContents": {
+      "gear": "装備",
+      "gold": "お金",
+      "item": "消費アイテム",
+      "mimic": "ミミック"
+    },
+    "chestTile": {
+      "contains": "中身"
     }
   }
 }

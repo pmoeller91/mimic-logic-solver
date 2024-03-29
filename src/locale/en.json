@@ -3,7 +3,31 @@
     "test": "Test",
     "languages": {
       "en": "English",
-      "jp": "Japanese"
+      "jp": "日本語"
+    },
+    "header": {
+      "gameMode": "Game Mode",
+      "chests": "Chests",
+      "items": "Items",
+      "gold": "Gold",
+      "gear": "Gear",
+      "mimics": "Mimics"
+    },
+    "footer": {
+      "copyrightNotice": "Copyright ©2024 Patrick Moeller",
+      "sourceCode": "<sourceLink>Source Code</sourceLink>"
+    },
+    "gameMode": {
+      "standard": "Standard"
+    },
+    "chestContents": {
+      "gear": "Gear",
+      "gold": "Gold",
+      "item": "Item",
+      "mimic": "Mimic"
+    },
+    "chestTile": {
+      "contains": "Contains"
     }
   }
 }
