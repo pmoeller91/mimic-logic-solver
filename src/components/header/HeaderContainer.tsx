@@ -5,6 +5,8 @@ import { TRANSLATION_TYPE } from '@/types/translation';
 import { GAME_MODE } from '@/types/gameMode';
 import { useTranslation } from 'react-i18next';
 import { getGameTranslation } from '@/util/getGameTranslation';
+import { useAtomValue } from 'jotai';
+import { numMimicsAtom } from '@/atoms/numMimicsFormValueAtom';
 
 const headerTranslationKeys = {
   gameMode: 'header.gameMode',
@@ -30,6 +32,9 @@ function HeaderContainer() {
       }),
     [t]
   );
+
+  const numMimics = useAtomValue(numMimicsAtom);
+
   return (
     <HeaderView
       gameModeHeader={translatedHeaders.gameMode}
@@ -43,7 +48,7 @@ function HeaderContainer() {
       itemsHeader={translatedHeaders.items}
       items="3"
       mimicsHeader={translatedHeaders.mimics}
-      mimics="4"
+      mimics={numMimics.toString()}
     />
   );
 }

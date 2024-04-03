@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createChest } from './createChest';
+import { createChest } from '../createChest';
 import { createChestGrid } from './createChestGrid';
 import { getAdjacentChest } from './getAdjacentChest';
 import { CHEST_DIRECTION } from '@/types/chestHint';
@@ -45,10 +45,10 @@ describe('getAdjacentChest', () => {
       const direction = CHEST_DIRECTION.right;
       const grid = createChestGrid({ numChests: 9 });
       replaceChest({ grid, location, chest: chestInGrid });
-      replaceChest({ grid, location: adjacentLocation, chest: adjacentChest })
-      expect(
-        getAdjacentChest({ grid, chest: chestInGrid, direction })
-      ).toBe(adjacentChest);
+      replaceChest({ grid, location: adjacentLocation, chest: adjacentChest });
+      expect(getAdjacentChest({ grid, chest: chestInGrid, direction })).toBe(
+        adjacentChest
+      );
     });
     it('should return null if the location in the provided direction is outside the grid', () => {
       const chestInGrid = createChest({ color: CHEST_COLOR.black });
@@ -56,9 +56,9 @@ describe('getAdjacentChest', () => {
       const direction = CHEST_DIRECTION.right;
       const grid = createChestGrid({ numChests: 9 });
       replaceChest({ grid, location, chest: chestInGrid });
-      expect(
-        getAdjacentChest({ grid, chest: chestInGrid, direction })
-      ).toEqual(null);
+      expect(getAdjacentChest({ grid, chest: chestInGrid, direction })).toEqual(
+        null
+      );
     });
     it('should return null if provided an invalid direction for the grid', () => {
       const chestInGrid = createChest();
@@ -66,9 +66,9 @@ describe('getAdjacentChest', () => {
       const direction = CHEST_DIRECTION.downRight;
       const grid = createChestGrid({ numChests: 9 });
       replaceChest({ grid, location, chest: chestInGrid });
-      expect(
-        getAdjacentChest({ grid, chest: chestInGrid, direction })
-      ).toEqual(null);
+      expect(getAdjacentChest({ grid, chest: chestInGrid, direction })).toEqual(
+        null
+      );
     });
   });
 });

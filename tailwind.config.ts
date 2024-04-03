@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss';
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -20,9 +20,14 @@ export default {
         cll: '#6c9a93',
         'bg-light': '#282830',
         'bg-dark': '#161620',
+        'bg-dark-primary': '#563b2b',
         'text-primary': '#fcf1e8',
+      },
+      boxShadow: {
+        'container-left': '30px 0px 40px 35px rgba(0,0,0,0.3);',
+        'container-top': '0px 30px 40px 35px rgba(0,0,0,0.3);',
       },
     },
   },
   plugins: [],
-};
+} satisfies Config;

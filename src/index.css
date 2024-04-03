@@ -9,7 +9,7 @@
   font-weight: 400;
 
   color-scheme: normal;
-  color: theme('colors.text-primary / 90%') ;
+  color: theme('colors.text-primary / 90%');
   background-color: theme('colors.bg-light');
 
   font-synthesis: none;
@@ -60,4 +60,10 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+input {
+  background-color: theme('colors.bg-light');
+  border: 1px solid theme('colors.pll');
+  padding: 0.25rem 0.5rem;
 }

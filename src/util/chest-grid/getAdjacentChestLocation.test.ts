@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createChest } from './createChest';
+import { createChest } from '../createChest';
 import { createChestGrid } from './createChestGrid';
 import { getAdjacentChestLocation } from './getAdjacentChestLocation';
 import { CHEST_DIRECTION } from '@/types/chestHint';

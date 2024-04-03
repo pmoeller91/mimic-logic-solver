@@ -13,6 +13,15 @@
       "gear": "装備",
       "mimics": "ミミック"
     },
+    "editGameInfo": {
+      "title": "ゲーム設定の編集"
+    },
+    "editGameInfoButton": {
+      "buttonLabel": "変更"
+    },
+    "closeButton": {
+      "ariaLabel": "閉じる"
+    },
     "footer": {
       "copyrightNotice": "Copyright ©2024 Patrick Moeller",
       "sourceCode": "<sourceLink>ソースコード</sourceLink>"

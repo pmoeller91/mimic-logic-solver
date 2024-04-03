@@ -13,6 +13,15 @@
       "gear": "Gear",
       "mimics": "Mimics"
     },
+    "editGameInfo": {
+      "title": "Edit Game Info"
+    },
+    "editGameInfoButton": {
+      "buttonLabel": "Edit"
+    },
+    "closeButton": {
+      "ariaLabel": "Close"
+    },
     "footer": {
       "copyrightNotice": "Copyright ©2024 Patrick Moeller",
       "sourceCode": "<sourceLink>Source Code</sourceLink>"

@@ -14,12 +14,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  ignorePatterns: [
-    'dist',
-    '.eslintrc.cjs',
-    'postcss.config.js',
-    'tailwind.config.js',
-  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'postcss.config.js'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -32,6 +27,10 @@ module.exports = {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { ignoreRestSiblings: true },
     ],
   },
 };

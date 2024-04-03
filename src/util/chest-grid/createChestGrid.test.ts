@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { createChestGrid } from './createChestGrid';
 import { flatten } from 'lodash';
-import { createChest } from './createChest';
+import { createChest } from '../createChest';
 import { ChestGridSized } from '@/types/chestGrid';
 
 describe('createChestGrid', () => {

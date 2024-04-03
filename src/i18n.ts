@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import enJSON from '@/locale/en.json';
 import jpJSON from '@/locale/jp.json';
+import { localizedYup } from '@/util/yup/localizedYup';
 
 const supportedLngs = ['en', 'jp'];
 
@@ -27,4 +28,4 @@ void i18n
     supportedLngs,
   });
 
-export { i18n, supportedLngs };
+export { i18n, supportedLngs, localizedYup };
