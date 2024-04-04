@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import { FormFieldContainer } from '../form-field/FormFieldContainer';
-import { numMimicsFormValueAtom } from '@/atoms/numMimicsFormValueAtom';
 import { PropertiesDrawerHeaderContainer } from '../properties-drawer-header/PropertiesDrawerHeaderContainer';
+import { ChestLayoutSelectorContainer } from '../chest-layout-selector/ChestLayoutSelectorContainer';
+import { MimicsField } from './MimicsField';
 
 interface EditGameInfoViewProps {
   additionalProps?: Record<string, unknown>;
@@ -15,10 +15,8 @@ const EditGameInfoView = forwardRef<HTMLDivElement, EditGameInfoViewProps>(
       <div {...additionalProps} ref={ref}>
         <PropertiesDrawerHeaderContainer title={title} close={close} />
         <div className="px-8 py-4">
-          <FormFieldContainer
-            formValueAtom={numMimicsFormValueAtom}
-            label={'Mimics'}
-          />
+          <ChestLayoutSelectorContainer />
+          <MimicsField />
         </div>
       </div>
     );

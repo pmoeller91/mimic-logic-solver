@@ -5,13 +5,18 @@ import {
 } from '@/types/propertiesDrawer';
 import { EditGameInfoContainer } from '../edit-game-info/EditGameInfoContainer';
 import { PropertiesDrawerWrapper } from './PropertiesDrawerWrapper';
+import { ComponentProps } from 'react';
 
 interface PropertiesDrawerViewProps {
   isOpen: boolean;
+  onCloseAutoFocus?: ComponentProps<typeof Drawer.Content>['onCloseAutoFocus'];
   onOpenChange: (open: boolean) => void;
   close: () => void;
   direction?: 'bottom' | 'right';
   mode: PropertiesDrawerMode;
+  titleId: string;
+  descriptionId: string;
+  propertiesDrawerId: string;
 }
 
 function PropertiesDrawerView({
@@ -20,6 +25,10 @@ function PropertiesDrawerView({
   direction,
   mode,
   close,
+  titleId,
+  descriptionId,
+  onCloseAutoFocus,
+  propertiesDrawerId,
 }: PropertiesDrawerViewProps) {
   const defaultDirection = direction ?? 'right';
   return (
@@ -31,7 +40,14 @@ function PropertiesDrawerView({
     >
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content asChild>
+        <Drawer.Content
+          aria-labelledby={titleId}
+          aria-describedby={descriptionId}
+          aria-modal="true"
+          asChild
+          onCloseAutoFocus={onCloseAutoFocus}
+          id={propertiesDrawerId}
+        >
           <PropertiesDrawerWrapper direction={defaultDirection}>
             {mode === PROPERTIES_DRAWER_MODE.gameInfo && (
               <EditGameInfoContainer close={close} />

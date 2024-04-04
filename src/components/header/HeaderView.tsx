@@ -35,14 +35,16 @@ function HeaderView({
       <h1 className="text-base sm:text-xl md:text-3xl  px-8 py-2 bg-bg-dark-primary">
         Mimic Logic Solver
       </h1>
-      <div className="grid grid-cols-3 md:flex md:flex-row text-s md:text-base gap-4 md:gap-8 lg:gap-16 py-4 px-8">
-        <HeaderItem title={gameModeHeader} value={gameMode} />
-        <HeaderItem title={chestsHeader} value={chests} />
-        <HeaderItem title={mimicsHeader} value={mimics} />
-        <HeaderItem title={goldHeader} value={gold} />
-        <HeaderItem title={gearHeader} value={gear} />
-        <HeaderItem title={itemsHeader} value={items} />
-        <EditGameSettingsButtonContainer className="col-span-3 md:col-span-1" />
+      <div className="grid grid-cols-1 md:flex md:flex-row">
+        <dl className="grid grid-cols-3 md:flex md:flex-row text-s md:text-base gap-4 md:gap-8 lg:gap-16 mx-8 py-4 mr-auto">
+          <HeaderItem title={gameModeHeader} value={gameMode} />
+          <HeaderItem title={chestsHeader} value={chests} />
+          <HeaderItem title={mimicsHeader} value={mimics} />
+          <HeaderItem title={goldHeader} value={gold} />
+          <HeaderItem title={gearHeader} value={gear} />
+          <HeaderItem title={itemsHeader} value={items} />
+        </dl>
+        <EditGameSettingsButtonContainer className="m-4" />
       </div>
     </header>
   );

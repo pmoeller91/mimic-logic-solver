@@ -10,4 +10,19 @@ const propertiesDrawerModeAtom = atom<PropertiesDrawerMode>(
   PROPERTIES_DRAWER_MODE.gameInfo
 );
 
-export { propertiesDrawerModeAtom, propertiesDrawerOpenAtom };
+const propertiesDrawerTitleIdAtom = atom('properties-drawer-title');
+
+const propertiesDrawerDescriptionIdAtom = atom('properties-drawer-description');
+
+const propertiesDrawerOpeningElementAtom = atom<HTMLButtonElement | null>(null);
+
+const propertiesDrawerIdAtom = atom('');
+
+export {
+  propertiesDrawerModeAtom,
+  propertiesDrawerOpenAtom,
+  propertiesDrawerTitleIdAtom,
+  propertiesDrawerDescriptionIdAtom,
+  propertiesDrawerOpeningElementAtom,
+  propertiesDrawerIdAtom,
+};

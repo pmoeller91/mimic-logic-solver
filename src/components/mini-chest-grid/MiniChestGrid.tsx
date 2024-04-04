@@ -6,18 +6,19 @@ import { MiniChestGridNine } from './MiniChestGridNine';
 
 interface MiniChestGridProps {
   grid: ChestGridType;
+  className?: string;
 }
 
-function MiniChestGrid({ grid }: MiniChestGridProps) {
+function MiniChestGrid({ grid, className }: MiniChestGridProps) {
   switch (grid.numChests) {
     case 4:
-      return <MiniChestGridFour grid={grid} />;
+      return <MiniChestGridFour grid={grid} className={className} />;
     case 6:
-      return <MiniChestGridSix grid={grid} />;
+      return <MiniChestGridSix grid={grid} className={className} />;
     case 7:
-      return <MiniChestGridSeven grid={grid} />;
+      return <MiniChestGridSeven grid={grid} className={className} />;
     case 9:
-      return <MiniChestGridNine grid={grid} />;
+      return <MiniChestGridNine grid={grid} className={className} />;
   }
   return null;
 }

@@ -1,34 +1,5 @@
 {
   "translation": {
-    "test": "テスト",
-    "languages": {
-      "en": "English",
-      "jp": "日本語"
-    },
-    "header": {
-      "gameMode": "ゲームモード",
-      "chests": "宝箱",
-      "items": "消費アイテム",
-      "gold": "お金",
-      "gear": "装備",
-      "mimics": "ミミック"
-    },
-    "editGameInfo": {
-      "title": "ゲーム設定の編集"
-    },
-    "editGameInfoButton": {
-      "buttonLabel": "変更"
-    },
-    "closeButton": {
-      "ariaLabel": "閉じる"
-    },
-    "footer": {
-      "copyrightNotice": "Copyright ©2024 Patrick Moeller",
-      "sourceCode": "<sourceLink>ソースコード</sourceLink>"
-    },
-    "gameMode": {
-      "standard": "スタンダード"
-    },
     "chestContents": {
       "gear": "装備",
       "gold": "お金",
@@ -37,6 +8,52 @@
     },
     "chestTile": {
       "contains": "中身"
+    },
+    "closeButton": {
+      "ariaLabel": "閉じる"
+    },
+    "editGameInfo": {
+      "title": "ゲーム設定",
+      "mimicsLabel": "ミミック"
+    },
+    "editGameInfoButton": {
+      "buttonLabel": "変更"
+    },
+    "footer": {
+      "copyrightNotice": "Copyright ©2024 Patrick Moeller",
+      "sourceCode": "<sourceLink>ソースコード</sourceLink>"
+    },
+    "gameMode": {
+      "standard": "スタンダード"
+    },
+    "header": {
+      "chests": "宝箱",
+      "gameMode": "ゲームモード",
+      "gear": "装備",
+      "gold": "お金",
+      "items": "消費アイテム",
+      "mimics": "ミミック"
+    },
+    "languages": {
+      "en": "English",
+      "jp": "日本語"
+    },
+    "chestLayoutSelector": {
+      "title": "宝箱の設計",
+      "numChests_other": "{{count, number}}個"
+    },
+    "yup": {
+      "mixed": {
+        "notType": "無効な型です。",
+        "notType_number": "これは番号でなければならない。",
+        "required": "このフィールドは入力必須です。"
+      },
+      "number": {
+        "positive": "これは正の数でなければならない。",
+        "max": "この数値は{{max, number}}以下でなければならない。",
+        "integer": "これは整数でなければならない。"
+      },
+      "unknown": "不明なエラー。"
     }
   }
 }

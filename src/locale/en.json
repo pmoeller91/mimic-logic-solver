@@ -1,34 +1,5 @@
 {
   "translation": {
-    "test": "Test",
-    "languages": {
-      "en": "English",
-      "jp": "日本語"
-    },
-    "header": {
-      "gameMode": "Game Mode",
-      "chests": "Chests",
-      "items": "Items",
-      "gold": "Gold",
-      "gear": "Gear",
-      "mimics": "Mimics"
-    },
-    "editGameInfo": {
-      "title": "Edit Game Info"
-    },
-    "editGameInfoButton": {
-      "buttonLabel": "Edit"
-    },
-    "closeButton": {
-      "ariaLabel": "Close"
-    },
-    "footer": {
-      "copyrightNotice": "Copyright ©2024 Patrick Moeller",
-      "sourceCode": "<sourceLink>Source Code</sourceLink>"
-    },
-    "gameMode": {
-      "standard": "Standard"
-    },
     "chestContents": {
       "gear": "Gear",
       "gold": "Gold",
@@ -37,6 +8,54 @@
     },
     "chestTile": {
       "contains": "Contains"
+    },
+    "closeButton": {
+      "ariaLabel": "Close"
+    },
+    "editGameInfo": {
+      "title": "Edit Game Info",
+      "mimicsLabel": "Mimics"
+    },
+    "editGameInfoButton": {
+      "buttonLabel": "Edit"
+    },
+    "footer": {
+      "copyrightNotice": "Copyright ©2024 Patrick Moeller",
+      "sourceCode": "<sourceLink>Source Code</sourceLink>"
+    },
+    "gameMode": {
+      "standard": "Standard"
+    },
+    "header": {
+      "chests": "Chests",
+      "gameMode": "Game Mode",
+      "gear": "Gear",
+      "gold": "Gold",
+      "items": "Items",
+      "mimics": "Mimics"
+    },
+    "languages": {
+      "en": "English",
+      "jp": "日本語"
+    },
+    "chestLayoutSelector": {
+      "title": "Chest Layout",
+      "numChests_zero": "No Chests",
+      "numChests_one": "{{count, number}} Chest",
+      "numChests_other": "{{count, number}} Chests"
+    },
+    "yup": {
+      "mixed": {
+        "notType": "Invalid type",
+        "notType_number": "This field must be a number",
+        "required": "This field is required"
+      },
+      "number": {
+        "positive": "This must be a positive number",
+        "max": "This number must be less than or equal to {{max, number}}",
+        "integer": "This must be an integer"
+      },
+      "unknown": "Unknown error"
     }
   }
 }

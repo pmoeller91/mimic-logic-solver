@@ -2,7 +2,11 @@ import { Trans, useTranslation } from 'react-i18next';
 import { FooterView } from './FooterView';
 import * as packageJson from '@root/package.json';
 
-function FooterContainer() {
+interface FooterContainerProps {
+  className?: string;
+}
+
+function FooterContainer({ className }: FooterContainerProps) {
   const { t } = useTranslation();
   const sourceLink = packageJson.repository.url;
   const sourceCode = (
@@ -15,7 +19,7 @@ function FooterContainer() {
   );
   const copyrightNotice = t('footer.copyrightNotice');
   return (
-    <FooterView sourceCode={sourceCode} copyrightNotice={copyrightNotice} />
+    <FooterView sourceCode={sourceCode} copyrightNotice={copyrightNotice} className={className} />
   );
 }
 

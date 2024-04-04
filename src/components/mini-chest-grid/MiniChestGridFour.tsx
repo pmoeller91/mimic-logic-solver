@@ -5,11 +5,12 @@ import { MiniChestIcon } from './MiniChestIcon';
 
 interface MiniChestGridFourProps {
   grid: ChestGridSized<4>;
+  className?: string;
 }
 
-function MiniChestGridFour({ grid }: MiniChestGridFourProps) {
+function MiniChestGridFour({ grid, className }: MiniChestGridFourProps) {
   return (
-    <MiniChestGridWrapper>
+    <MiniChestGridWrapper className={className} >
       <MiniChestGridRow>
         <MiniChestIcon color={grid.rows[0][0].color} />
         <MiniChestIcon color={grid.rows[0][1].color} />

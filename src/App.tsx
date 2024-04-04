@@ -26,8 +26,7 @@ function App() {
           <ChestGrid grid={createChestGrid({ numChests: 7 })} />
           <ChestGrid grid={createChestGrid({ numChests: 9 })} />
         </div>
-        <div className="flex-grow" />
-        <FooterContainer />
+        <FooterContainer className="mt-auto" />
       </div>
       <PropertiesDrawerContainer />
     </>

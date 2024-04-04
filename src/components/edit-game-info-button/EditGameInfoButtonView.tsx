@@ -1,20 +1,22 @@
-import { MouseEventHandler } from 'react';
+import { PROPERTIES_DRAWER_MODE } from '@/types/propertiesDrawer';
+import { OpenPropertiesDrawerButtonContainer } from '../properties-drawer/OpenPropertiesDrawerButtonContainer';
 
 interface EditGameSettingsButtonViewProps {
   buttonLabel: string;
-  handleOnClick: MouseEventHandler<HTMLButtonElement>;
   className?: string;
 }
 
 function EditGameSettingsButtonView({
   buttonLabel,
-  handleOnClick,
   className,
 }: EditGameSettingsButtonViewProps) {
   return (
-    <button onClick={handleOnClick} className={className}>
+    <OpenPropertiesDrawerButtonContainer
+      mode={PROPERTIES_DRAWER_MODE.gameInfo}
+      className={className}
+    >
       {buttonLabel}
-    </button>
+    </OpenPropertiesDrawerButtonContainer>
   );
 }
 

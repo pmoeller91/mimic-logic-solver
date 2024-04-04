@@ -5,21 +5,27 @@ import { ComponentProps } from '@/types/componentProps';
 import { FormValueAtom } from '@/util/formValueAtom';
 import { useStableId } from '@/hooks/useStableId';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { getLocalizedErrorMessage } from '@/util/yup/getLocalizedErrorMessage';
 
 interface FormFieldContainerProps<T> {
   formValueAtom: FormValueAtom<T>;
   inputAttributes?: FormFieldViewProps['inputAttributes'];
   label: string;
+  className?: string;
 }
 
 function FormFieldContainer<T>({
   formValueAtom,
   label,
   inputAttributes,
+  className,
 }: FormFieldContainerProps<T>) {
-  const [{ isDirty, validateImmediate, value }, setFormValue] =
+  const [{ isDirty, validateImmediate, value, error, isValid }, setFormValue] =
     useAtom(formValueAtom);
   const [touched, setTouched] = useState(false);
+
+  const { t } = useTranslation();
 
   const handleOnChange = useCallback<
     ComponentProps<typeof FormFieldView>['onChange']
@@ -39,6 +45,10 @@ function FormFieldContainer<T>({
 
   const idSuffix = useStableId();
 
+  const localizedError = isValid
+    ? undefined
+    : getLocalizedErrorMessage(error, t);
+
   return (
     <FormFieldView
       value={value}
@@ -48,7 +58,8 @@ function FormFieldContainer<T>({
       inputAttributes={inputAttributes}
       idSuffix={idSuffix}
       touched={touched || isDirty}
-      error="Bad things"
+      error={localizedError}
+      className={className}
     />
   );
 }

@@ -3,13 +3,16 @@ interface FormFieldViewProps {
   onBlur: Required<JSX.IntrinsicElements['input']>['onBlur'];
   value: string;
   label: string;
-  inputAttributes?: Omit<
-    JSX.IntrinsicElements['input'],
-    'onChange' | 'onBlur' | 'value' | 'id'
-  >;
+  inputAttributes?:
+    | Omit<
+        JSX.IntrinsicElements['input'],
+        'onChange' | 'onBlur' | 'value' | 'id'
+      >
+    | Record<string, unknown>;
   idSuffix: string;
   error?: string;
   touched: boolean;
+  className?: string;
 }
 
 function FormFieldView({
@@ -21,11 +24,12 @@ function FormFieldView({
   idSuffix,
   error,
   touched,
+  className,
 }: FormFieldViewProps) {
   const inputId = `form-field-input-${idSuffix}`;
   const errorId = `form-field-error-${idSuffix}`;
   return (
-    <div>
+    <div className={className}>
       <div>
         <label htmlFor={inputId} className="mr-4">
           {label}
@@ -36,14 +40,15 @@ function FormFieldView({
           value={value}
           id={inputId}
           aria-invalid={!!error}
+          aria-describedby={errorId}
           {...inputAttributes}
         />
       </div>
       <div>
         {touched && error && (
-          <span id={errorId} className="text-red-500">
+          <p id={errorId} className="text-red-500 mt-2">
             {error}
-          </span>
+          </p>
         )}
       </div>
     </div>

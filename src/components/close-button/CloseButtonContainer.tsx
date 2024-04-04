@@ -5,18 +5,24 @@ import { ComponentProps } from '@/types/componentProps';
 
 interface CloseButtonContainerProps {
   close: () => void;
+  className?: string;
 }
 
 type OnClickHandler = ComponentProps<typeof CloseButtonView>['onClick'];
 
-function CloseButtonContainer({ close }: CloseButtonContainerProps) {
+function CloseButtonContainer({ close, className }: CloseButtonContainerProps) {
   const { t } = useTranslation();
   const ariaLabel = t('closeButton.ariaLabel');
   const handleOnClick: OnClickHandler = useCallback(() => {
-    console.log("Hello I'm trying!!");
     close();
   }, [close]);
-  return <CloseButtonView ariaLabel={ariaLabel} onClick={handleOnClick} />;
+  return (
+    <CloseButtonView
+      ariaLabel={ariaLabel}
+      onClick={handleOnClick}
+      className={className}
+    />
+  );
 }
 
 export { CloseButtonContainer };
