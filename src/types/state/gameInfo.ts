@@ -4,6 +4,9 @@ import { GameMode } from "../gameMode";
 interface GameInfo {
   gameMode: GameMode,
   numMimics: number;
+  numItems?: number;
+  numGear?: number;
+  numGold?: number;
   numChests: ValidGridSizes;
 }
 

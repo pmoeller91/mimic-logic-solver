@@ -13,6 +13,7 @@ interface FormFieldContainerProps<T> {
   inputAttributes?: FormFieldViewProps['inputAttributes'];
   label: string;
   className?: string;
+  optional?: boolean;
 }
 
 function FormFieldContainer<T>({
@@ -20,6 +21,7 @@ function FormFieldContainer<T>({
   label,
   inputAttributes,
   className,
+  optional,
 }: FormFieldContainerProps<T>) {
   const [{ isDirty, validateImmediate, value, error, isValid }, setFormValue] =
     useAtom(formValueAtom);
@@ -60,8 +62,10 @@ function FormFieldContainer<T>({
       touched={touched || isDirty}
       error={localizedError}
       className={className}
+      optional={optional}
     />
   );
 }
 
 export { FormFieldContainer };
+export type { FormFieldContainerProps };

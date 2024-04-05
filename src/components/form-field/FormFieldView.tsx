@@ -1,3 +1,6 @@
+import clsx from 'clsx';
+import { FormFieldLabel } from './FormFieldLabel';
+
 interface FormFieldViewProps {
   onChange: Required<JSX.IntrinsicElements['input']>['onChange'];
   onBlur: Required<JSX.IntrinsicElements['input']>['onBlur'];
@@ -13,6 +16,7 @@ interface FormFieldViewProps {
   error?: string;
   touched: boolean;
   className?: string;
+  optional?: boolean;
 }
 
 function FormFieldView({
@@ -25,14 +29,15 @@ function FormFieldView({
   error,
   touched,
   className,
+  optional
 }: FormFieldViewProps) {
   const inputId = `form-field-input-${idSuffix}`;
   const errorId = `form-field-error-${idSuffix}`;
   return (
     <div className={className}>
-      <div>
-        <label htmlFor={inputId} className="mr-4">
-          {label}
+      <div className="flex flex-row items-center gap-4">
+        <label htmlFor={inputId} className="mr-auto">
+          <FormFieldLabel label={label} optional={optional} />
         </label>
         <input
           onChange={onChange}
@@ -42,6 +47,7 @@ function FormFieldView({
           aria-invalid={!!error}
           aria-describedby={errorId}
           {...inputAttributes}
+          className={clsx("w-12 text-right font-mono")}
         />
       </div>
       <div>

@@ -33,6 +33,11 @@ Yup.setLocale({
         'yup.number.max',
         { max },
       ]),
+    min: ({ min }) =>
+      new LocalizedValidationError(`Number must be more than ${min}`, [
+        'yup.number.min',
+        { min },
+      ]),
     integer: () =>
       new LocalizedValidationError('Number must be an integer', [
         'yup.number.integer',

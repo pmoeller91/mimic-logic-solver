@@ -18,6 +18,7 @@
   "dependencies": {
     "@fontsource/noto-color-emoji": "^5.0.26",
     "@fontsource/pixelify-sans": "^5.0.2",
+    "@formatjs/intl-listformat": "^7.5.5",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",

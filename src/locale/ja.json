@@ -1,0 +1,71 @@
+{
+  "translation": {
+    "chestContents": {
+      "gear": "装備",
+      "gold": "お金",
+      "item": "消費アイテム",
+      "mimic": "ミミック",
+      "multiple": "{{contents, list(style: long; type: disjunction;)}}",
+      "notMimic": "ミミックじゃない"
+    },
+    "chestLayoutSelector": {
+      "numChests_other": "{{count, number}}個",
+      "title": "宝箱のレイアウト"
+    },
+    "chestTile": {
+      "contains": "中身"
+    },
+    "closeButton": {
+      "ariaLabel": "閉じる"
+    },
+    "editGameInfo": {
+      "gearLabel": "装備",
+      "goldLabel": "お金",
+      "itemsLabel": "消費アイテム",
+      "mimicsLabel": "ミミック",
+      "optionalPlaceholder": "？",
+      "title": "ゲーム設定"
+    },
+    "editGameInfoButton": {
+      "buttonLabel": "変更"
+    },
+    "footer": {
+      "copyrightNotice": "Copyright ©2024 Patrick Moeller",
+      "sourceCode": "<sourceLink>ソースコード</sourceLink>"
+    },
+    "formField": {
+      "label": "{{label}}",
+      "label_optional": "{{label}}　<secondary>任意</secondary>"
+    },
+    "gameMode": {
+      "standard": "スタンダード"
+    },
+    "header": {
+      "chests": "宝箱",
+      "gameMode": "ゲームモード",
+      "gear": "装備",
+      "gold": "お金",
+      "items": "消費アイテム",
+      "mimics": "ミミック",
+      "unknownValue": "？"
+    },
+    "languages": {
+      "en": "English",
+      "ja": "日本語"
+    },
+    "yup": {
+      "mixed": {
+        "notType": "期待される形式で入力してください。",
+        "notType_number": "数値を入力してください。",
+        "required": "このフィールドは入力必須です。"
+      },
+      "number": {
+        "integer": "整数を入力してください。",
+        "max": "{{max, number}}以下の数値を入力してください。",
+        "min": "{{min, number}}以上の数値を入力してください。",
+        "positive": "正の数値を入力してください。"
+      },
+      "unknown": "不明なエラーが起こりました。"
+    }
+  }
+}

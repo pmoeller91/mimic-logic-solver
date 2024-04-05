@@ -5,7 +5,7 @@ const defaultFlag = '🏳️';
 
 const flags: Record<string, string> = {
   en: '🇺🇸',
-  jp: '🇯🇵',
+  ja: '🇯🇵',
 };
 
 interface CountryFlagProps {

@@ -7,6 +7,10 @@ import { useTranslation } from 'react-i18next';
 import { getGameTranslation } from '@/util/getGameTranslation';
 import { useAtomValue } from 'jotai';
 import { numMimicsAtom } from '@/atoms/numMimicsFormValueAtom';
+import { numGoldAtom } from '@/atoms/numGoldFormValueAtom';
+import { numItemsAtom } from '@/atoms/numItemsFormValueAtom';
+import { numChestsAtom } from '@/atoms/numChestsAtom';
+import { numGearAtom } from '@/atoms/numGearFormValueAtom';
 
 const headerTranslationKeys = {
   gameMode: 'header.gameMode',
@@ -33,20 +37,26 @@ function HeaderContainer() {
     [t]
   );
 
+  const unknownHeaderValue = t('header.unknownValue');
+
   const numMimics = useAtomValue(numMimicsAtom);
+  const numGear = useAtomValue(numGearAtom)?.toString() ?? unknownHeaderValue;
+  const numGold = useAtomValue(numGoldAtom)?.toString() ?? unknownHeaderValue;
+  const numItems = useAtomValue(numItemsAtom)?.toString() ?? unknownHeaderValue;
+  const numChests = useAtomValue(numChestsAtom).toString();
 
   return (
     <HeaderView
       gameModeHeader={translatedHeaders.gameMode}
       gameMode={gameMode}
       chestsHeader={translatedHeaders.chests}
-      chests="0"
+      chests={numChests}
       gearHeader={translatedHeaders.gear}
-      gear="1"
+      gear={numGear}
       goldHeader={translatedHeaders.gold}
-      gold="2"
+      gold={numGold}
       itemsHeader={translatedHeaders.items}
-      items="3"
+      items={numItems}
       mimicsHeader={translatedHeaders.mimics}
       mimics={numMimics.toString()}
     />

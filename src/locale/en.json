@@ -4,7 +4,15 @@
       "gear": "Gear",
       "gold": "Gold",
       "item": "Item",
-      "mimic": "Mimic"
+      "mimic": "Mimic",
+      "multiple": "{{contents, list(style: long; type: disjunction;)}}",
+      "notMimic": "Not a mimic"
+    },
+    "chestLayoutSelector": {
+      "numChests_one": "{{count, number}} Chest",
+      "numChests_other": "{{count, number}} Chests",
+      "numChests_zero": "No Chests",
+      "title": "Chest Layout"
     },
     "chestTile": {
       "contains": "Contains"
@@ -13,8 +21,12 @@
       "ariaLabel": "Close"
     },
     "editGameInfo": {
-      "title": "Edit Game Info",
-      "mimicsLabel": "Mimics"
+      "gearLabel": "Gear",
+      "goldLabel": "Gold",
+      "itemsLabel": "Items",
+      "mimicsLabel": "Mimics",
+      "optionalPlaceholder": "?",
+      "title": "Edit Game Info"
     },
     "editGameInfoButton": {
       "buttonLabel": "Edit"
@@ -22,6 +34,10 @@
     "footer": {
       "copyrightNotice": "Copyright ©2024 Patrick Moeller",
       "sourceCode": "<sourceLink>Source Code</sourceLink>"
+    },
+    "formField": {
+      "label": "{{label}}",
+      "label_optional": "{{label}} <secondary>(Optional)</secondary>"
     },
     "gameMode": {
       "standard": "Standard"
@@ -32,28 +48,24 @@
       "gear": "Gear",
       "gold": "Gold",
       "items": "Items",
-      "mimics": "Mimics"
+      "mimics": "Mimics",
+      "unknownValue": "?"
     },
     "languages": {
       "en": "English",
-      "jp": "日本語"
-    },
-    "chestLayoutSelector": {
-      "title": "Chest Layout",
-      "numChests_zero": "No Chests",
-      "numChests_one": "{{count, number}} Chest",
-      "numChests_other": "{{count, number}} Chests"
+      "ja": "日本語"
     },
     "yup": {
       "mixed": {
-        "notType": "Invalid type",
-        "notType_number": "This field must be a number",
+        "notType": "Please enter a value in the expected format",
+        "notType_number": "Please enter a number",
         "required": "This field is required"
       },
       "number": {
-        "positive": "This must be a positive number",
-        "max": "This number must be less than or equal to {{max, number}}",
-        "integer": "This must be an integer"
+        "integer": "Please enter an integer",
+        "max": "Please enter a number less than or equal to {{max, number}}",
+        "min": "Please enter a number greater than or equal to {{min, number}}",
+        "positive": "Please enter a positive number"
       },
       "unknown": "Unknown error"
     }

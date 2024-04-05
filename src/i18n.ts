@@ -2,10 +2,13 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import enJSON from '@/locale/en.json';
-import jpJSON from '@/locale/jp.json';
+import jaJSON from '@/locale/ja.json';
 import { localizedYup } from '@/util/yup/localizedYup';
+import '@formatjs/intl-listformat/polyfill';
+import '@formatjs/intl-listformat/locale-data/en';
+import '@formatjs/intl-listformat/locale-data/ja';
 
-const supportedLngs = ['en', 'jp'];
+const supportedLngs = ['en', 'ja'];
 
 void i18n
   .use(initReactI18next)
@@ -13,7 +16,7 @@ void i18n
   .init({
     resources: {
       en: enJSON,
-      jp: jpJSON,
+      ja: jaJSON,
     },
     interpolation: {
       escapeValue: false,

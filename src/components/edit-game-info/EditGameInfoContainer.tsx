@@ -1,5 +1,8 @@
 import { forwardRef } from 'react';
-import { EditGameInfoView } from './EditGameInfoView';
+import {
+  EditGameInfoView,
+  EditGameInfoViewTranslations,
+} from './EditGameInfoView';
 import { useTranslation } from 'react-i18next';
 
 interface EditGameInfoContainerProps {
@@ -15,13 +18,21 @@ const EditGameInfoContainer = forwardRef<
   ref
 ) {
   const { t } = useTranslation();
-  const title = t('editGameInfo.title');
+  const translations: EditGameInfoViewTranslations = {
+    title: t('editGameInfo.title'),
+    gearLabel: t('editGameInfo.gearLabel'),
+    goldLabel: t('editGameInfo.goldLabel'),
+    itemsLabel: t('editGameInfo.itemsLabel'),
+    mimicsLabel: t('editGameInfo.mimicsLabel'),
+    optionalPlaceholder: t('editGameInfo.optionalPlaceholder'),
+  };
+
   return (
     <EditGameInfoView
       ref={ref}
       additionalProps={additionalProps}
-      title={title}
       close={close}
+      translations={translations}
     />
   );
 });
