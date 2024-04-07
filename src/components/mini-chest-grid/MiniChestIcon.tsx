@@ -3,10 +3,11 @@ import { ChestIcon } from '../ChestIcon';
 
 interface MiniChestIconProps {
   color: ChestColor;
+  className?: string;
 }
 
-function MiniChestIcon({ color }: MiniChestIconProps) {
-  return <ChestIcon color={color} className="w-4 h-4" />;
+function MiniChestIcon({ color, className }: MiniChestIconProps) {
+  return <ChestIcon color={color} className={className} />;
 }
 
 export { MiniChestIcon };

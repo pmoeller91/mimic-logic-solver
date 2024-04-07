@@ -7,7 +7,10 @@ interface ChestGridWrapperProps {
 }
 
 function ChestGridWrapper({ className, children }: ChestGridWrapperProps) {
-  const classNames = clsx(className, 'flex flex-col gap-8');
+  const classNames = clsx(
+    className,
+    'w-full lg:w-1/2 grid grid-cols-6 gap-1 sm:gap-2 lg:gap-8 m-auto'
+  );
   return <div className={classNames}>{children}</div>;
 }
 

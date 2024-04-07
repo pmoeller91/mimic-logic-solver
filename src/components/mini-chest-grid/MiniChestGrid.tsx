@@ -6,6 +6,7 @@ import { MiniChestGridNine } from './MiniChestGridNine';
 
 interface MiniChestGridProps {
   grid: ChestGridType;
+  iconClassName?: string;
   className?: string;
 }
 

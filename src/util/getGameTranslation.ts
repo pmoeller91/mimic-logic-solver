@@ -7,10 +7,15 @@ import {
   GetChestContentsTranslationParams,
   getChestContentsTranslation,
 } from './translation/getChestContentsTranslation';
+import {
+  GetChestHintTranslationParams,
+  getChestHintTranslation,
+} from './translation/getChestHintTranslation';
 
 type GetGameTranslationParams =
   | GetGameModeTranslationParams
-  | GetChestContentsTranslationParams;
+  | GetChestContentsTranslationParams
+  | GetChestHintTranslationParams;
 
 function getGameTranslation({
   type,
@@ -22,6 +27,8 @@ function getGameTranslation({
       return getGameModeTranslation({ type, key, t });
     case TRANSLATION_TYPE.chestContents:
       return getChestContentsTranslation({ type, key, t });
+    case TRANSLATION_TYPE.chestHint:
+      return getChestHintTranslation({ type, key, t });
   }
 }
 

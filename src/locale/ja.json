@@ -6,7 +6,30 @@
       "item": "消費アイテム",
       "mimic": "ミミック",
       "multiple": "{{contents, list(style: long; type: disjunction;)}}",
-      "notMimic": "ミミックじゃない"
+      "notMimic": "ミミックじゃない",
+      "undefined": "？"
+    },
+    "chestHint": {
+      "asleep": "Zzz...",
+      "mimicNotSelf": "私はミミックじゃない",
+      "mimicDirection": "$t(chestHint.mimicDirection_variations.{{param1}})",
+      "mimicDirection_variations": {
+        "DOWN": "下の箱はミミックだ",
+        "LEFT": "左の箱はミミックだ",
+        "RIGHT": "右の箱はミミックだ",
+        "UP": "上の箱はミミックだ",
+        "DOWN_LEFT": "左下の箱はミミックだ",
+        "DOWN_RIGHT": "右下の箱はミミックだ",
+        "UP_RIGHT": "右上の箱はミミックだ",
+        "UP_LEFT": "左上の箱はミミックだ"
+      },
+      "colorMoreMimics": "$t(chestHint.chestColors.{{param2}})箱より$t(chestHint.chestColors.{{param1}})箱の方がミミックが多い",
+      "chestColors": {
+        "RED": "赤い",
+        "BLUE": "青い",
+        "BLACK": "黒い"
+      },
+      "undefined": "？？？"
     },
     "chestLayoutSelector": {
       "numChests_other": "{{count, number}}個",

@@ -10,7 +10,7 @@ function MiniChestGridWrapper({
   className,
   children,
 }: MiniChestGridWrapperProps) {
-  const classNames = clsx(className, 'flex flex-col gap-1');
+  const classNames = clsx(className, 'grid grid-cols-6 gap-1');
   return <div className={classNames}>{children}</div>;
 }
 

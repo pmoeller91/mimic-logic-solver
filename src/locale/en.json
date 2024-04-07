@@ -6,7 +6,30 @@
       "item": "Item",
       "mimic": "Mimic",
       "multiple": "{{contents, list(style: long; type: disjunction;)}}",
-      "notMimic": "Not a mimic"
+      "notMimic": "Not a mimic",
+      "undefined": "?"
+    },
+    "chestHint": {
+      "asleep": "Zzz...",
+      "mimicNotSelf": "I'm not a Mimic.",
+      "mimicDirection": "$t(chestHint.mimicDirection_variations.{{param1}})",
+      "mimicDirection_variations": {
+        "DOWN": "The box below me is a Mimic.",
+        "LEFT": "The box on the left is a Mimic.",
+        "RIGHT": "The box on the right is a Mimic.",
+        "UP": "The box above me is a Mimic.",
+        "DOWN_LEFT": "Diagonal down left from me is a Mimic.",
+        "DOWN_RIGHT": "Diagonal down right from me is a Mimic.",
+        "UP_RIGHT": "Diagonal up right form me is a Mimic.",
+        "UP_LEFT": "Diagonal up left from me is a Mimic."
+      },
+      "colorMoreMimics": "There are more Mimics in $t(chestHint.chestColors.{{param1}}) than $t(chestHint.chestColors.{{param2}}) boxes.",
+      "chestColors": {
+        "RED": "red",
+        "BLUE": "blue",
+        "BLACK": "black"
+      },
+      "undefined": "???"
     },
     "chestLayoutSelector": {
       "numChests_one": "{{count, number}} Chest",

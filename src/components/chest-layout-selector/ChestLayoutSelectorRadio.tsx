@@ -33,7 +33,7 @@ function ChestLayoutSelectorRadio({
         value={numChests}
         id={inputId}
       />
-      <div className="flex flex-col gap-2 items-center justify-center h-full w-full border-2 border-c rounded-md p-4 transition-transform group-has-[:checked]:bg-c group-has-[:checked]:scale-105 group-has-[:focus]:border-cll group-has-[:focus]:border-4">
+      <div className="flex flex-col gap-2 items-center justify-center h-full w-full border-2 border-c rounded-md p-6 transition-transform group-has-[:checked]:bg-c group-has-[:checked]:scale-105 group-has-[:focus]:border-cll group-has-[:focus]:border-4">
         <div aria-hidden="true">
           <MiniChestGrid grid={chestGrid} className="p-2" />
         </div>
