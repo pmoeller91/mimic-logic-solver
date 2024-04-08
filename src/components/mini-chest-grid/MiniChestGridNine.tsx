@@ -10,15 +10,42 @@ interface MiniChestGridNineProps {
 function MiniChestGridNine({ grid, className }: MiniChestGridNineProps) {
   return (
     <MiniChestGridWrapper className={className}>
-        <MiniChestIcon color={grid.rows[0][0].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[0][1].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[0][2].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[1][0].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[1][1].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[1][2].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[2][0].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[2][1].color} className="col-span-2" />
-        <MiniChestIcon color={grid.rows[2][2].color} className="col-span-2" />
+      <MiniChestIcon
+        chestColor={grid.rows[0][0].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[0][1].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[0][2].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[1][0].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[1][1].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[1][2].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[2][0].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[2][1].color}
+        className="col-span-2"
+      />
+      <MiniChestIcon
+        chestColor={grid.rows[2][2].color}
+        className="col-span-2"
+      />
     </MiniChestGridWrapper>
   );
 }

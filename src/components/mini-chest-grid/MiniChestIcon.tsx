@@ -2,12 +2,12 @@ import { ChestColor } from '@/types/chestProperties';
 import { ChestIcon } from '../ChestIcon';
 
 interface MiniChestIconProps {
-  color: ChestColor;
+  chestColor: ChestColor;
   className?: string;
 }
 
-function MiniChestIcon({ color, className }: MiniChestIconProps) {
-  return <ChestIcon color={color} className={className} />;
+function MiniChestIcon({ chestColor, className }: MiniChestIconProps) {
+  return <ChestIcon chestColor={chestColor} className={className} />;
 }
 
 export { MiniChestIcon };

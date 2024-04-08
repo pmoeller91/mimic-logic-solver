@@ -4,9 +4,10 @@ import {
   EditGameInfoViewTranslations,
 } from './EditGameInfoView';
 import { useTranslation } from 'react-i18next';
+import { useMemo } from 'use-memo-one';
 
 interface EditGameInfoContainerProps {
-  close: () => void;
+  onClose: () => void;
   additionalProps?: Record<string, unknown>;
 }
 
@@ -14,24 +15,27 @@ const EditGameInfoContainer = forwardRef<
   HTMLDivElement,
   EditGameInfoContainerProps
 >(function EditGameInfoContainer(
-  { close, additionalProps }: EditGameInfoContainerProps,
+  { onClose, additionalProps }: EditGameInfoContainerProps,
   ref
 ) {
   const { t } = useTranslation();
-  const translations: EditGameInfoViewTranslations = {
-    title: t('editGameInfo.title'),
-    gearLabel: t('editGameInfo.gearLabel'),
-    goldLabel: t('editGameInfo.goldLabel'),
-    itemsLabel: t('editGameInfo.itemsLabel'),
-    mimicsLabel: t('editGameInfo.mimicsLabel'),
-    optionalPlaceholder: t('editGameInfo.optionalPlaceholder'),
-  };
+  const translations: EditGameInfoViewTranslations = useMemo(
+    () => ({
+      title: t('editGameInfo.title'),
+      gearLabel: t('editGameInfo.gearLabel'),
+      goldLabel: t('editGameInfo.goldLabel'),
+      itemsLabel: t('editGameInfo.itemsLabel'),
+      mimicsLabel: t('editGameInfo.mimicsLabel'),
+      optionalPlaceholder: t('editGameInfo.optionalPlaceholder'),
+    }),
+    [t]
+  );
 
   return (
     <EditGameInfoView
       ref={ref}
       additionalProps={additionalProps}
-      close={close}
+      onClose={onClose}
       translations={translations}
     />
   );

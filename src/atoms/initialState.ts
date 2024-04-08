@@ -19,40 +19,42 @@ const initialState: GameState = {
     gameMode: GAME_MODE.standard,
   },
   allChests: [
-    createChest({
-      color: 'BLUE',
-      contents: 'ITEM',
-      hint: { type: 'MIMIC_NOT_SELF', params: [] },
-    }),
-    createChest({
-      color: 'BLACK',
-      contents: 'GEAR',
-      hint: {
-        type: 'COLOR_MORE_MIMICS',
-        params: [
-          { type: CHEST_HINT_PARAM_TYPE.color, value: 'BLUE' },
-          { type: CHEST_HINT_PARAM_TYPE.color, value: 'RED' },
-        ],
-      },
-    }),
-    createChest(),
-    createChest({
-      color: 'RED',
-      contents: 'ITEM',
-      hint: {
-        type: 'MIMIC_DIRECTION',
-        params: [{ type: CHEST_HINT_PARAM_TYPE.direction, value: 'UP' }],
-      },
-    }),
-    createChest({
-      color: 'BLUE',
-      contents: 'ITEM',
-      hint: { type: 'ASLEEP', params: [] },
-    }),
-    createChest(),
-    createChest(),
-    createChest(),
-    createChest(),
+    [
+      createChest({
+        color: 'BLUE',
+        contents: 'ITEM',
+        hint: { type: 'MIMIC_NOT_SELF', params: [] },
+      }),
+      createChest({
+        color: 'BLACK',
+        contents: 'GEAR',
+        hint: {
+          type: 'COLOR_MORE_MIMICS',
+          params: [
+            { type: CHEST_HINT_PARAM_TYPE.color, value: 'BLUE' },
+            { type: CHEST_HINT_PARAM_TYPE.color, value: 'RED' },
+          ],
+        },
+      }),
+      createChest(),
+    ],
+    [
+      createChest({
+        color: 'RED',
+        contents: 'ITEM',
+        hint: {
+          type: 'MIMIC_DIRECTION',
+          params: [{ type: CHEST_HINT_PARAM_TYPE.direction, value: 'UP' }],
+        },
+      }),
+      createChest({
+        color: 'BLUE',
+        contents: 'ITEM',
+        hint: { type: 'ASLEEP', params: [] },
+      }),
+      createChest(),
+    ],
+    [createChest(), createChest(), createChest()],
   ],
 };
 

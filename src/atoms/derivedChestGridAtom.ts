@@ -10,27 +10,27 @@ function createRows<T extends ValidGridSizes>(
   switch (numChests) {
     case 4:
       return [
-        [chests[0], chests[1]],
-        [chests[3], chests[4]],
-      ];
+        [chests[0][0], chests[0][1]],
+        [chests[1][0], chests[1][1]],
+      ] satisfies ChestGridSized<4>['rows'];
     case 6:
       return [
-        [chests[0], chests[1], chests[2]],
-        [chests[3], chests[4], chests[5]],
-      ];
+        [chests[0][0], chests[0][1], chests[0][2]],
+        [chests[1][0], chests[1][1], chests[1][2]],
+      ] satisfies ChestGridSized<6>['rows'];
     case 7:
       return [
-        [chests[0], chests[1]],
-        [chests[3], chests[4], chests[5]],
-        [chests[6], chests[7]],
-      ];
+        [chests[0][0], chests[0][1]],
+        [chests[1][0], chests[1][1], chests[1][2]],
+        [chests[2][0], chests[2][1]],
+      ] satisfies ChestGridSized<7>['rows'];
     default:
     case 9:
       return [
-        [chests[0], chests[1], chests[2]],
-        [chests[3], chests[4], chests[5]],
-        [chests[6], chests[7], chests[8]],
-      ];
+        [chests[0][0], chests[0][1], chests[0][2]],
+        [chests[1][0], chests[1][1], chests[1][2]],
+        [chests[2][0], chests[2][1], chests[2][2]],
+      ] satisfies ChestGridSized<9>['rows'];
   }
 }
 

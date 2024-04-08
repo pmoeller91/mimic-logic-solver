@@ -18,17 +18,17 @@ interface EditGameInfoViewTranslations {
 
 interface EditGameInfoViewProps {
   additionalProps?: Record<string, unknown>;
-  close: () => void;
+  onClose: () => void;
   translations: EditGameInfoViewTranslations;
 }
 
 const EditGameInfoView = forwardRef<HTMLDivElement, EditGameInfoViewProps>(
-  function EditGameInfoView({ additionalProps, close, translations }, ref) {
+  function EditGameInfoView({ additionalProps, onClose, translations }, ref) {
     return (
       <div {...additionalProps} ref={ref}>
         <PropertiesDrawerHeaderContainer
           title={translations.title}
-          close={close}
+          close={onClose}
         />
         <div className="px-8 py-4">
           <ChestLayoutSelectorContainer />

@@ -11,35 +11,65 @@
     },
     "chestHint": {
       "asleep": "Zzz...",
-      "mimicNotSelf": "私はミミックじゃない",
+      "chestColors": {
+        "BLACK": "黒い",
+        "BLUE": "青い",
+        "RED": "赤い"
+      },
+      "colorMoreMimics": "$t(chestHint.chestColors.{{param2}})箱より$t(chestHint.chestColors.{{param1}})箱の方がミミックが多い",
       "mimicDirection": "$t(chestHint.mimicDirection_variations.{{param1}})",
       "mimicDirection_variations": {
         "DOWN": "下の箱はミミックだ",
+        "DOWN_LEFT": "左下の箱はミミックだ",
+        "DOWN_RIGHT": "右下の箱はミミックだ",
         "LEFT": "左の箱はミミックだ",
         "RIGHT": "右の箱はミミックだ",
         "UP": "上の箱はミミックだ",
-        "DOWN_LEFT": "左下の箱はミミックだ",
-        "DOWN_RIGHT": "右下の箱はミミックだ",
-        "UP_RIGHT": "右上の箱はミミックだ",
-        "UP_LEFT": "左上の箱はミミックだ"
+        "UP_LEFT": "左上の箱はミミックだ",
+        "UP_RIGHT": "右上の箱はミミックだ"
       },
-      "colorMoreMimics": "$t(chestHint.chestColors.{{param2}})箱より$t(chestHint.chestColors.{{param1}})箱の方がミミックが多い",
-      "chestColors": {
-        "RED": "赤い",
-        "BLUE": "青い",
-        "BLACK": "黒い"
-      },
+      "mimicNotSelf": "私はミミックじゃない",
       "undefined": "？？？"
     },
     "chestLayoutSelector": {
       "numChests_other": "{{count, number}}個",
       "title": "宝箱のレイアウト"
     },
+    "chestSelector": {
+      "ariaLabel": "$t(chestSelector.color.{{color}})宝箱　{{row, number}}行{{column, number}}列目",
+      "color": {
+        "BLACK": "黒い",
+        "BLUE": "青い",
+        "RED": "赤い"
+      },
+      "legendString": "編集する宝箱を選択"
+    },
     "chestTile": {
-      "contains": "中身"
+      "color": {
+        "BLACK": "黒い",
+        "BLUE": "青い",
+        "RED": "赤い"
+      },
+      "containsLabel": "中身",
+      "editButtonLabel": "変更",
+      "iconAltText": "$t(chestTile.color.{{color}})宝箱"
     },
     "closeButton": {
       "ariaLabel": "閉じる"
+    },
+    "editChestInfo": {
+      "title": "宝箱の属性",
+      "chestPropertiesSection": {
+        "chestColor": {
+          "colors": {
+            "red": "赤い",
+            "blue": "青い",
+            "black": "黒い"
+          },
+          "label": "宝箱の色"
+        },
+        "title": "属性"
+      }
     },
     "editGameInfo": {
       "gearLabel": "装備",

@@ -8,7 +8,7 @@ import '@formatjs/intl-listformat/polyfill';
 import '@formatjs/intl-listformat/locale-data/en';
 import '@formatjs/intl-listformat/locale-data/ja';
 
-const supportedLngs = ['en', 'ja'];
+const supportedLngs = ['en', 'ja'] as const;
 
 void i18n
   .use(initReactI18next)

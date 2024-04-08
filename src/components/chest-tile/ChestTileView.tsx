@@ -6,34 +6,46 @@ interface ChestTileViewProps {
   chestColor: ChestColor;
   chestContents?: string;
   chestHint?: string;
-  contains: string;
+  containsLabel: string;
   className?: string;
+  onClickEdit?: () => void;
+  editButtonLabel: string;
+  iconAltText: string;
+  hideEditButton?: boolean;
 }
 
 function ChestTileView({
   chestColor,
   chestContents,
   chestHint,
-  contains,
+  containsLabel,
   className,
+  onClickEdit,
+  editButtonLabel,
+  iconAltText,
+  hideEditButton,
 }: ChestTileViewProps) {
   const classNames = clsx('', className);
   return (
     <div className={classNames}>
       <div className="flex flex-col gap-4 p-4 items-center justify-between bg-bg-light/60 rounded-xl h-full w-full">
-        {chestHint && (
-          <div className="text-center break-words max-w-48 my-auto">
-            {chestHint}
-          </div>
-        )}
-        <ChestIcon color={chestColor} className="w-24 h-24 p-2" />
+        {chestHint && <div className="text-center my-auto">{chestHint}</div>}
+        <ChestIcon
+          chestColor={chestColor}
+          className="w-24 h-24 p-2 pointer-events-none"
+          altText={iconAltText}
+        />
         {chestContents && (
           <div className="flex flex-col justify-center items-center">
-            <div>{contains}</div>
+            <div>{containsLabel}</div>
             <div>{chestContents}</div>
           </div>
         )}
-        <button className="w-full">Edit</button>
+        {!hideEditButton && (
+          <button className="w-full" onClick={onClickEdit}>
+            {editButtonLabel}
+          </button>
+        )}
       </div>
     </div>
   );

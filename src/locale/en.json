@@ -11,24 +11,24 @@
     },
     "chestHint": {
       "asleep": "Zzz...",
-      "mimicNotSelf": "I'm not a Mimic.",
+      "chestColors": {
+        "BLACK": "black",
+        "BLUE": "blue",
+        "RED": "red"
+      },
+      "colorMoreMimics": "There are more Mimics in $t(chestHint.chestColors.{{param1}}) than $t(chestHint.chestColors.{{param2}}) boxes.",
       "mimicDirection": "$t(chestHint.mimicDirection_variations.{{param1}})",
       "mimicDirection_variations": {
         "DOWN": "The box below me is a Mimic.",
+        "DOWN_LEFT": "Diagonal down left from me is a Mimic.",
+        "DOWN_RIGHT": "Diagonal down right from me is a Mimic.",
         "LEFT": "The box on the left is a Mimic.",
         "RIGHT": "The box on the right is a Mimic.",
         "UP": "The box above me is a Mimic.",
-        "DOWN_LEFT": "Diagonal down left from me is a Mimic.",
-        "DOWN_RIGHT": "Diagonal down right from me is a Mimic.",
-        "UP_RIGHT": "Diagonal up right form me is a Mimic.",
-        "UP_LEFT": "Diagonal up left from me is a Mimic."
+        "UP_LEFT": "Diagonal up left from me is a Mimic.",
+        "UP_RIGHT": "Diagonal up right form me is a Mimic."
       },
-      "colorMoreMimics": "There are more Mimics in $t(chestHint.chestColors.{{param1}}) than $t(chestHint.chestColors.{{param2}}) boxes.",
-      "chestColors": {
-        "RED": "red",
-        "BLUE": "blue",
-        "BLACK": "black"
-      },
+      "mimicNotSelf": "I'm not a Mimic.",
       "undefined": "???"
     },
     "chestLayoutSelector": {
@@ -37,11 +37,41 @@
       "numChests_zero": "No Chests",
       "title": "Chest Layout"
     },
+    "chestSelector": {
+      "ariaLabel": "$t(chestSelector.color.{{color}}) chest in row {{row, number}}, column {{column, number}}",
+      "color": {
+        "BLACK": "Black",
+        "BLUE": "Blue",
+        "RED": "Red"
+      },
+      "legendString": "Select chest to edit"
+    },
     "chestTile": {
-      "contains": "Contains"
+      "color": {
+        "BLACK": "Black",
+        "BLUE": "Blue",
+        "RED": "Red"
+      },
+      "containsLabel": "Contains",
+      "editButtonLabel": "Edit",
+      "iconAltText": "$t(chestTile.color.{{color}}) chest"
     },
     "closeButton": {
       "ariaLabel": "Close"
+    },
+    "editChestInfo": {
+      "title": "Edit Chest Properties",
+      "chestPropertiesSection": {
+        "chestColor": {
+          "colors": {
+            "red": "Red",
+            "blue": "Blue",
+            "black": "Black"
+          },
+          "label": "Chest Color"
+        },
+        "title": "Chest Properties"
+      }
     },
     "editGameInfo": {
       "gearLabel": "Gear",

@@ -24,7 +24,7 @@ function PropertiesDrawerContainer() {
   const openingElement = useAtomValue(propertiesDrawerOpeningElementAtom);
   const setPropertiesDrawerId = useSetAtom(propertiesDrawerIdAtom);
 
-  const close = useCallback(() => {
+  const onClose = useCallback(() => {
     setPropertiesDrawerOpen(false);
   }, [setPropertiesDrawerOpen]);
 
@@ -52,7 +52,7 @@ function PropertiesDrawerContainer() {
       onOpenChange={setPropertiesDrawerOpen}
       direction={largeBreakpoint ? 'right' : 'bottom'}
       mode={propertiesDrawerMode}
-      close={close}
+      onClose={onClose}
       titleId={titleId}
       descriptionId={descriptionId}
       onCloseAutoFocus={onCloseAutoFocus}

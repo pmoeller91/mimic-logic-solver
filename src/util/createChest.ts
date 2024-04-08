@@ -1,13 +1,12 @@
 import { pickBy } from 'lodash';
 import { Chest } from '@/types/chest';
-import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_COLOR } from '@/types/chestProperties';
 import merge from 'deepmerge';
 import { DeepReadonly, DeepWritable } from 'ts-essentials';
 import { CHEST_HINT_TYPE } from '@/types/chestHint';
 
 const defaultChest = {
   color: CHEST_COLOR.red,
-  contents: CHEST_CONTENTS.mimic,
   hint: { type: CHEST_HINT_TYPE.asleep, params: [] },
 } as const satisfies Chest;
 

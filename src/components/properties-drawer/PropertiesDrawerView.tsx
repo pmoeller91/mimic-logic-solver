@@ -6,12 +6,13 @@ import {
 import { EditGameInfoContainer } from '../edit-game-info/EditGameInfoContainer';
 import { PropertiesDrawerWrapper } from './PropertiesDrawerWrapper';
 import { ComponentProps } from 'react';
+import { EditChestInfoContainer } from '../edit-chest-info/EditChestInfoContainer';
 
 interface PropertiesDrawerViewProps {
   isOpen: boolean;
   onCloseAutoFocus?: ComponentProps<typeof Drawer.Content>['onCloseAutoFocus'];
   onOpenChange: (open: boolean) => void;
-  close: () => void;
+  onClose: () => void;
   direction?: 'bottom' | 'right';
   mode: PropertiesDrawerMode;
   titleId: string;
@@ -24,7 +25,7 @@ function PropertiesDrawerView({
   onOpenChange,
   direction,
   mode,
-  close,
+  onClose,
   titleId,
   descriptionId,
   onCloseAutoFocus,
@@ -50,7 +51,10 @@ function PropertiesDrawerView({
         >
           <PropertiesDrawerWrapper direction={defaultDirection}>
             {mode === PROPERTIES_DRAWER_MODE.gameInfo && (
-              <EditGameInfoContainer close={close} />
+              <EditGameInfoContainer onClose={onClose} />
+            )}
+            {mode === PROPERTIES_DRAWER_MODE.chest && (
+              <EditChestInfoContainer onClose={onClose} />
             )}
           </PropertiesDrawerWrapper>
         </Drawer.Content>
