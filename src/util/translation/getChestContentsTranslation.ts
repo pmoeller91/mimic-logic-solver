@@ -3,7 +3,7 @@ import { GetTranslationParams, TRANSLATION_TYPE } from '@/types/translation';
 
 type GetChestContentsTranslationParams = GetTranslationParams<
   typeof TRANSLATION_TYPE.chestContents,
-  ChestContents | ChestContents[] | undefined
+  ChestContents | ChestContents[]
 >;
 
 const chestContentsTranslations: Record<ChestContents, string> = {
@@ -11,15 +11,13 @@ const chestContentsTranslations: Record<ChestContents, string> = {
   [CHEST_CONTENTS.gold]: 'chestContents.gold',
   [CHEST_CONTENTS.item]: 'chestContents.item',
   [CHEST_CONTENTS.mimic]: 'chestContents.mimic',
+  [CHEST_CONTENTS.unknown]: 'chestContents.unknown',
 };
 
 function getChestContentsTranslation({
   key,
   t,
 }: GetChestContentsTranslationParams) {
-  if (!key) {
-    return t('chestContents.undefined');
-  }
   if (typeof key === 'string') {
     return t(chestContentsTranslations[key]);
   }

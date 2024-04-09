@@ -11,6 +11,7 @@ const CHEST_CONTENTS = {
   item: 'ITEM',
   gear: 'GEAR',
   mimic: 'MIMIC',
+  unknown: 'UNKNOWN',
 } as const;
 
 type ChestContents = (typeof CHEST_CONTENTS)[keyof typeof CHEST_CONTENTS];

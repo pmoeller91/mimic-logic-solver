@@ -6,23 +6,19 @@ import { TRANSLATION_TYPE } from '@/types/translation';
 
 interface ChestTileContainerProps {
   chest: Chest;
-  showContents?: boolean;
-  showHint?: boolean;
   className?: string;
   onClickEdit?: () => void;
   hideEditButton?: boolean;
+  contextLabel?: string;
 }
 
 function ChestTileContainer({
   chest,
-  showContents,
-  showHint,
   className,
   onClickEdit,
   hideEditButton,
+  contextLabel,
 }: ChestTileContainerProps) {
-  const defaultShowHint = showHint ?? true;
-  const defaultShowContents = showContents ?? true;
   const { t } = useTranslation();
   const containsLabel = t('chestTile.containsLabel');
   const editButtonLabel = t('chestTile.editButtonLabel');
@@ -41,14 +37,15 @@ function ChestTileContainer({
   return (
     <ChestTileView
       chestColor={chest.color}
-      chestContents={defaultShowContents ? chestContents : undefined}
-      chestHint={defaultShowHint ? chestHint : undefined}
+      chestContents={chestContents}
+      chestHint={chestHint}
       containsLabel={containsLabel}
       editButtonLabel={editButtonLabel}
       className={className}
       onClickEdit={onClickEdit}
       iconAltText={iconAltText}
       hideEditButton={hideEditButton}
+      contextLabel={contextLabel}
     />
   );
 }

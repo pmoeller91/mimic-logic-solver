@@ -3,7 +3,7 @@ import { ChestHint } from './chestHint';
 
 interface Chest {
   hint?: ChestHint;
-  contents?: ChestContents | ChestContents[];
+  contents: ChestContents | ChestContents[];
   color: ChestColor;
 }
 

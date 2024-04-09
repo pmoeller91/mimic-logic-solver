@@ -50,7 +50,8 @@ function MiniChestGridSelectSeven({
         const [row, col] = coords;
         return (
           <MiniChestSelectIcon
-            // This must be defined as the pairs provided in gridCoords meet the structure of rows for the size-7 grid.
+            // This must be defined, because the pairs provided in gridCoords
+            // meet the structure of rows for the size-7 grid.
             chestColor={grid.rows[row][col]!.color}
             className="col-span-2"
             onClick={onClickCallbacks[row][col]}
@@ -59,7 +60,8 @@ function MiniChestGridSelectSeven({
             ariaLabel={genAriaLabel({
               row,
               col,
-              // This must be defined as the pairs provided in gridCoords meet the structure of rows for the size-7 grid.
+              // This must be defined, because the pairs provided in gridCoords
+              // meet the structure of rows for the size-7 grid.
               color: grid.rows[row][col]!.color,
               t,
             })}

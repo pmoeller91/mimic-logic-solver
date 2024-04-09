@@ -1,55 +1,52 @@
-import { ChestGridSized } from '@/types/chestGrid';
 import { ChestGridWrapper } from './ChestGridWrapper';
 import { ChestTileContainer } from '../chest-tile/ChestTileContainer';
-import { ChestGridCallbacks } from '@/hooks/useChestGridCallbacks';
+import { SubGridProps } from './gridTypes';
+import { useTranslation } from 'react-i18next';
+import { generateContextLabel } from './generateContextLabel';
 
-interface ChestGridSevenProps {
-  grid: ChestGridSized<7>;
-  onClickEditCallbacks: ChestGridCallbacks;
-}
+function ChestGridSeven({ grid, onClickEditCallbacks }: SubGridProps<7>) {
+  const { t } = useTranslation();
 
-function ChestGridSeven({ grid, onClickEditCallbacks }: ChestGridSevenProps) {
+  // undefined represents an empty div used as a grid spacer
+  const gridCoordsWithChestNum = [
+    undefined,
+    [0, 0, 1],
+    [0, 1, 2],
+    undefined,
+    [1, 0, 3],
+    [1, 1, 4],
+    [1, 2, 5],
+    undefined,
+    [2, 0, 6],
+    [2, 1, 7],
+    undefined,
+  ] as const;
+
   return (
     <ChestGridWrapper>
-      <div />
-      <ChestTileContainer
-        chest={grid.rows[0][0]}
-        onClickEdit={onClickEditCallbacks[0][0]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[0][1]}
-        onClickEdit={onClickEditCallbacks[0][1]}
-        className="col-span-2"
-      />
-      <div />
-      <ChestTileContainer
-        chest={grid.rows[1][0]}
-        onClickEdit={onClickEditCallbacks[1][0]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[1][1]}
-        onClickEdit={onClickEditCallbacks[1][1]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[1][2]}
-        onClickEdit={onClickEditCallbacks[1][2]}
-        className="col-span-2"
-      />
-      <div />
-      <ChestTileContainer
-        chest={grid.rows[2][0]}
-        onClickEdit={onClickEditCallbacks[2][0]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[2][1]}
-        onClickEdit={onClickEditCallbacks[2][1]}
-        className="col-span-2"
-      />
-      <div />
+      {gridCoordsWithChestNum.map((gridCoordWithChestNum, i) => {
+        if (!gridCoordWithChestNum) {
+          return <div key={`spacer-${i}`} />;
+        }
+        const [row, col, chestNum] = gridCoordWithChestNum;
+        return (
+          <ChestTileContainer
+            // Must be defined, because the coords defined in the array
+            // correspond to the limits of the grid
+            chest={grid.rows[row][col]!}
+            onClickEdit={onClickEditCallbacks[row][col]}
+            className="col-span-2"
+            key={`${row}-${col}`}
+            contextLabel={generateContextLabel({
+              totalChests: 4,
+              chestNum,
+              col: col + 1,
+              row: row + 1,
+              t,
+            })}
+          />
+        );
+      })}
     </ChestGridWrapper>
   );
 }

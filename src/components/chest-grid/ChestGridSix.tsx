@@ -1,46 +1,36 @@
-import { ChestGridSized } from '@/types/chestGrid';
 import { ChestGridWrapper } from './ChestGridWrapper';
 import { ChestTileContainer } from '../chest-tile/ChestTileContainer';
-import { ChestGridCallbacks } from '@/hooks/useChestGridCallbacks';
+import { SubGridProps } from './gridTypes';
+import { useTranslation } from 'react-i18next';
+import { generateContextLabel } from './generateContextLabel';
 
-interface ChestGridSixProps {
-  grid: ChestGridSized<6>;
-  onClickEditCallbacks: ChestGridCallbacks;
-}
-
-function ChestGridSix({ grid, onClickEditCallbacks }: ChestGridSixProps) {
+function ChestGridSix({ grid, onClickEditCallbacks }: SubGridProps<6>) {
+  const { t } = useTranslation();
+  const gridCoords = [
+    [0, 0],
+    [0, 1],
+    [0, 2],
+    [1, 0],
+    [1, 1],
+    [1, 2],
+  ];
   return (
     <ChestGridWrapper>
-      <ChestTileContainer
-        chest={grid.rows[0][0]}
-        onClickEdit={onClickEditCallbacks[0][0]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[0][1]}
-        onClickEdit={onClickEditCallbacks[0][1]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[0][2]}
-        onClickEdit={onClickEditCallbacks[0][2]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[1][0]}
-        onClickEdit={onClickEditCallbacks[1][0]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[1][1]}
-        onClickEdit={onClickEditCallbacks[1][1]}
-        className="col-span-2"
-      />
-      <ChestTileContainer
-        chest={grid.rows[1][2]}
-        onClickEdit={onClickEditCallbacks[1][2]}
-        className="col-span-2"
-      />
+      {gridCoords.map(([row, col], i) => (
+        <ChestTileContainer
+          chest={grid.rows[row][col]}
+          onClickEdit={onClickEditCallbacks[row][col]}
+          className="col-span-2"
+          key={`${row}-${col}`}
+          contextLabel={generateContextLabel({
+            totalChests: 4,
+            chestNum: i + 1,
+            col: col + 1,
+            row: row + 1,
+            t,
+          })}
+        />
+      ))}
     </ChestGridWrapper>
   );
 }

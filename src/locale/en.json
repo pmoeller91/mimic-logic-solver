@@ -7,7 +7,10 @@
       "mimic": "Mimic",
       "multiple": "{{contents, list(style: long; type: disjunction;)}}",
       "notMimic": "Not a mimic",
-      "undefined": "?"
+      "unknown": "?"
+    },
+    "chestGrid": {
+      "contextLabel": "Chest {{chestNum, number}} of {{totalChests, number}}, Row {{row, number}} Column {{col, number}}"
     },
     "chestHint": {
       "asleep": "Zzz...",
@@ -64,11 +67,14 @@
       "chestPropertiesSection": {
         "chestColor": {
           "colors": {
-            "red": "Red",
-            "blue": "Blue",
-            "black": "Black"
+            "RED": "Red",
+            "BLUE": "Blue",
+            "BLACK": "Black"
           },
           "label": "Chest Color"
+        },
+        "chestContents": {
+          "label": "Chest Contents"
         },
         "title": "Chest Properties"
       }

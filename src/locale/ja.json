@@ -7,7 +7,10 @@
       "mimic": "ミミック",
       "multiple": "{{contents, list(style: long; type: disjunction;)}}",
       "notMimic": "ミミックじゃない",
-      "undefined": "？"
+      "unknown": "？"
+    },
+    "chestGrid": {
+      "contextLabel": "宝箱{{totalChests, number}}個中{{chestNum, number}}個目 {{row, number}}行{{col, number}}列目"
     },
     "chestHint": {
       "asleep": "Zzz...",
@@ -62,11 +65,14 @@
       "chestPropertiesSection": {
         "chestColor": {
           "colors": {
-            "red": "赤い",
-            "blue": "青い",
-            "black": "黒い"
+            "RED": "赤い",
+            "BLUE": "青い",
+            "BLACK": "黒い"
           },
           "label": "宝箱の色"
+        },
+        "chestContents": {
+          "label": "宝箱の中身"
         },
         "title": "属性"
       }
