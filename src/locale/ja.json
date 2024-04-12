@@ -20,7 +20,10 @@
         "RED": "赤い"
       },
       "colorMoreMimics": "$t(chestHint.chestColors.{{param2}})箱より$t(chestHint.chestColors.{{param1}})箱の方がミミックが多い",
+      "colorMoreMimics_blank": "【色】箱より【色】箱のほうがミミックが多い",
+      "colorMoreMimics_paramsReversed": "true",
       "mimicDirection": "$t(chestHint.mimicDirection_variations.{{param1}})",
+      "mimicDirection_blank": "【方向】の箱はミミックだ",
       "mimicDirection_variations": {
         "DOWN": "下の箱はミミックだ",
         "DOWN_LEFT": "左下の箱はミミックだ",
@@ -32,7 +35,7 @@
         "UP_RIGHT": "右上の箱はミミックだ"
       },
       "mimicNotSelf": "私はミミックじゃない",
-      "undefined": "？？？"
+      "unknown": "？？？"
     },
     "chestLayoutSelector": {
       "numChests_other": "{{count, number}}個",
@@ -61,13 +64,43 @@
       "ariaLabel": "閉じる"
     },
     "editChestInfo": {
-      "title": "宝箱の属性",
+      "chestHintSection": {
+        "param": {
+          "color": {
+            "colors": {
+              "BLACK": "黒い",
+              "BLUE": "青い",
+              "RED": "赤い"
+            },
+            "label": "色",
+            "label_ordinal_other": "{{count}}番目色"
+          },
+          "direction": {
+            "directions": {
+              "DOWN": "下",
+              "DOWN_LEFT": "左下",
+              "DOWN_RIGHT": "右下",
+              "LEFT": "左",
+              "RIGHT": "右",
+              "UP": "上",
+              "UP_LEFT": "左上",
+              "UP_RIGHT": "右上"
+            },
+            "label": "方向",
+            "label_ordinal_other": "{{count}}番目方向"
+          }
+        },
+        "title": "宝箱のヒント",
+        "type": {
+          "label": "タイプ"
+        }
+      },
       "chestPropertiesSection": {
         "chestColor": {
           "colors": {
-            "RED": "赤い",
+            "BLACK": "黒い",
             "BLUE": "青い",
-            "BLACK": "黒い"
+            "RED": "赤い"
           },
           "label": "宝箱の色"
         },
@@ -75,7 +108,8 @@
           "label": "宝箱の中身"
         },
         "title": "属性"
-      }
+      },
+      "title": "宝箱の属性"
     },
     "editGameInfo": {
       "gearLabel": "装備",

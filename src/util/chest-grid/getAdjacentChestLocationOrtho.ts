@@ -22,7 +22,7 @@ function getAdjacentChestLocationOrtho({
   numChests,
 }: GridOrthoGetAdjacentChestLocationParams): ChestLocation | null {
   const validDirections = orthogonalDirections;
-  const [x, y] = location;
+  const [row, col] = location;
   let prospectiveLocation: ChestLocation = [-1, -1];
   if (!validDirections.includes(direction)) {
     return null;
@@ -32,16 +32,16 @@ function getAdjacentChestLocationOrtho({
   }
   switch (direction) {
     case CHEST_DIRECTION.up:
-      prospectiveLocation = [x, y - 1];
+      prospectiveLocation = [row - 1, col];
       break;
     case CHEST_DIRECTION.down:
-      prospectiveLocation = [x, y + 1];
+      prospectiveLocation = [row + 1, col];
       break;
     case CHEST_DIRECTION.left:
-      prospectiveLocation = [x - 1, y];
+      prospectiveLocation = [row, col - 1];
       break;
     case CHEST_DIRECTION.right:
-      prospectiveLocation = [x + 1, y];
+      prospectiveLocation = [row, col + 1];
       break;
   }
   return isChestLocationValid({ numChests, location: prospectiveLocation })

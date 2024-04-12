@@ -1,21 +1,29 @@
 import { ChestColor } from './chestProperties';
 
+type ChestHintParamDefinition<P1 = never, P2 = never> = [P1] extends [never]
+  ? []
+  : [P2] extends [never]
+  ? [P1]
+  : [P1, P2];
+
+interface ChestHintBase<
+  T extends ChestHintType,
+  P1 extends HintParameterType & keyof HintParameters = never,
+  P2 extends HintParameterType & keyof HintParameters = never
+> {
+  type: T;
+  params: ChestHintParamDefinition<HintParameters[P1], HintParameters[P2]>;
+}
+
 const CHEST_HINT_TYPE = {
   asleep: 'ASLEEP',
   mimicNotSelf: 'MIMIC_NOT_SELF',
   mimicDirection: 'MIMIC_DIRECTION',
   colorMoreMimics: 'COLOR_MORE_MIMICS',
+  unknown: 'UNKNOWN',
 } as const;
 
 type ChestHintType = (typeof CHEST_HINT_TYPE)[keyof typeof CHEST_HINT_TYPE];
-
-const CHEST_HINT_PARAM_TYPE = {
-  direction: 'DIRECTION',
-  color: 'COLOR',
-} as const;
-
-type ChestHintParamType =
-  (typeof CHEST_HINT_PARAM_TYPE)[keyof typeof CHEST_HINT_PARAM_TYPE];
 
 const CHEST_DIRECTION = {
   up: 'UP',
@@ -30,52 +38,43 @@ const CHEST_DIRECTION = {
 
 type ChestDirection = (typeof CHEST_DIRECTION)[keyof typeof CHEST_DIRECTION];
 
-interface ChestHintParamDirection {
-  type: (typeof CHEST_HINT_PARAM_TYPE)['direction'];
-  value: ChestDirection;
+const HINT_PARAMETER_TYPE = {
+  color: 'COLOR',
+  direction: 'DIRECTION',
+} as const;
+
+type HintParameterType =
+  (typeof HINT_PARAMETER_TYPE)[keyof typeof HINT_PARAMETER_TYPE];
+
+interface HintParameters {
+  [HINT_PARAMETER_TYPE.color]: ChestColor;
+  [HINT_PARAMETER_TYPE.direction]: ChestDirection;
 }
 
-interface ChestHintParamColor {
-  type: (typeof CHEST_HINT_PARAM_TYPE)['color'];
-  value: ChestColor;
+interface ChestHints {
+  MimicDirection: ChestHintBase<
+    (typeof CHEST_HINT_TYPE)['mimicDirection'],
+    typeof HINT_PARAMETER_TYPE.direction
+  >;
+  NotMimicSelf: ChestHintBase<(typeof CHEST_HINT_TYPE)['mimicNotSelf']>;
+  Asleep: ChestHintBase<(typeof CHEST_HINT_TYPE)['asleep']>;
+  ColorMoreMimics: ChestHintBase<
+    (typeof CHEST_HINT_TYPE)['colorMoreMimics'],
+    typeof HINT_PARAMETER_TYPE.color,
+    typeof HINT_PARAMETER_TYPE.color
+  >;
+  Unknown: ChestHintBase<(typeof CHEST_HINT_TYPE)['unknown']>;
 }
 
-type ChestHintParam = ChestDirection;
+type ChestHint = ChestHints[keyof ChestHints];
 
-interface ChestHintMimicDirection {
-  type: (typeof CHEST_HINT_TYPE)['mimicDirection'];
-  params: [ChestHintParamDirection];
-}
+type ChestHintOfType<T extends ChestHintType> = ChestHint & { type: T };
 
-interface ChestHintNotMimicSelf {
-  type: (typeof CHEST_HINT_TYPE)['mimicNotSelf'];
-  params: [];
-}
-
-interface ChestHintAsleep {
-  type: (typeof CHEST_HINT_TYPE)['asleep'];
-  params: [];
-}
-
-interface ChestHintColorMoreMimics {
-  type: (typeof CHEST_HINT_TYPE)['colorMoreMimics'];
-  params: [ChestHintParamColor, ChestHintParamColor];
-}
-
-type ChestHint =
-  | ChestHintMimicDirection
-  | ChestHintNotMimicSelf
-  | ChestHintAsleep
-  | ChestHintColorMoreMimics;
-
-export { CHEST_HINT_TYPE, CHEST_HINT_PARAM_TYPE, CHEST_DIRECTION };
+export { CHEST_HINT_TYPE, CHEST_DIRECTION };
 export type {
   ChestHintType,
-  ChestHintParamType,
   ChestDirection,
-  ChestHintParamDirection,
-  ChestHintParam,
-  ChestHintMimicDirection,
-  ChestHintNotMimicSelf,
   ChestHint,
+  ChestHints,
+  ChestHintOfType,
 };

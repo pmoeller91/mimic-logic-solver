@@ -1,3 +1,3 @@
-type ChestLocation = [x: number, y: number];
+type ChestLocation = [row: number, col: number];
 
 export type { ChestLocation };

@@ -4,15 +4,16 @@ import { ChestLocation } from '@/types/chestLocation';
 import { CHEST_COLOR } from '@/types/chestProperties';
 import { describe, expect, it } from 'vitest';
 import { getChestByLocation } from './getChestByLocation';
+import { createChest } from '../createChest';
 
 function fillerChest(): Chest {
-  return { color: CHEST_COLOR.red };
+  return createChest();
 }
 
 describe('getChestByLocation', () => {
   it('should return the corresponding chest if the location is within the grid', () => {
-    const chest: Chest = { color: CHEST_COLOR.blue };
-    const chestLocation: ChestLocation = [0, 1];
+    const chest: Chest = createChest({ color: CHEST_COLOR.blue });
+    const chestLocation: ChestLocation = [1, 0];
     const chestGrid: ChestGrid = {
       numChests: 4,
       rows: [
@@ -25,7 +26,7 @@ describe('getChestByLocation', () => {
     ).toBe(chest);
   });
   it('should return null if the location is outside the grid', () => {
-    const chestLocation: ChestLocation = [2, 1];
+    const chestLocation: ChestLocation = [1, 2];
     const chestGrid: ChestGrid = {
       numChests: 4,
       rows: [

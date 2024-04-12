@@ -9,16 +9,19 @@ interface ChestPropertiesSelectProps extends ComponentPropsWithRef<'select'> {
  * Basic wrapper component for select that provides consistent styling for the
  * 'edit chest info' dialog.
  */
-const ChestPropertiesSelect = forwardRef<
+const EditChestInfoSelect = forwardRef<
   HTMLSelectElement,
   ChestPropertiesSelectProps
->(function ChestPropertiesSelect(
+>(function EditChestInfoSelect(
   { className, children, ...additionalProps },
   ref
 ) {
   return (
     <select
-      className={clsx('bg-bg-light px-2 py-1 ml-8 w-48 lg:w-auto text-right', className)}
+      className={clsx(
+        'bg-bg-light px-2 py-1 ml-8 w-48 lg:w-auto text-right',
+        className
+      )}
       ref={ref}
       {...additionalProps}
     >
@@ -27,4 +30,4 @@ const ChestPropertiesSelect = forwardRef<
   );
 });
 
-export { ChestPropertiesSelect };
+export { EditChestInfoSelect };

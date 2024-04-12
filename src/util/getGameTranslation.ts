@@ -11,11 +11,16 @@ import {
   GetChestHintTranslationParams,
   getChestHintTranslation,
 } from './translation/getChestHintTranslation';
+import {
+  GetChestHintBlankTranslationParams,
+  getChestHintBlankTranslation,
+} from './translation/getChestHintBlankTranslation';
 
 type GetGameTranslationParams =
   | GetGameModeTranslationParams
   | GetChestContentsTranslationParams
-  | GetChestHintTranslationParams;
+  | GetChestHintTranslationParams
+  | GetChestHintBlankTranslationParams;
 
 function getGameTranslation({
   type,
@@ -29,6 +34,10 @@ function getGameTranslation({
       return getChestContentsTranslation({ type, key, t });
     case TRANSLATION_TYPE.chestHint:
       return getChestHintTranslation({ type, key, t });
+    case TRANSLATION_TYPE.chestHintBlank:
+      return getChestHintBlankTranslation({ type, key, t });
+    default:
+      return '';
   }
 }
 

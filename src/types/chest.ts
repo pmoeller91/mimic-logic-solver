@@ -2,7 +2,7 @@ import { ChestColor, ChestContents } from './chestProperties';
 import { ChestHint } from './chestHint';
 
 interface Chest {
-  hint?: ChestHint;
+  hint: ChestHint;
   contents: ChestContents | ChestContents[];
   color: ChestColor;
 }

@@ -20,7 +20,10 @@
         "RED": "red"
       },
       "colorMoreMimics": "There are more Mimics in $t(chestHint.chestColors.{{param1}}) than $t(chestHint.chestColors.{{param2}}) boxes.",
+      "colorMoreMimics_blank": "There are more Mimics in [color] than [color] boxes.",
+      "colorMoreMimics_paramsReversed": "false",
       "mimicDirection": "$t(chestHint.mimicDirection_variations.{{param1}})",
+      "mimicDirection_blank": "The box [direction] is a mimic",
       "mimicDirection_variations": {
         "DOWN": "The box below me is a Mimic.",
         "DOWN_LEFT": "Diagonal down left from me is a Mimic.",
@@ -32,7 +35,7 @@
         "UP_RIGHT": "Diagonal up right form me is a Mimic."
       },
       "mimicNotSelf": "I'm not a Mimic.",
-      "undefined": "???"
+      "unknown": "???"
     },
     "chestLayoutSelector": {
       "numChests_one": "{{count, number}} Chest",
@@ -63,13 +66,49 @@
       "ariaLabel": "Close"
     },
     "editChestInfo": {
-      "title": "Edit Chest Properties",
+      "chestHintSection": {
+        "param": {
+          "color": {
+            "colors": {
+              "BLACK": "Black",
+              "BLUE": "Blue",
+              "RED": "Red"
+            },
+            "label": "Color",
+            "label_ordinal_one": "{{count}}st Color",
+            "label_ordinal_two": "{{count}}nd Color",
+            "label_ordinal_few": "{{count}}rd Color",
+            "label_ordinal_other": "{{count}}th Color"
+          },
+          "direction": {
+            "directions": {
+              "DOWN": "Down",
+              "DOWN_LEFT": "Down-left",
+              "DOWN_RIGHT": "Down-right",
+              "LEFT": "Left",
+              "RIGHT": "Right",
+              "UP": "Up",
+              "UP_LEFT": "Up-left",
+              "UP_RIGHT": "Up-right"
+            },
+            "label": "Direction",
+            "label_ordinal_one": "{{count}}st Direction",
+            "label_ordinal_two": "{{count}}nd Direction",
+            "label_ordinal_few": "{{count}}rd Direction",
+            "label_ordinal_other": "{{count}}th Direction"
+          }
+        },
+        "title": "Chest Hint",
+        "type": {
+          "label": "Hint Type"
+        }
+      },
       "chestPropertiesSection": {
         "chestColor": {
           "colors": {
-            "RED": "Red",
+            "BLACK": "Black",
             "BLUE": "Blue",
-            "BLACK": "Black"
+            "RED": "Red"
           },
           "label": "Chest Color"
         },
@@ -77,7 +116,8 @@
           "label": "Chest Contents"
         },
         "title": "Chest Properties"
-      }
+      },
+      "title": "Edit Chest Properties"
     },
     "editGameInfo": {
       "gearLabel": "Gear",

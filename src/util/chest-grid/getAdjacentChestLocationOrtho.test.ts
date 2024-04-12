@@ -63,7 +63,7 @@ describe('getAdjacentChestLocationOrtho', () => {
   describe('if the projected position is valid', () => {
     it('should return the position', () => {
       const initialPosition: ChestLocation = [0, 0];
-      const expectedPosition: ChestLocation = [0, 1];
+      const expectedPosition: ChestLocation = [1, 0];
       expect(
         getAdjacentChestLocationOrtho({
           location: initialPosition,

@@ -1,10 +1,9 @@
 import { FormFieldView, FormFieldViewProps } from './FormFieldView';
 import { useAtom } from 'jotai';
 import { useCallback } from 'use-memo-one';
-import { ComponentProps } from '@/types/componentProps';
 import { FormValueAtom } from '@/util/formValueAtom';
 import { useStableId } from '@/hooks/useStableId';
-import { useState } from 'react';
+import { ComponentProps, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getLocalizedErrorMessage } from '@/util/yup/getLocalizedErrorMessage';
 

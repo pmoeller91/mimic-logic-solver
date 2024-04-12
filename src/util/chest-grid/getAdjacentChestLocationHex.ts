@@ -11,7 +11,7 @@ function getAdjacentChestLocationHex({
   location,
   direction,
 }: GetAdjacentChestLocationHexParams): ChestLocation | null {
-  const [x, y] = location;
+  const [row, col] = location;
   const validDirections: ChestDirection[] = [
     CHEST_DIRECTION.left,
     CHEST_DIRECTION.right,
@@ -29,37 +29,37 @@ function getAdjacentChestLocationHex({
   let prospectiveLocation: ChestLocation = [-1, -1];
   switch (direction) {
     case CHEST_DIRECTION.left:
-      prospectiveLocation = [x - 1, y];
+      prospectiveLocation = [row, col - 1];
       break;
     case CHEST_DIRECTION.right:
-      prospectiveLocation = [x + 1, y];
+      prospectiveLocation = [row, col + 1];
       break;
     case CHEST_DIRECTION.upLeft:
-      if (y === 1) {
-        prospectiveLocation = [x - 1, y - 1];
+      if (row === 1) {
+        prospectiveLocation = [row - 1, col - 1];
       } else {
-        prospectiveLocation = [x, y - 1];
+        prospectiveLocation = [row - 1, col];
       }
       break;
     case CHEST_DIRECTION.upRight:
-      if (y === 1) {
-        prospectiveLocation = [x, y - 1];
+      if (row === 1) {
+        prospectiveLocation = [row - 1, col];
       } else {
-        prospectiveLocation = [x + 1, y - 1];
+        prospectiveLocation = [row - 1, col + 1];
       }
       break;
     case CHEST_DIRECTION.downLeft:
-      if (y === 1) {
-        prospectiveLocation = [x - 1, y + 1];
+      if (row === 1) {
+        prospectiveLocation = [row + 1, col - 1];
       } else {
-        prospectiveLocation = [x, y + 1];
+        prospectiveLocation = [row + 1, col];
       }
       break;
     case CHEST_DIRECTION.downRight:
-      if (y === 1) {
-        prospectiveLocation = [x, y + 1];
+      if (row === 1) {
+        prospectiveLocation = [row + 1, col];
       } else {
-        prospectiveLocation = [x + 1, y + 1];
+        prospectiveLocation = [row + 1, col + 1];
       }
       break;
   }

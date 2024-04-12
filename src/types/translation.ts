@@ -4,6 +4,7 @@ const TRANSLATION_TYPE = {
   gameMode: 'GAME_MODE',
   chestContents: 'CHEST_CONTENTS',
   chestHint: 'CHEST_HINT',
+  chestHintBlank: 'CHEST_HINT_BLANK',
 } as const;
 
 type TranslationType = (typeof TRANSLATION_TYPE)[keyof typeof TRANSLATION_TYPE];

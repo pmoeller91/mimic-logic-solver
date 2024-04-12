@@ -12,10 +12,10 @@ function getChestLocation({
   chest,
 }: GetChestLocationParams): ChestLocation | null {
   let location: ChestLocation | null = null;
-  grid.rows.findIndex((row, y) => {
-    const x = row.findIndex((col) => col === chest);
-    if (x >= 0) {
-      location = [x, y];
+  grid.rows.findIndex((row, rowIndex) => {
+    const colIndex = row.findIndex((col) => col === chest);
+    if (colIndex >= 0) {
+      location = [rowIndex, colIndex];
       return true;
     }
     return false;

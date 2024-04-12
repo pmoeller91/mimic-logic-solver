@@ -2,7 +2,8 @@ import { GAME_MODE } from '@/types/gameMode';
 import { GameInfo } from '@/types/state/gameInfo';
 import { AllChests } from './allChestsAtom';
 import { createChest } from '@/util/createChest';
-import { CHEST_HINT_PARAM_TYPE } from '@/types/chestHint';
+import { CHEST_DIRECTION } from '@/types/chestHint';
+import { CHEST_COLOR } from '@/types/chestProperties';
 
 interface GameState {
   gameInfo: GameInfo;
@@ -30,10 +31,7 @@ const initialState: GameState = {
         contents: 'GEAR',
         hint: {
           type: 'COLOR_MORE_MIMICS',
-          params: [
-            { type: CHEST_HINT_PARAM_TYPE.color, value: 'BLUE' },
-            { type: CHEST_HINT_PARAM_TYPE.color, value: 'RED' },
-          ],
+          params: [CHEST_COLOR.blue, CHEST_COLOR.red],
         },
       }),
       createChest(),
@@ -44,7 +42,7 @@ const initialState: GameState = {
         contents: 'ITEM',
         hint: {
           type: 'MIMIC_DIRECTION',
-          params: [{ type: CHEST_HINT_PARAM_TYPE.direction, value: 'UP' }],
+          params: [CHEST_DIRECTION.up],
         },
       }),
       createChest({

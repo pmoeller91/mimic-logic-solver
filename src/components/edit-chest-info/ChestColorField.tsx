@@ -6,7 +6,7 @@ import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChestPropertiesField } from './ChestPropertiesField';
-import { ChestPropertiesSelect } from './ChestPropertiesSelect';
+import { EditChestInfoSelect } from './EditChestInfoSelect';
 
 interface ChestColorFieldProps {
   className?: string;
@@ -39,7 +39,7 @@ const ChestColorField = forwardRef<HTMLSelectElement, ChestColorFieldProps>(
 
     return (
       <ChestPropertiesField label={label} className={className}>
-        <ChestPropertiesSelect
+        <EditChestInfoSelect
           onChange={handleOnChange}
           ref={ref}
           value={chestColor}
@@ -51,7 +51,7 @@ const ChestColorField = forwardRef<HTMLSelectElement, ChestColorFieldProps>(
               )}
             </option>
           ))}
-        </ChestPropertiesSelect>
+        </EditChestInfoSelect>
       </ChestPropertiesField>
     );
   }

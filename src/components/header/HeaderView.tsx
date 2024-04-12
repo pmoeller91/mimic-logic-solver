@@ -1,3 +1,5 @@
+import { CHEST_COLOR } from '@/types/chestProperties';
+import { ChestIcon } from '../ChestIcon';
 import { EditGameSettingsButtonContainer } from '../edit-game-info-button/EditGameInfoButtonContainer';
 import { HeaderItem } from './HeaderItem';
 
@@ -32,9 +34,15 @@ function HeaderView({
 }: HeaderViewProps) {
   return (
     <header className="bg-pd">
-      <h1 className="text-base sm:text-xl md:text-3xl  px-8 py-2 bg-bg-dark-primary">
-        Mimic Logic Solver
-      </h1>
+      <div className="px-8 py-2 bg-bg-dark-primary flex flex-row items-center">
+        <ChestIcon
+          chestColor={CHEST_COLOR.red}
+          className="h-8 w-8 inline-block mr-4"
+        />
+        <h1 className="text-base sm:text-xl md:text-3xl">
+          Mimic Logic Solver
+        </h1>
+      </div>
       <div className="grid grid-cols-1 md:flex md:flex-row">
         <dl className="grid grid-cols-3 md:flex md:flex-row text-s md:text-base gap-4 md:gap-8 lg:gap-16 mx-8 py-4 mr-auto">
           <HeaderItem title={gameModeHeader} value={gameMode} />

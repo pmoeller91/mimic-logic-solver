@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { ChestPropertiesField } from './ChestPropertiesField';
-import { ChestPropertiesSelect } from './ChestPropertiesSelect';
+import { EditChestInfoSelect } from './EditChestInfoSelect';
 import { useTranslation } from 'react-i18next';
 import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
 import { useCallback, useMemo } from 'use-memo-one';
@@ -40,7 +40,7 @@ const ChestContentsField = forwardRef<
 
   return (
     <ChestPropertiesField label={label} className={className}>
-      <ChestPropertiesSelect
+      <EditChestInfoSelect
         ref={ref}
         value={chestContents}
         onChange={handleOnChange}
@@ -54,7 +54,7 @@ const ChestContentsField = forwardRef<
             })}
           </option>
         ))}
-      </ChestPropertiesSelect>
+      </EditChestInfoSelect>
     </ChestPropertiesField>
   );
 });

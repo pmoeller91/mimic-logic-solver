@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { CloseButtonView } from './CloseButtonView';
 import { useCallback } from 'use-memo-one';
-import { ComponentProps } from '@/types/componentProps';
+import { ComponentProps } from 'react';
 
 interface CloseButtonContainerProps {
   close: () => void;

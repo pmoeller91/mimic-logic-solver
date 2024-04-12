@@ -11,8 +11,8 @@ function getChestByLocation({
   grid,
   location,
 }: GetChestByLocationParams): Chest | null {
-  const [x, y] = location;
-  return grid.rows[y]?.[x] ?? null;
+  const [row, col] = location;
+  return grid.rows[row]?.[col] ?? null;
 }
 
 export { getChestByLocation };

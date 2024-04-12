@@ -17,8 +17,8 @@ function replaceChest({
   location: ChestLocation;
   chest: Chest;
 }) {
-  const [x, y] = location;
-  grid.rows[y][x] = chest;
+  const [row, col] = location;
+  grid.rows[row][col] = chest;
   return grid;
 }
 
@@ -41,7 +41,7 @@ describe('getAdjacentChest', () => {
       const chestInGrid = createChest();
       const adjacentChest = createChest({ color: CHEST_COLOR.black });
       const location: ChestLocation = [1, 1];
-      const adjacentLocation: ChestLocation = [2, 1];
+      const adjacentLocation: ChestLocation = [1, 2];
       const direction = CHEST_DIRECTION.right;
       const grid = createChestGrid({ numChests: 9 });
       replaceChest({ grid, location, chest: chestInGrid });
@@ -52,7 +52,7 @@ describe('getAdjacentChest', () => {
     });
     it('should return null if the location in the provided direction is outside the grid', () => {
       const chestInGrid = createChest({ color: CHEST_COLOR.black });
-      const location: ChestLocation = [2, 1];
+      const location: ChestLocation = [1, 2];
       const direction = CHEST_DIRECTION.right;
       const grid = createChestGrid({ numChests: 9 });
       replaceChest({ grid, location, chest: chestInGrid });
