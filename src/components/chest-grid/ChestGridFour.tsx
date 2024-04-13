@@ -3,21 +3,23 @@ import { ChestTileContainer } from '../chest-tile/ChestTileContainer';
 import { SubGridProps } from './gridTypes';
 import { generateContextLabel } from './generateContextLabel';
 import { useTranslation } from 'react-i18next';
+import { ChestLocation } from '@/types/chestLocation';
 
-function ChestGridFour({ grid, onClickEditCallbacks }: SubGridProps<4>) {
+const chestLocations: ChestLocation[] = [
+  [0, 0],
+  [0, 1],
+  [1, 0],
+  [1, 1],
+];
+
+function ChestGridFour({ grid }: SubGridProps<4>) {
   const { t } = useTranslation();
-  const gridCoords = [
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [1, 1],
-  ];
   return (
     <ChestGridWrapper>
-      {gridCoords.map(([row, col], i) => (
+      {chestLocations.map(([row, col], i, arr) => (
         <ChestTileContainer
           chest={grid.rows[row][col]}
-          onClickEdit={onClickEditCallbacks[row][col]}
+          location={arr[i]}
           className="col-span-3"
           key={`${row}-${col}`}
           contextLabel={generateContextLabel({

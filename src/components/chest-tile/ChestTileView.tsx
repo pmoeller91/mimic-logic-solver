@@ -1,6 +1,8 @@
 import { ChestColor } from '@/types/chestProperties';
 import { ChestIcon } from '@/components/ChestIcon';
 import clsx from 'clsx';
+import { OpenPropertiesDrawerButtonContainer } from '../properties-drawer/OpenPropertiesDrawerButtonContainer';
+import { PROPERTIES_DRAWER_MODE } from '@/types/propertiesDrawer';
 
 interface ChestTileViewProps {
   chestColor: ChestColor;
@@ -8,11 +10,11 @@ interface ChestTileViewProps {
   chestHint?: string;
   containsLabel: string;
   className?: string;
-  onClickEdit?: () => void;
   editButtonLabel: string;
   iconAltText: string;
   hideEditButton?: boolean;
   contextLabel?: string;
+  selectChest: () => void;
 }
 
 function ChestTileView({
@@ -21,11 +23,11 @@ function ChestTileView({
   chestHint,
   containsLabel,
   className,
-  onClickEdit,
   editButtonLabel,
   iconAltText,
   hideEditButton,
   contextLabel,
+  selectChest,
 }: ChestTileViewProps) {
   const classNames = clsx('', className);
   return (
@@ -36,7 +38,7 @@ function ChestTileView({
         <ChestIcon
           chestColor={chestColor}
           className="w-24 h-24 p-2 pointer-events-none"
-          altText={iconAltText}
+          alt={iconAltText}
           aria-hidden="true"
         />
         <div className="flex flex-col justify-center items-center">
@@ -44,9 +46,13 @@ function ChestTileView({
           <div>{chestContents}</div>
         </div>
         {!hideEditButton && (
-          <button className="w-full" onClick={onClickEdit}>
+          <OpenPropertiesDrawerButtonContainer
+            mode={PROPERTIES_DRAWER_MODE.chest}
+            onOpen={selectChest}
+            className="w-full"
+          >
             {editButtonLabel}
-          </button>
+          </OpenPropertiesDrawerButtonContainer>
         )}
       </div>
     </div>

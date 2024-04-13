@@ -33,7 +33,7 @@ function PropertiesDrawerContainer() {
     undefined
   > = useCallback(
     (e) => {
-      openingElement?.focus({ focusVisible: true } as FocusOptions);
+      openingElement.current?.focus({ focusVisible: true } as FocusOptions);
       e.preventDefault();
     },
     [openingElement]

@@ -1,4 +1,4 @@
-import { HeaderView } from './HeaderView';
+import { GameInfoHeaderView } from './GameInfoHeaderView';
 import { mapValues } from 'lodash';
 import { useMemo } from 'react';
 import { TRANSLATION_TYPE } from '@/types/translation';
@@ -21,7 +21,7 @@ const headerTranslationKeys = {
   items: 'header.items',
 };
 
-function HeaderContainer() {
+function GameInfoHeaderContainer() {
   const { t } = useTranslation();
   const translatedHeaders = useMemo(
     () => mapValues(headerTranslationKeys, (key) => t(key)),
@@ -46,7 +46,7 @@ function HeaderContainer() {
   const numChests = useAtomValue(numChestsAtom).toString();
 
   return (
-    <HeaderView
+    <GameInfoHeaderView
       gameModeHeader={translatedHeaders.gameMode}
       gameMode={gameMode}
       chestsHeader={translatedHeaders.chests}
@@ -63,4 +63,4 @@ function HeaderContainer() {
   );
 }
 
-export { HeaderContainer };
+export { GameInfoHeaderContainer };

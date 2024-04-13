@@ -3,6 +3,7 @@ import {
   PropertiesDrawerMode,
 } from '@/types/propertiesDrawer';
 import { atom } from 'jotai';
+import { RefObject } from 'react';
 
 const propertiesDrawerOpenAtom = atom(false);
 
@@ -14,7 +15,9 @@ const propertiesDrawerTitleIdAtom = atom('properties-drawer-title');
 
 const propertiesDrawerDescriptionIdAtom = atom('properties-drawer-description');
 
-const propertiesDrawerOpeningElementAtom = atom<HTMLButtonElement | null>(null);
+const propertiesDrawerOpeningElementAtom = atom<RefObject<HTMLElement>>({
+  current: null,
+});
 
 const propertiesDrawerIdAtom = atom('');
 

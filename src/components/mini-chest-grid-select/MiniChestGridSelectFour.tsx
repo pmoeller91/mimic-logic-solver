@@ -14,6 +14,13 @@ interface MiniChestGridSelectFourProps {
   legendString: string;
 }
 
+const gridCoords = [
+  [0, 0],
+  [0, 1],
+  [1, 0],
+  [1, 1],
+] as const;
+
 function MiniChestGridSelectFour({
   grid,
   className,
@@ -23,12 +30,7 @@ function MiniChestGridSelectFour({
   legendString,
 }: MiniChestGridSelectFourProps) {
   const [selectedRow, selectedCol] = selectedChest ?? [-1, -1];
-  const gridCoords = [
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [1, 1],
-  ] as const;
+
   const { t } = useTranslation();
   return (
     <MiniChestGridSelectWrapper

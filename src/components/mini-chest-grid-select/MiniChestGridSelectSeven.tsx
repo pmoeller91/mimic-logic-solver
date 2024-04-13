@@ -11,9 +11,22 @@ interface MiniChestGridSelectSevenProps {
   onClickCallbacks: ChestGridCallbacks;
   selectedChest?: [row: 0 | 1 | 2, col: 0 | 1 | 2];
   genAriaLabel: GenerateLabelCallback;
-
   legendString: string;
 }
+
+const gridCoords = [
+  undefined,
+  [0, 0],
+  [0, 1],
+  undefined,
+  [1, 0],
+  [1, 1],
+  [1, 2],
+  undefined,
+  [2, 0],
+  [2, 1],
+  undefined,
+] as const;
 
 function MiniChestGridSelectSeven({
   grid,
@@ -24,19 +37,6 @@ function MiniChestGridSelectSeven({
   legendString,
 }: MiniChestGridSelectSevenProps) {
   const [selectedRow, selectedCol] = selectedChest ?? [-1, -1];
-  const gridCoords = [
-    undefined,
-    [0, 0],
-    [0, 1],
-    undefined,
-    [1, 0],
-    [1, 1],
-    [1, 2],
-    undefined,
-    [2, 0],
-    [2, 1],
-    undefined,
-  ] as const;
   const { t } = useTranslation();
   return (
     <MiniChestGridSelectWrapper

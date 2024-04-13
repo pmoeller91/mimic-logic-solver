@@ -1,7 +1,8 @@
-import { OnClickEditCallback } from '@/components/chest-grid/ChestGrid';
 import { useMemo } from 'use-memo-one';
 
-const useChestGridCallbacks = (callback?: OnClickEditCallback) => {
+type ChestGridCallback = (row: 0 | 1 | 2, col: 0 | 1 | 2) => void;
+
+const useChestGridCallbacks = (callback?: ChestGridCallback) => {
   return useMemo(() => {
     const defaultedCallback =
       callback ??
@@ -31,4 +32,4 @@ const useChestGridCallbacks = (callback?: OnClickEditCallback) => {
 type ChestGridCallbacks = ReturnType<typeof useChestGridCallbacks>;
 
 export { useChestGridCallbacks };
-export type { ChestGridCallbacks };
+export type { ChestGridCallbacks, ChestGridCallback };

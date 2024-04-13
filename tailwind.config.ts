@@ -7,7 +7,7 @@ export default {
       container: {
         center: true,
       },
-      /* p = primary. c = contrast. d = darker. l = lighter. */
+      /* p = primary. c = contrast. d = darker. l = lighter. vl = very light */
       colors: {
         pdd: '#5d2d0a',
         pd: '#864e26',
@@ -19,6 +19,12 @@ export default {
         c: '#2a6960',
         cl: '#457e76',
         cll: '#6c9a93',
+        clll: '#80a39c',
+        cllll: '#94b2ac',
+        cvl: '#a9c1bc',
+        cvll: '#bed0cc',
+        cvlll: '#d4dfdd',
+        cvllll: '#e9efee',
         'bg-light': '#282830',
         'bg-dark': '#161620',
         'bg-dark-primary': '#563b2b',

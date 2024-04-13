@@ -25,10 +25,12 @@ function LanguageSwitcher() {
   const selectId = `language-switcher-${idSuffix}`;
   const labelId = `language-switcher-${idSuffix}-label`;
 
+  const label = t('languageSwitcher.label');
+
   return (
     <div className="w-24 relative">
       <label htmlFor={selectId} id={labelId} className="sr-only">
-        Select Language
+        {label}
       </label>
       <select
         id={selectId}

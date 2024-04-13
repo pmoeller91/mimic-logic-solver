@@ -75,10 +75,10 @@
               "RED": "Red"
             },
             "label": "Color",
-            "label_ordinal_one": "{{count}}st Color",
-            "label_ordinal_two": "{{count}}nd Color",
             "label_ordinal_few": "{{count}}rd Color",
-            "label_ordinal_other": "{{count}}th Color"
+            "label_ordinal_one": "{{count}}st Color",
+            "label_ordinal_other": "{{count}}th Color",
+            "label_ordinal_two": "{{count}}nd Color"
           },
           "direction": {
             "directions": {
@@ -92,10 +92,10 @@
               "UP_RIGHT": "Up-right"
             },
             "label": "Direction",
-            "label_ordinal_one": "{{count}}st Direction",
-            "label_ordinal_two": "{{count}}nd Direction",
             "label_ordinal_few": "{{count}}rd Direction",
-            "label_ordinal_other": "{{count}}th Direction"
+            "label_ordinal_one": "{{count}}st Direction",
+            "label_ordinal_other": "{{count}}th Direction",
+            "label_ordinal_two": "{{count}}nd Direction"
           }
         },
         "title": "Chest Hint",
@@ -153,6 +153,9 @@
     "languages": {
       "en": "English",
       "ja": "日本語"
+    },
+    "languageSwitcher": {
+      "label": "Language"
     },
     "yup": {
       "mixed": {

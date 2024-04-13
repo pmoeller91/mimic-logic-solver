@@ -14,6 +14,18 @@ interface MiniChestGridSelectNineProps {
   legendString: string;
 }
 
+const gridCoords = [
+  [0, 0],
+  [0, 1],
+  [0, 2],
+  [1, 0],
+  [1, 1],
+  [1, 2],
+  [2, 0],
+  [2, 1],
+  [2, 2],
+] as const;
+
 function MiniChestGridSelectNine({
   grid,
   className,
@@ -23,20 +35,12 @@ function MiniChestGridSelectNine({
   legendString,
 }: MiniChestGridSelectNineProps) {
   const [selectedRow, selectedCol] = selectedChest ?? [-1, -1];
-  const gridCoords = [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [1, 0],
-    [1, 1],
-    [1, 2],
-    [2, 0],
-    [2, 1],
-    [2, 2],
-  ] as const;
   const { t } = useTranslation();
   return (
-    <MiniChestGridSelectWrapper className={className} legendString={legendString}>
+    <MiniChestGridSelectWrapper
+      className={className}
+      legendString={legendString}
+    >
       {gridCoords.map(([row, col]) => (
         <MiniChestSelectIcon
           chestColor={grid.rows[row][col].color}

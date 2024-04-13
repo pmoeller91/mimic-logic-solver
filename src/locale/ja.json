@@ -146,6 +146,9 @@
       "en": "English",
       "ja": "日本語"
     },
+    "languageSwitcher": {
+      "label": "言語"
+    },
     "yup": {
       "mixed": {
         "notType": "期待される形式で入力してください。",

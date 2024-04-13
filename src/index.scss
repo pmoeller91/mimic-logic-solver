@@ -22,12 +22,22 @@ a {
   font-weight: 500;
   color: theme('colors.cll');
   text-decoration: inherit;
+  &:hover {
+    color: theme('colors.cl');
+  }
+  &:visited {
+    color: theme('colors.c');
+  }
 }
-a:hover {
-  color: theme('colors.cl');
-}
-a:visited {
-  color: theme('colors.c');
+
+a.light {
+  color: theme('colors.cll');
+  &:hover, &:hover:visited {
+    color: theme('colors.clll');
+  }
+  &:visited {
+    color: theme('colors.cllll');
+  }
 }
 
 body {
@@ -53,13 +63,13 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  &:hover {
+    border-color: #646cff;
+  }
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
 }
 
 input {

@@ -11,9 +11,17 @@ interface MiniChestGridSelectSixProps {
   onClickCallbacks: ChestGridCallbacks;
   selectedChest?: [row: 0 | 1 | 2, col: 0 | 1 | 2];
   genAriaLabel: GenerateLabelCallback;
-
   legendString: string;
 }
+
+const gridCoords = [
+  [0, 0],
+  [0, 1],
+  [0, 2],
+  [1, 0],
+  [1, 1],
+  [1, 2],
+] as const;
 
 function MiniChestGridSelectSix({
   grid,
@@ -24,14 +32,6 @@ function MiniChestGridSelectSix({
   legendString,
 }: MiniChestGridSelectSixProps) {
   const [selectedRow, selectedCol] = selectedChest ?? [-1, -1];
-  const gridCoords = [
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [1, 0],
-    [1, 1],
-    [1, 2],
-  ] as const;
   const { t } = useTranslation();
   return (
     <MiniChestGridSelectWrapper

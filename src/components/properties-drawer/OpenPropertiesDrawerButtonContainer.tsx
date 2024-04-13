@@ -14,12 +14,14 @@ interface OpenPropertiesDrawerButtonContainerProps {
   className?: string;
   mode: PropertiesDrawerMode;
   children?: React.ReactNode;
+  onOpen?: () => void;
 }
 
 function OpenPropertiesDrawerButtonContainer({
   className,
   mode,
   children,
+  onOpen,
 }: OpenPropertiesDrawerButtonContainerProps) {
   const [isOpenedBySelf, setIsOpenedBySelf] = useState(false);
   const propertiesDrawerOpen = useAtomValue(propertiesDrawerOpenAtom);
@@ -37,8 +39,9 @@ function OpenPropertiesDrawerButtonContainer({
   const handleOnClick = useCallback(() => {
     setIsOpenedBySelf(true);
     openPropertiesDrawer();
-    setPropertiesDrawerOpeningElement(buttonRef.current);
-  }, [openPropertiesDrawer, setPropertiesDrawerOpeningElement]);
+    setPropertiesDrawerOpeningElement(buttonRef);
+    onOpen?.();
+  }, [openPropertiesDrawer, setPropertiesDrawerOpeningElement, onOpen]);
 
   useEffect(() => {
     if (isOpenedBySelf && !propertiesDrawerOpen) {

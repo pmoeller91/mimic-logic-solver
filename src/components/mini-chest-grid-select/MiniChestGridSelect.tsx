@@ -3,11 +3,10 @@ import { MiniChestGridSelectFour } from './MiniChestGridSelectFour';
 import { MiniChestGridSelectSeven } from './MiniChestGridSelectSeven';
 import { MiniChestGridSelectSix } from './MiniChestGridSelectSix';
 import { MiniChestGridSelectNine } from './MiniChestGridSelectNine';
-import { useChestGridCallbacks } from '@/hooks/useChestGridCallbacks';
+import { ChestGridCallback, useChestGridCallbacks } from '@/hooks/useChestGridCallbacks';
 import { ChestColor } from '@/types/chestProperties';
 import { TFunction } from 'i18next';
 
-type OnClickChestCallback = (row: 0 | 1 | 2, col: 0 | 1 | 2) => void;
 type GenerateLabelCallback = ({
   row,
   col,
@@ -24,7 +23,7 @@ interface MiniChestGridSelectProps {
   grid: ChestGridType;
   className?: string;
   selectedChest?: [row: 0 | 1 | 2, col: 0 | 1 | 2];
-  onClick: OnClickChestCallback;
+  onClick: ChestGridCallback;
   genAriaLabel: GenerateLabelCallback;
   legendString: string;
 }
@@ -88,4 +87,4 @@ function MiniChestGridSelect({
 }
 
 export { MiniChestGridSelect };
-export type { GenerateLabelCallback, OnClickChestCallback };
+export type { GenerateLabelCallback };

@@ -19,7 +19,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    project: [
+      './tsconfig.json',
+      './tsconfig.node.json',
+      './src/solver/tsconfig.json',
+    ],
     tsconfigRootDir: __dirname,
   },
   plugins: ['react-refresh'],
@@ -30,7 +34,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': [
       'error',
-      { ignoreRestSiblings: true },
+      { ignoreRestSiblings: true, argsIgnorePattern: '^_' },
     ],
   },
 };
