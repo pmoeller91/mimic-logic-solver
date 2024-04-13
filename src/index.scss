@@ -10,12 +10,25 @@
 
   color-scheme: normal;
   color: theme('colors.text-primary / 90%');
-  background-color: theme('colors.bg-light');
+  background: theme('colors.bg-light');
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root::before {
+  content: '';
+  background: url('./assets/floor\ pattern\ tile\ pixel.png') repeat;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -10;
+  opacity: .15;
+  background-size: 8rem;
 }
 
 a {
@@ -32,7 +45,8 @@ a {
 
 a.light {
   color: theme('colors.cll');
-  &:hover, &:hover:visited {
+  &:hover,
+  &:hover:visited {
     color: theme('colors.clll');
   }
   &:visited {

@@ -31,8 +31,8 @@ function GameInfoHeaderView({
   items,
 }: GameInfoHeaderViewProps) {
   return (
-    <div className="bg-pd grid grid-cols-1 md:flex md:flex-row">
-      <dl className="grid grid-cols-3 md:flex md:flex-row text-s md:text-base gap-4 md:gap-8 lg:gap-16 mx-8 py-4 mr-auto">
+    <div className="bg-pd grid grid-cols-1 md:flex md:flex-row relative">
+      <dl className="grid grid-cols-3 md:flex md:flex-row text-s md:text-base gap-4 md:gap-8 lg:gap-16 mx-8 py-4 md:mr-auto">
         <HeaderItem title={gameModeHeader} value={gameMode} />
         <HeaderItem
           title={chestsHeader}

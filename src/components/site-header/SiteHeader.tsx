@@ -13,7 +13,7 @@ const SiteHeader = forwardRef<HTMLDivElement, SiteHeaderProps>(
         <div className="px-8 py-2 bg-bg-dark-primary flex flex-row items-center">
           <ChestIcon
             chestColor={CHEST_COLOR.red}
-            className="h-8 w-8 inline-block mr-4"
+            className="h-6 w-6 sm:h-8 sm:w-8 inline-block mr-4"
             role="presentation"
           />
           <h1 className="text-base sm:text-xl md:text-3xl">

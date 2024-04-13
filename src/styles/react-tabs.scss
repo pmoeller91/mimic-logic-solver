@@ -3,8 +3,8 @@
 
   &__tab-list {
     border-bottom: 1px solid theme('colors.cll');
-    margin: 0 0 10px;
-    padding: 0;
+    margin: 1rem 0 0;
+    padding: 0 2rem;
   }
 
   &__tab {
@@ -53,9 +53,14 @@
 
   &__tab-panel {
     display: none;
-
+    background-color: theme('colors.bg-dark');
+    flex-direction: column;
+    flex: 1 0 auto;
     &--selected {
       display: flex;
+    }
+    &:after {
+      content: '';
     }
   }
 }

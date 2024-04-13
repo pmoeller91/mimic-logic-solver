@@ -7,17 +7,14 @@ import { GameInfoHeaderContainer } from '../game-info-header/GameInfoHeaderConta
 
 function CenterPanel() {
   return (
-    <div className="flex flex-grow flex-col">
+    <div className="flex flex-grow flex-col bg-bg-light/60">
       <GameInfoHeaderContainer />
       <Tabs className="mt-2 flex flex-col flex-grow">
         <TabList>
           <Tab>Game Field</Tab>
           <Tab>Solution</Tab>
         </TabList>
-        <TabPanel
-          forceRender
-          className="flex flex-col flex-grow react-tabs__tab-panel"
-        >
+        <TabPanel forceRender>
           <MainChestGrid />
         </TabPanel>
         <TabPanel>
