@@ -11,6 +11,7 @@ const chestContentsTranslations: Record<ChestContents, string> = {
   [CHEST_CONTENTS.gold]: 'chestContents.gold',
   [CHEST_CONTENTS.item]: 'chestContents.item',
   [CHEST_CONTENTS.mimic]: 'chestContents.mimic',
+  [CHEST_CONTENTS.not_mimic]: 'chestContents.notMimic',
   [CHEST_CONTENTS.unknown]: 'chestContents.unknown',
 };
 

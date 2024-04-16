@@ -1,27 +1,25 @@
 import { ChestGrid as ChestGridType } from '@/types/chestGrid';
-import { MiniChestGridFour } from './MiniChestGridFour';
-import { MiniChestGridSeven } from './MiniChestGridSeven';
-import { MiniChestGridSix } from './MiniChestGridSix';
-import { MiniChestGridNine } from './MiniChestGridNine';
+import { GenericGrid } from '../generic-grid/GenericGrid';
+import { MiniChestIcon } from './MiniChestIcon';
+import clsx from 'clsx';
 
 interface MiniChestGridProps {
   grid: ChestGridType;
-  iconClassName?: string;
   className?: string;
 }
 
 function MiniChestGrid({ grid, className }: MiniChestGridProps) {
-  switch (grid.numChests) {
-    case 4:
-      return <MiniChestGridFour grid={grid} className={className} />;
-    case 6:
-      return <MiniChestGridSix grid={grid} className={className} />;
-    case 7:
-      return <MiniChestGridSeven grid={grid} className={className} />;
-    case 9:
-      return <MiniChestGridNine grid={grid} className={className} />;
-  }
-  return null;
+  return (
+    <GenericGrid gridSize={grid.numChests} className={clsx('gap-1', className)}>
+      {(chestLocation, className, chestNumber) => (
+        <MiniChestIcon
+          chestColor={grid.rows[chestLocation[0]][chestLocation[1]].color}
+          className={className}
+          key={`mini-chest-${chestNumber}`}
+        />
+      )}
+    </GenericGrid>
+  );
 }
 
 export { MiniChestGrid };

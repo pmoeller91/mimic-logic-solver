@@ -3,38 +3,38 @@ import { progressAtom } from '@/atoms/solver/progressAtom';
 import { solutionAtom } from '@/atoms/solver/solutionAtom';
 import { workerAtom } from '@/atoms/solver/workerAtom';
 import { SOLVER_MESSAGE_TYPE } from '@/types/solverMessage';
-import { createStore } from 'jotai';
 import { ChestGrid } from '@/types/chestGrid';
 import { GameInfo } from '@/types/state/gameInfo';
 import SolverWorker from '../solver/worker?worker';
-
-const solverStore = createStore();
+import { isErrorAtom } from '@/atoms/solver/isErrorAtom';
+import { errorMessagesAtom } from '@/atoms/solver/errorMessagesAtom';
+import { store } from '@/atoms/store';
 
 const createWorker = () => {
-  let worker = solverStore.get(workerAtom);
+  let worker = store.get(workerAtom);
   if (!worker) {
     worker = new SolverWorker();
-    solverStore.set(workerAtom, worker);
+    store.set(workerAtom, worker);
   }
   return worker;
 };
 
 const abort = () => {
-  const worker = solverStore.get(workerAtom);
+  const worker = store.get(workerAtom);
   if (worker) {
     worker.terminate();
-    solverStore.set(workerAtom, null);
+    store.set(workerAtom, null);
     createWorker();
-    solverStore.set(progressAtom, 0);
-    solverStore.set(isSolvingAtom, false);
+    store.set(progressAtom, 0);
+    store.set(isSolvingAtom, false);
   }
 };
 
 const getWorker = () => {
-  let worker = solverStore.get(workerAtom);
+  let worker = store.get(workerAtom);
   if (!worker) {
     worker = createWorker();
-    solverStore.set(workerAtom, worker);
+    store.set(workerAtom, worker);
   }
   return worker;
 };
@@ -46,26 +46,34 @@ interface SolveParams {
 
 const solve = ({ grid, gameInfo }: SolveParams) => {
   const worker = getWorker();
-  const isSolving = solverStore.get(isSolvingAtom);
+  const isSolving = store.get(isSolvingAtom);
   if (isSolving) {
     return;
   }
   worker.onmessage = ({ data }) => {
     switch (data.type) {
       case SOLVER_MESSAGE_TYPE.progress:
-        solverStore.set(progressAtom, data.value);
+        store.set(progressAtom, data.value);
         break;
       case SOLVER_MESSAGE_TYPE.end:
-        solverStore.set(solutionAtom, data.value);
-        solverStore.set(progressAtom, 100);
-        solverStore.set(isSolvingAtom, false);
+        store.set(solutionAtom, data.value);
+        store.set(progressAtom, 1);
+        store.set(isSolvingAtom, false);
+        break;
+      case SOLVER_MESSAGE_TYPE.error:
+        store.set(isErrorAtom, true);
+        store.set(errorMessagesAtom, data.value);
+        store.set(isSolvingAtom, false);
         break;
       default:
         break;
     }
   };
-  solverStore.set(isSolvingAtom, true);
+  store.set(isSolvingAtom, true);
+  store.set(isErrorAtom, false);
+  store.set(errorMessagesAtom, []);
+  store.set(progressAtom, 0);
   worker.postMessage({ grid, gameInfo });
 };
 
-export { solverStore, abort, solve };
+export { store, abort, solve };

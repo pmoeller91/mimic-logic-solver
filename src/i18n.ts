@@ -7,8 +7,13 @@ import { localizedYup } from '@/util/yup/localizedYup';
 import '@formatjs/intl-listformat/polyfill';
 import '@formatjs/intl-listformat/locale-data/en';
 import '@formatjs/intl-listformat/locale-data/ja';
+import { selectedLanguageAtom } from './atoms/selectedLanguageAtom';
+import { supportedLngs } from './locale/supportedLngs';
+import { store } from './atoms/store';
 
-const supportedLngs = ['en', 'ja'] as const;
+i18n.on('languageChanged', (lng) => {
+  store.set(selectedLanguageAtom, lng);
+});
 
 void i18n
   .use(initReactI18next)
@@ -31,4 +36,4 @@ void i18n
     supportedLngs,
   });
 
-export { i18n, supportedLngs, localizedYup };
+export { i18n, localizedYup };

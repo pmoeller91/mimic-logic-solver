@@ -1,8 +1,12 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "lib": ["WebWorker", "ES2020"]
+    "lib": ["WebWorker", "ES2023"],
+    "paths": {
+      "@/*": ["../*"],
+      "@root/*": ["../../*"]
+    }
   },
   "include": ["./"],
-  "exclude": [],
+  "exclude": []
 }

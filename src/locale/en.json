@@ -1,5 +1,8 @@
 {
   "translation": {
+    "solutionErrors": {
+      "errorsOccurred": "There are errors in your game configuration which would result in no valid solution. Please correct the errors listed below before trying to solve again."
+    },
     "chestContents": {
       "gear": "Gear",
       "gold": "Gold",

@@ -1,25 +1,37 @@
 import { ChestGrid as ChestGridType } from '@/types/chestGrid';
-import { ChestGridFour } from './ChestGridFour';
-import { ChestGridSeven } from './ChestGridSeven';
-import { ChestGridSix } from './ChestGridSix';
-import { ChestGridNine } from './ChestGridNine';
+import { GenericGrid } from '../generic-grid/GenericGrid';
+import { ChestTileContainer } from '../chest-tile/ChestTileContainer';
+import { generateContextLabel } from './generateContextLabel';
+import { useTranslation } from 'react-i18next';
 
 interface ChestGridProps {
   grid: ChestGridType;
 }
 
 function ChestGrid({ grid }: ChestGridProps) {
-  switch (grid.numChests) {
-    case 4:
-      return <ChestGridFour grid={grid} />;
-    case 6:
-      return <ChestGridSix grid={grid} />;
-    case 7:
-      return <ChestGridSeven grid={grid} />;
-    case 9:
-      return <ChestGridNine grid={grid} />;
-  }
-  return null;
+  const { t } = useTranslation();
+  return (
+    <GenericGrid
+      gridSize={grid.numChests}
+      className="w-full 2xl:w-1/2 lg:w-3/4 grid gap-1 p-1 sm:gap-2 sm:p-2 lg:gap-8 lg:p-8 m-auto"
+    >
+      {(chestLocation, className, chestNumber) => (
+        <ChestTileContainer
+          chest={grid.rows[chestLocation[0]][chestLocation[1]]}
+          location={chestLocation}
+          className={className}
+          key={`${chestLocation[0]}-${chestLocation[1]}`}
+          contextLabel={generateContextLabel({
+            totalChests: grid.numChests,
+            chestNum: chestNumber,
+            col: chestLocation[1] + 1,
+            row: chestLocation[0] + 1,
+            t,
+          })}
+        />
+      )}
+    </GenericGrid>
+  );
 }
 
 export { ChestGrid };

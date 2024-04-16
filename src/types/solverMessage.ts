@@ -1,9 +1,13 @@
-import { ChestGrid } from "./chestGrid";
-import { GameInfo } from "./state/gameInfo";
+import { TFunction } from 'i18next';
+import { ChestGrid } from './chestGrid';
+import { GameInfo } from './state/gameInfo';
+import { ChestContents } from './chestProperties';
 
 const SOLVER_MESSAGE_TYPE = {
+  // Currently unused due to completing too quickly.
   progress: 'PROGRESS',
   begin: 'BEGIN',
+  error: 'ERROR',
   end: 'END',
 } as const;
 
@@ -15,9 +19,7 @@ interface SolverMessageBase<T extends SolverMessageType, V = undefined> {
   value: V;
 }
 
-interface SolverSolution {
-  message: string;
-}
+type SolverSolution = [ChestContents[], number][][];
 
 interface SolverMessages {
   ProgressMessage: SolverMessageBase<
@@ -28,6 +30,10 @@ interface SolverMessages {
   EndMessage: SolverMessageBase<
     (typeof SOLVER_MESSAGE_TYPE)['end'],
     SolverSolution
+  >;
+  ErrorMessage: SolverMessageBase<
+    (typeof SOLVER_MESSAGE_TYPE)['error'],
+    Parameters<TFunction>[]
   >;
 }
 

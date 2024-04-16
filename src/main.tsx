@@ -7,12 +7,12 @@ import './i18n.ts';
 import '@fontsource/noto-color-emoji';
 import '@fontsource/pixelify-sans';
 import { Provider } from 'jotai';
-import { solverStore } from './solver-bridge/solverBridge.ts';
+import { store } from './atoms/store.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Suspense fallback={<div>Loading translations...</div>}>
-      <Provider store={solverStore}>
+      <Provider store={store}>
         <App />
       </Provider>
     </Suspense>

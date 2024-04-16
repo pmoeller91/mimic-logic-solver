@@ -11,6 +11,7 @@ const CHEST_CONTENTS = {
   item: 'ITEM',
   gear: 'GEAR',
   mimic: 'MIMIC',
+  not_mimic: 'NOT_MIMIC',
   unknown: 'UNKNOWN',
 } as const;
 

@@ -1,10 +1,9 @@
-import { supportedLngs } from '@/i18n';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { atom, useAtom } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { useStableId } from '@/hooks/useStableId';
-
-const selectedLanguageAtom = atom<string>(supportedLngs[0]);
+import { selectedLanguageAtom } from '@/atoms/selectedLanguageAtom';
+import { supportedLngs } from '@/locale/supportedLngs';
 
 type OnChangeCallback = Required<JSX.IntrinsicElements['select']>['onChange'];
 
@@ -12,14 +11,13 @@ function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
   const idSuffix = useStableId();
 
-  const [selectedLanguage, setSelectedLanguage] = useAtom(selectedLanguageAtom);
+  const selectedLanguage = useAtomValue(selectedLanguageAtom);
 
   const handleOnChange = useCallback<OnChangeCallback>(
     (e) => {
-      setSelectedLanguage(e.target.value);
       void i18n.changeLanguage(e.target.value);
     },
-    [i18n, setSelectedLanguage]
+    [i18n]
   );
 
   const selectId = `language-switcher-${idSuffix}`;

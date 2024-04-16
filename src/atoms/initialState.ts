@@ -23,7 +23,7 @@ const initialState: GameState = {
     [
       createChest({
         color: 'BLUE',
-        contents: 'ITEM',
+        contents: 'UNKNOWN',
         hint: { type: 'MIMIC_NOT_SELF', params: [] },
       }),
       createChest({

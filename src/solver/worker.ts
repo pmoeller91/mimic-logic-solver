@@ -1,36 +1,32 @@
 import {
   SOLVER_MESSAGE_TYPE,
   type OutboundSolverMessage,
-  type SolverMessage,
 } from '../types/solverMessage';
-import { throttle } from 'lodash';
-
-declare function postMessage(
-  message: SolverMessage,
-  transfer: Transferable[]
-): void;
-declare function postMessage(
-  message: SolverMessage,
-  options?: StructuredSerializeOptions
-): void;
-
-const reportProgress = (progress: number) => {
-  postMessage({ type: SOLVER_MESSAGE_TYPE.progress, value: progress });
-};
-
-const throttledReportProgress = throttle(reportProgress, 50);
+import { getErrors } from './getErrors';
+import { solve } from './solve';
 
 onmessage = function (
   this: DedicatedWorkerGlobalScope,
-  _ev: MessageEvent<OutboundSolverMessage>
+  ev: MessageEvent<OutboundSolverMessage>
 ) {
-  for (let i = 0; i < 1e9; i++) {
-    if (i % 1000) {
-      throttledReportProgress(i / 1e9);
-    }
+  const { grid, gameInfo } = ev.data;
+  const errors = getErrors({ grid, gameInfo });
+  if (errors.length > 0) {
+    postMessage({
+      type: SOLVER_MESSAGE_TYPE.error,
+      value: errors,
+    });
+    return;
   }
+  const solution = solve({ grid, gameInfo });
+
+  // Convert from map to something that can be serialized
+  const messageValue =
+    solution?.map((chestSolution) => Array.from(chestSolution.entries())) ??
+    new Array(grid.numChests).fill(undefined).map(() => []);
+
   postMessage({
     type: SOLVER_MESSAGE_TYPE.end,
-    value: { message: `${Math.random() * 100}` },
+    value: messageValue,
   });
 };
