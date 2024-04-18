@@ -1,6 +1,7 @@
-import { MouseEventHandler, forwardRef } from 'react';
+import { ComponentPropsWithRef, MouseEventHandler, forwardRef } from 'react';
 
-interface OpenPropertiesDrawerButtonViewProps {
+interface OpenPropertiesDrawerButtonViewProps
+  extends ComponentPropsWithRef<'button'> {
   handleOnClick: MouseEventHandler<HTMLButtonElement>;
   className?: string;
   isOpen: boolean;
@@ -12,11 +13,12 @@ const OpenPropertiesDrawerButtonView = forwardRef<
   HTMLButtonElement,
   OpenPropertiesDrawerButtonViewProps
 >(function OpenPropertiesDrawerButtonView(
-  { children, handleOnClick, className, isOpen, propertiesDrawerId },
+  { children, handleOnClick, className, isOpen, propertiesDrawerId, ...rest },
   ref
 ) {
   return (
     <button
+      {...rest}
       onClick={handleOnClick}
       className={className}
       aria-haspopup="dialog"

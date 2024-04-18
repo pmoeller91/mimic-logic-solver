@@ -7,6 +7,7 @@ import { solve } from '@/solver-bridge/solverBridge';
 import { derivedChestGridAtom } from '@/atoms/derivedChestGridAtom';
 import { gameInfoAtom } from '@/atoms/gameInfoAtom';
 import { DefinedAttribute } from '@/types/definedAttribute';
+import { useTranslation } from 'react-i18next';
 
 interface SolveButtonContainerProps {
   className?: string;
@@ -16,6 +17,7 @@ const SolveButtonContainer = forwardRef<
   HTMLButtonElement,
   SolveButtonContainerProps
 >(function SolveButtonContainer({ className }, ref) {
+  const { t } = useTranslation();
   const grid = useAtomValue(derivedChestGridAtom);
   const gameInfo = useAtomValue(gameInfoAtom);
 
@@ -25,9 +27,11 @@ const SolveButtonContainer = forwardRef<
       solve({ grid, gameInfo });
     }, [grid, gameInfo]);
 
+  const solveButtonLabel = t('solveButton.buttonLabel');
+
   return (
     <SolveButtonView
-      label="Solve"
+      label={solveButtonLabel}
       className={className}
       ref={ref}
       isDisabled={isSolving}

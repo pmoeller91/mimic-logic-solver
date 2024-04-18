@@ -19,14 +19,18 @@ const SolutionErrors = forwardRef<HTMLDivElement, SolutionErrorsProps>(
     return (
       <div
         ref={ref}
-        className={clsx('flex flex-col gap-2', className)}
+        className={clsx('bg-red-600/40', isError && errorMessages.length > 0 && 'p-4', className)}
         aria-live="polite"
         {...rest}
       >
         {isError && errorMessages.length > 0 && <div>{baseErrorMessage}</div>}
-        {errorMessages.map((errorMessage, i) => (
-          <div key={`error-${i}`}>{t(...errorMessage)}</div>
-        ))}
+        {isError && errorMessages.length > 0 && <ul className="flex flex-col gap-2 ml-4 mt-2">
+          {errorMessages.map((errorMessage, i) => (
+            <li key={`error-${i}`} className="">
+              {t(...errorMessage)}
+            </li>
+          ))}
+        </ul>}
       </div>
     );
   }

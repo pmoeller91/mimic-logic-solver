@@ -1,4 +1,11 @@
 {
+  "centerPanel": {
+    "gameFieldLabel": "ゲームフィールド ",
+    "solutionLabel": "解答"
+  },
+  "solveButton": {
+    "buttonLabel": "解く"
+  },
   "translation": {
     "chestContents": {
       "gear": "装備",
@@ -148,6 +155,27 @@
     },
     "languageSwitcher": {
       "label": "言語"
+    },
+    "solutionErrors": {
+      "errorsOccurred": "ゲーム設定にエラーがあり、有効な解答が得られません。再試行する前に、以下のエラーを修正してください。"
+    },
+    "solutionTile": {
+      "contentLabel": "$t(solutionTile.contents.{{content}})",
+      "contentPercent": "{{amount, number(style: percent)}}",
+      "contents": {
+        "GEAR": "装備",
+        "GOLD": "お金",
+        "ITEM": "消費アイテム",
+        "MIMIC": "ミミック"
+      }
+    },
+    "solverError": {
+      "contentsTooFew": "ゲーム設定で指定された中身の合計が、宝箱の数に対して不足しています。宝箱は{{numChests, number}}つありますが、指定された中身では{{numSpecified, number}}つしか入りません。合計が宝箱の数より少なくならないように、ゲーム設定の中身のヒントを更新してください。少なくとも1つのオプションの中身のヒントを空白にすることで、省略された値が自動的に宝箱の残りを埋めるため、このエラーは解決されます。",
+      "contentsTooMany": "ゲーム設定で指定した内容の合計が、宝箱の数を超えている。宝箱が{{numChests, number}}つあるのに、指定した中身で{{numSpecified, number}つ埋まってしまう。合計が宝箱数を超えないように、ゲーム設定の中身のヒントを更新してください。",
+      "specifiedGearTooMany": "「装備」を含む宝箱の数が、提示された「装備」のヒントを超えています。現在「装備」を含む宝箱が{{gearSpecified, number}}つありますが、ヒントでは{{numGear, number}}つしかありません。ゲーム設定で「装備」のヒントを増やすか、宝箱を編集して「装備」を含む宝箱が少なくなるようにしてください。",
+      "specifiedGoldTooMany": "「お金」を含む宝箱の数が、提示された「お金」のヒントを超えています。現在「お金」を含む宝箱が{{goldSpecified, number}}つありますが、ヒントでは{{numGold, number}}つしかありません。ゲーム設定で「お金」のヒントを増やすか、宝箱を編集して「お金」を含む宝箱が少なくなるようにしてください。",
+      "specifiedItemsTooMany": "「消費アイテム」を含む宝箱の数が、提示された「消費アイテム」のヒントを超えています。現在「消費アイテム」を含む宝箱が{{itemsSpecified, number}}つありますが、ヒントでは{{numItems, number}}つしかありません。ゲーム設定で「消費アイテム」のヒントを増やすか、宝箱を編集して「消費アイテム」を含む宝箱が少なくなるようにしてください。",
+      "specifiedMimicsTooMany": "「ミミック」を含む宝箱の数が、提示された「ミミック」のヒントを超えています。現在「ミミック」を含む宝箱が{{mimicsSpecified, number}}つありますが、ヒントでは{{numMimics, number}}つしかありません。ゲーム設定で「ミミック」のヒントを増やすか、宝箱を編集して「ミミック」を含む宝箱が少なくなるようにしてください。"
     },
     "yup": {
       "mixed": {

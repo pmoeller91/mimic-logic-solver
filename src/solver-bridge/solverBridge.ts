@@ -9,6 +9,8 @@ import SolverWorker from '../solver/worker?worker';
 import { isErrorAtom } from '@/atoms/solver/isErrorAtom';
 import { errorMessagesAtom } from '@/atoms/solver/errorMessagesAtom';
 import { store } from '@/atoms/store';
+import { solutionGridAtom } from '@/atoms/solver/solutionGridAtom';
+import merge from 'deepmerge';
 
 const createWorker = () => {
   let worker = store.get(workerAtom);
@@ -73,6 +75,7 @@ const solve = ({ grid, gameInfo }: SolveParams) => {
   store.set(isErrorAtom, false);
   store.set(errorMessagesAtom, []);
   store.set(progressAtom, 0);
+  store.set(solutionGridAtom, merge<ChestGrid>({}, grid));
   worker.postMessage({ grid, gameInfo });
 };
 
