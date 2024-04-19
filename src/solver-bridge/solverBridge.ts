@@ -11,6 +11,7 @@ import { errorMessagesAtom } from '@/atoms/solver/errorMessagesAtom';
 import { store } from '@/atoms/store';
 import { solutionGridAtom } from '@/atoms/solver/solutionGridAtom';
 import merge from 'deepmerge';
+import { isNoValidSolutionAtom } from '@/atoms/solver/isNoValidSolutionAtom';
 
 const createWorker = () => {
   let worker = store.get(workerAtom);
@@ -67,11 +68,16 @@ const solve = ({ grid, gameInfo }: SolveParams) => {
         store.set(errorMessagesAtom, data.value);
         store.set(isSolvingAtom, false);
         break;
+      case SOLVER_MESSAGE_TYPE.noValidSolution:
+        store.set(isNoValidSolutionAtom, true);
+        break;
       default:
         break;
     }
   };
+  store.set(solutionAtom, null);
   store.set(isSolvingAtom, true);
+  store.set(isNoValidSolutionAtom, false);
   store.set(isErrorAtom, false);
   store.set(errorMessagesAtom, []);
   store.set(progressAtom, 0);

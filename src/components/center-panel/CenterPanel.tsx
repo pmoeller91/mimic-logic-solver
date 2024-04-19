@@ -7,7 +7,7 @@ import { useAtom } from 'jotai';
 import { selectedTabAtom } from '@/atoms/selectedTabAtom';
 import { useCallback } from 'use-memo-one';
 import { MAIN_TAB, MainTab } from '@/types/mainTab';
-import { invert } from 'lodash';
+import { invert } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
 
 const tabIndexes: Record<MainTab, number> = {

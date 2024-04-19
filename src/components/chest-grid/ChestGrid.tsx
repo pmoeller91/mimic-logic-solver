@@ -12,12 +12,12 @@ function ChestGrid({ grid }: ChestGridProps) {
   const { t } = useTranslation();
   return (
     <GenericGrid
-      gridSize={grid.numChests}
+      grid={grid}
       className="w-full 2xl:w-1/2 lg:w-3/4 grid gap-1 p-1 sm:gap-2 sm:p-2 lg:gap-8 lg:p-8 m-auto"
     >
-      {(chestLocation, className, chestNumber) => (
+      {(chest, chestLocation, className, chestNumber) => (
         <ChestTileContainer
-          chest={grid.rows[chestLocation[0]][chestLocation[1]]}
+          chest={chest}
           location={chestLocation}
           className={className}
           key={`${chestLocation[0]}-${chestLocation[1]}`}

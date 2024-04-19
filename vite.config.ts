@@ -17,4 +17,7 @@ export default defineConfig({
     // using Array.toSpliced() which is an ES2023 feature.
     legacy({ targets: ['defaults', 'not IE 11'] }),
   ],
+  worker: {
+    plugins: () => [tsconfigPaths()],
+  },
 });

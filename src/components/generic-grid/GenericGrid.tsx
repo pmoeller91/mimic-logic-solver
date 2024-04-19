@@ -1,14 +1,16 @@
-import { ValidGridSizes } from '@/types/chestGrid';
+import { ChestGrid, ValidGridSizes } from '@/types/chestGrid';
 import { ChestLocation } from '@/types/chestLocation';
 import { forwardRef } from 'react';
 import { GenericGridWrapper } from './GenericGridWrapper';
 
 import styles from './genericGrid.module.scss';
+import { Chest } from '@/types/chest';
 
 interface GenericGridProps {
-  gridSize: ValidGridSizes;
+  grid: ChestGrid;
   className?: string;
   children: (
+    chest: Chest,
     chestLocation: ChestLocation,
     className: string,
     chestNumber: number
@@ -53,11 +55,13 @@ const gridCoords: Record<ValidGridSizes, ChestLocation[]> = {
 };
 
 const GenericGrid = forwardRef<HTMLDivElement, GenericGridProps>(
-  function GenericGrid({ gridSize, className, children }, ref) {
+  function GenericGrid({ grid, className, children }, ref) {
+    const gridSize = grid.numChests;
+    const flatChests = grid.rows.flat();
     return (
       <GenericGridWrapper gridSize={gridSize} className={className} ref={ref}>
         {gridCoords[gridSize].map((chestLocation, i) =>
-          children(chestLocation, styles[`chest-${i + 1}`], i + 1)
+          children(flatChests[i], chestLocation, styles[`chest-${i + 1}`], i + 1)
         )}
       </GenericGridWrapper>
     );

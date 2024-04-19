@@ -27,14 +27,14 @@ const SolutionGrid = forwardRef<HTMLDivElement, SolutionGridProps>(
     }
     return (
       <GenericGrid
-        gridSize={gridSize}
+        grid={grid}
         className={clsx(
           'w-full 2xl:w-1/2 lg:w-3/4 grid gap-1 p-1 sm:gap-2 sm:p-2 lg:gap-8 lg:p-8 m-auto',
           className
         )}
         ref={ref}
       >
-        {(chestLocation, chestClassName, chestNumber) => (
+        {(chest, chestLocation, chestClassName, chestNumber) => (
           <SolutionTileContainer
             className={chestClassName}
             contextLabel={generateContextLabel({
@@ -44,7 +44,7 @@ const SolutionGrid = forwardRef<HTMLDivElement, SolutionGridProps>(
               row: chestLocation[0] + 1,
               t,
             })}
-            chest={grid.rows[chestLocation[0]][chestLocation[1]]}
+            chest={chest}
             chestSolution={solution[chestNumber - 1]}
             key={`solution-chest-${chestNumber}`}
           />

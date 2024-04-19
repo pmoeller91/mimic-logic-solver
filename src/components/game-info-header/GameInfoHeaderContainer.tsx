@@ -1,5 +1,5 @@
 import { GameInfoHeaderView } from './GameInfoHeaderView';
-import { mapValues } from 'lodash';
+import { mapValues } from 'lodash-es';
 import { useMemo } from 'react';
 import { TRANSLATION_TYPE } from '@/types/translation';
 import { GAME_MODE } from '@/types/gameMode';

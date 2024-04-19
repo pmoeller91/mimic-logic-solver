@@ -1,6 +1,6 @@
 import { ChestGridSized, ValidGridSizes } from '@/types/chestGrid';
 import { createChest } from '../createChest';
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash-es';
 
 interface CreateChestGridParams<T extends ValidGridSizes> {
   numChests: T;

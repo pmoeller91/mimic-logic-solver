@@ -9,6 +9,7 @@ import { GenericGrid } from '../generic-grid/GenericGrid';
 import { MiniChestSelectIcon } from './MiniChestSelectIcon';
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
+import { ChestLocation } from '@/types/chestLocation';
 
 type GenerateLabelCallback = ({
   row,
@@ -25,7 +26,7 @@ type GenerateLabelCallback = ({
 interface MiniChestGridSelectProps {
   grid: ChestGridType;
   className?: string;
-  selectedChest?: [row: 0 | 1 | 2, col: 0 | 1 | 2];
+  selectedChest?: ChestLocation;
   onClick: ChestGridCallback;
   genAriaLabel: GenerateLabelCallback;
   legendString: string;
@@ -45,13 +46,10 @@ function MiniChestGridSelect({
   return (
     <fieldset>
       <legend className="sr-only">{legendString}</legend>
-      <GenericGrid
-        gridSize={grid.numChests}
-        className={clsx('gap-1', className)}
-      >
-        {(chestLocation, chestClassName) => (
+      <GenericGrid grid={grid} className={clsx('gap-1', className)}>
+        {(chest, chestLocation, chestClassName) => (
           <MiniChestSelectIcon
-            chestColor={grid.rows[chestLocation[0]][chestLocation[1]].color}
+            chestColor={chest.color}
             className={chestClassName}
             onClick={onClickCallbacks[chestLocation[0]][chestLocation[1]]}
             isSelected={
@@ -62,7 +60,7 @@ function MiniChestGridSelect({
             ariaLabel={genAriaLabel({
               row: chestLocation[0],
               col: chestLocation[1],
-              color: grid.rows[chestLocation[0]][chestLocation[1]].color,
+              color: chest.color,
               t,
             })}
           />

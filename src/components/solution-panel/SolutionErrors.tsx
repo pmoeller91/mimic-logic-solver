@@ -1,5 +1,6 @@
 import { errorMessagesAtom } from '@/atoms/solver/errorMessagesAtom';
 import { isErrorAtom } from '@/atoms/solver/isErrorAtom';
+import { isNoValidSolutionAtom } from '@/atoms/solver/isNoValidSolutionAtom';
 import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { ComponentPropsWithRef, forwardRef } from 'react';
@@ -14,23 +15,34 @@ const SolutionErrors = forwardRef<HTMLDivElement, SolutionErrorsProps>(
     const { t } = useTranslation();
     const isError = useAtomValue(isErrorAtom);
     const errorMessages = useAtomValue(errorMessagesAtom);
+    const isNoValidSolution = useAtomValue(isNoValidSolutionAtom);
     const baseErrorMessage = t('solutionErrors.errorsOccurred');
+    const noValidSolution = t('solutionErrors.noValidSolution');
 
     return (
       <div
         ref={ref}
-        className={clsx('bg-red-600/40', isError && errorMessages.length > 0 && 'p-4', className)}
+        className={clsx('bg-red-600/40', className)}
         aria-live="polite"
         {...rest}
       >
-        {isError && errorMessages.length > 0 && <div>{baseErrorMessage}</div>}
-        {isError && errorMessages.length > 0 && <ul className="flex flex-col gap-2 ml-4 mt-2">
-          {errorMessages.map((errorMessage, i) => (
-            <li key={`error-${i}`} className="">
-              {t(...errorMessage)}
-            </li>
-          ))}
-        </ul>}
+        {isError && errorMessages.length > 0 && (
+          <div className="m-4">
+            <div>{baseErrorMessage}</div>
+            <ul className="flex flex-col gap-2 ml-4 mt-2">
+              {errorMessages.map((errorMessage, i) => (
+                <li key={`error-${i}`} className="">
+                  {t(...errorMessage)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {isNoValidSolution && (
+          <div className="m-4">
+            <div>{noValidSolution}</div>
+          </div>
+        )}
       </div>
     );
   }

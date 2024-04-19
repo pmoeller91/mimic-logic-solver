@@ -1,6 +1,6 @@
 import { Setter, atom } from 'jotai';
 import { atomWithValidate } from 'jotai-form';
-import { debounce } from 'lodash';
+import { debounce } from 'lodash-es';
 import { Schema } from 'yup';
 
 interface FormValueAtomParams<T, S extends Schema<T>> {

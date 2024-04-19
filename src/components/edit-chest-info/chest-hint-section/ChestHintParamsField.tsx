@@ -39,7 +39,6 @@ function ChestHintParamsField() {
   switch (chestHintType) {
     case CHEST_HINT_TYPE.asleep:
     case CHEST_HINT_TYPE.mimicNotSelf:
-    case CHEST_HINT_TYPE.unknown:
       return null;
     case CHEST_HINT_TYPE.mimicDirection:
       return (

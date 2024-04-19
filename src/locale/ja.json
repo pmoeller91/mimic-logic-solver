@@ -1,18 +1,17 @@
 {
-  "centerPanel": {
-    "gameFieldLabel": "ゲームフィールド ",
-    "solutionLabel": "解答"
-  },
-  "solveButton": {
-    "buttonLabel": "解く"
-  },
   "translation": {
+    "centerPanel": {
+      "gameFieldLabel": "ゲームフィールド ",
+      "solutionLabel": "解答"
+    },
+    "centerPanelFallback": {
+      "loadingLabel": "読み込み中…"
+    },
     "chestContents": {
       "gear": "装備",
       "gold": "お金",
       "item": "消費アイテム",
       "mimic": "ミミック",
-      "multiple": "{{contents, list(style: long; type: disjunction;)}}",
       "notMimic": "ミミックじゃない",
       "unknown": "？"
     },
@@ -41,8 +40,7 @@
         "UP_LEFT": "左上の箱はミミックだ",
         "UP_RIGHT": "右上の箱はミミックだ"
       },
-      "mimicNotSelf": "私はミミックじゃない",
-      "unknown": "？？？"
+      "mimicNotSelf": "私はミミックじゃない"
     },
     "chestLayoutSelector": {
       "numChests_other": "{{count, number}}個",
@@ -156,8 +154,13 @@
     "languageSwitcher": {
       "label": "言語"
     },
+    "solutionDisplay": {
+      "noSolutionYet": "表示される解答はまだありません。「解く」を押して、現在のパズルの解答を生成してみてください。",
+      "solvingLabel": "解いています…"
+    },
     "solutionErrors": {
-      "errorsOccurred": "ゲーム設定にエラーがあり、有効な解答が得られません。再試行する前に、以下のエラーを修正してください。"
+      "errorsOccurred": "ゲーム設定にエラーがあり、有効な解答が得られません。再試行する前に、以下のエラーを修正してください。",
+      "noValidSolution": "有効な解答が見つかりませんでした。宝箱の色、ヒント、中身をもう一度確認してから、試行してみてください。"
     },
     "solutionTile": {
       "contentLabel": "$t(solutionTile.contents.{{content}})",
@@ -168,6 +171,9 @@
         "ITEM": "消費アイテム",
         "MIMIC": "ミミック"
       }
+    },
+    "solveButton": {
+      "buttonLabel": "解く"
     },
     "solverError": {
       "contentsTooFew": "ゲーム設定で指定された中身の合計が、宝箱の数に対して不足しています。宝箱は{{numChests, number}}つありますが、指定された中身では{{numSpecified, number}}つしか入りません。合計が宝箱の数より少なくならないように、ゲーム設定の中身のヒントを更新してください。少なくとも1つのオプションの中身のヒントを空白にすることで、省略された値が自動的に宝箱の残りを埋めるため、このエラーは解決されます。",

@@ -19,27 +19,10 @@ function getChestContentsTranslation({
   key,
   t,
 }: GetChestContentsTranslationParams) {
-  if (typeof key === 'string') {
-    return t(chestContentsTranslations[key]);
-  }
-  if (key.length === 0) {
+  if (typeof key !== 'string') {
     return '';
   }
-  if (key.length === 1) {
-    return t(chestContentsTranslations[key[0]]);
-  }
-  if (
-    key.includes(CHEST_CONTENTS.gear) &&
-    key.includes(CHEST_CONTENTS.gold) &&
-    key.includes(CHEST_CONTENTS.item) &&
-    !key.includes(CHEST_CONTENTS.mimic)
-  ) {
-    return t('chestContents.notMimic');
-  }
-  const contentsTranslations = key.map((singleKey) =>
-    t(chestContentsTranslations[singleKey])
-  );
-  return t('chestContents.multiple', { contents: contentsTranslations });
+  return t(chestContentsTranslations[key]);
 }
 
 export { getChestContentsTranslation };

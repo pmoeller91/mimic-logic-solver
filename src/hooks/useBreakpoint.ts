@@ -1,11 +1,14 @@
-import resolveConfig from 'tailwindcss/resolveConfig';
-import tailwindConfig from '@root/tailwind.config';
 import { useMediaQuery } from 'usehooks-ts';
-import { mapValues } from 'lodash';
+import { mapValues } from 'lodash-es';
 
-const fullConfig = resolveConfig(tailwindConfig);
-
-const breakpoints = fullConfig.theme.screens;
+// Hard-coding as using resolveConfig for tailwind massively bloats bundle
+const breakpoints = {
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+};
 
 const BREAKPOINT = mapValues(breakpoints, (_value, key) => key) as {
   [K in keyof typeof breakpoints]: K;

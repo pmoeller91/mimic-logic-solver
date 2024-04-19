@@ -41,8 +41,6 @@ const resolveHint = ({ grid, chest }: ResolveHintParams): boolean => {
   switch (chest.hint.type) {
     case CHEST_HINT_TYPE.asleep:
       return true;
-    case CHEST_HINT_TYPE.unknown:
-      return false;
     case CHEST_HINT_TYPE.mimicNotSelf:
       return true;
     case CHEST_HINT_TYPE.colorMoreMimics: {

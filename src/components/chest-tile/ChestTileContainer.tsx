@@ -26,6 +26,14 @@ interface ChestTileContainerPropsWithoutEdit extends ChestTileContainerProps {
   location?: ChestLocation;
 }
 
+const validCoordinates = [0, 1, 2] as const;
+const isValidLocation = (
+  location: ChestLocation
+): location is [0 | 1 | 2, 0 | 1 | 2] =>
+  location.every((coordinate) =>
+    validCoordinates.includes(coordinate as 0 | 1 | 2)
+  );
+
 function ChestTileContainer(
   props: ChestTileContainerPropsWithEdit
 ): JSX.Element;
@@ -56,7 +64,7 @@ function ChestTileContainer({
   const setSelectedChest = useSetAtom(selectedChestAtom);
 
   const selectChest = useCallback(() => {
-    if (location) {
+    if (location && isValidLocation(location)) {
       setSelectedChest(location);
     }
   }, [location, setSelectedChest]);

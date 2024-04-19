@@ -1,4 +1,4 @@
-import { pickBy } from 'lodash';
+import { pickBy } from 'lodash-es';
 import { Chest } from '@/types/chest';
 import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
 import merge from 'deepmerge';
@@ -7,7 +7,7 @@ import { CHEST_HINT_TYPE } from '@/types/chestHint';
 
 const defaultChest = {
   color: CHEST_COLOR.red,
-  hint: { type: CHEST_HINT_TYPE.unknown, params: [] },
+  hint: { type: CHEST_HINT_TYPE.asleep, params: [] },
   contents: CHEST_CONTENTS.unknown,
 } as const satisfies Chest;
 

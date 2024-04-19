@@ -5,6 +5,7 @@ import { GameInfo } from '@/types/state/gameInfo';
 import merge from 'deepmerge';
 import { InternalSolverSolution } from './internalSolverSolution';
 import { resolveSolution } from './resolveSolution';
+import { SolverChest } from './solverChest';
 
 interface SolverParams {
   grid: ChestGrid;
@@ -82,6 +83,17 @@ const solve = ({ grid, gameInfo }: SolverParams) => {
     catchAllContent.push(CHEST_CONTENTS.item);
   }
 
+  // Specifically mark "not a mimic" chests and replace their contents with
+  // "unknown" so they can be caught by the catch-all contents if needed.
+  solutionGrid.rows
+    .flat()
+    .filter((chest) => chest.contents === CHEST_CONTENTS.not_mimic)
+    .forEach((chest) => {
+      (chest as SolverChest).isNotMimic = true;
+      chest.contents = CHEST_CONTENTS.unknown;
+      unknownChests.push(chest);
+    });
+
   possibleContents = possibleContents.filter(([_content, num]) => num >= 1);
 
   const numCatchAll =
@@ -92,12 +104,14 @@ const solve = ({ grid, gameInfo }: SolverParams) => {
     possibleContents.push([catchAllContent, numCatchAll]);
   }
 
-  return recursiveSolve({
+  const solution = recursiveSolve({
     grid: solutionGrid,
     gameInfo,
     unknownChests,
     possibleContents,
   });
+
+  return solution;
 };
 
 // Takes two valid solutions (equal-length arrays of maps) and merges them by
@@ -134,6 +148,11 @@ const recursiveSolve = ({
   unknownChests,
   possibleContents,
 }: RecursiveSolveParams) => {
+  // The chest to fill on this iteration
+  const unknownChest = unknownChests[0];
+  // The remaining chests to fill
+  const newUnknownChests = unknownChests.slice(1);
+
   if (possibleContents.length === 0) {
     return resolveSolution({ grid, gameInfo });
   }
@@ -141,17 +160,19 @@ const recursiveSolve = ({
     return null;
   }
 
-  // The chest to fill on this iteration
-  const unknownChest = unknownChests[0];
-  // The remaining chests to fill
-  const newUnknownChests = unknownChests.slice(1);
-
   const allSolutions: InternalSolverSolution = new Array(grid.numChests)
     .fill(undefined)
     .map<InternalSolverSolution[number]>(() => new Map());
 
   // Try to fill the chest with each of the possible types of content left
   possibleContents.forEach((possibleContent, i) => {
+    // If this is specified as "Not mimic", skip any contents including a mimic
+    if (
+      (unknownChest as SolverChest).isNotMimic &&
+      possibleContent[0].includes(CHEST_CONTENTS.mimic)
+    ) {
+      return;
+    }
     // The content for the next iteration, with the content about to be used
     // removed.
     let newPossibleContents: [ChestContents | ChestContents[], number][];

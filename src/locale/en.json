@@ -4,12 +4,14 @@
       "gameFieldLabel": "Game Field",
       "solutionLabel": "Solution"
     },
+    "centerPanelFallback": {
+      "loadingLabel": "Loading..."
+    },
     "chestContents": {
       "gear": "Gear",
       "gold": "Gold",
       "item": "Item",
       "mimic": "Mimic",
-      "multiple": "{{contents, list(style: long; type: disjunction;)}}",
       "notMimic": "Not a mimic",
       "unknown": "?"
     },
@@ -38,8 +40,7 @@
         "UP_LEFT": "Diagonal up left from me is a Mimic.",
         "UP_RIGHT": "Diagonal up right form me is a Mimic."
       },
-      "mimicNotSelf": "I'm not a Mimic.",
-      "unknown": "???"
+      "mimicNotSelf": "I'm not a Mimic."
     },
     "chestLayoutSelector": {
       "numChests_one": "{{count, number}} Chest",
@@ -161,8 +162,13 @@
     "languageSwitcher": {
       "label": "Language"
     },
+    "solutionDisplay": {
+      "noSolutionYet": "There is no solution to display yet. Please press \"Solve\" to attempt to generate a solution for the current puzzle.",
+      "solvingLabel": "Solving..."
+    },
     "solutionErrors": {
-      "errorsOccurred": "There are errors in your game configuration which would result in no valid solution. Please correct the errors listed below before trying to solve again."
+      "errorsOccurred": "There are errors in your game configuration which would result in no valid solution. Please correct the errors listed below before trying to solve again.",
+      "noValidSolution": "No valid solution was found for the puzzle. Please double check the chest colors, hints, and contents, and try again."
     },
     "solutionTile": {
       "contentLabel": "$t(solutionTile.contents.{{content}})",
@@ -178,17 +184,17 @@
       "buttonLabel": "Solve"
     },
     "solverError": {
+      "canOnlyBe_other": "there can only be {{count, number}}.",
+      "canOnlyBe_zero": "there cannot be any",
+      "chests_one": "There is currently {{count, number}} chest",
+      "chests_other": "There are currently {{count, number}} chests",
+      "chests_zero": "There are currently no chests",
       "contentsTooFew": "The total contents specified in the game info is insufficient for the number of chests. There are {{numChests, number}} chests but the contents specified would fill only {{numSpecified, number}}. Please update the content hints in the game info so that the sum does not add up to fewer than the number of chests. Opting to leave at least one optional value blank will also resolve this error, as the omitted value will automatically take up any leftover chests.",
       "contentsTooMany": "The total contents specified in the game info exceeds the number of chests. There are {{numChests, number}} chests but the contents specified would fill {{numSpecified, number}}. Please update the content hints in the game info so that the sum does not exceed the number of chests.",
       "specifiedGearTooMany": "The number of chests containing 'Gear' exceeds the 'Gear' hint provided. $t(solverError.chests, { \"count\": {{gearSpecified}} }) containing 'Gear', but the hints indicate $t(solverError.canOnlyBe, { \"count\": {{numGear}} }). Please increase the 'Gear' hint in game info, or edit chests so that fewer contain 'Gear'.",
       "specifiedGoldTooMany": "The number of chests containing 'Gold' exceeds the 'Gold' hint provided. $t(solverError.chests, { \"count\": {{goldSpecified}} }) containing 'Gold', but the hints indicate $t(solverError.canOnlyBe, { \"count\": {{numGold}} }). Please increase the 'Gold' hint in game info, or edit chests so that fewer contain 'Gold'.",
       "specifiedItemsTooMany": "The number of chests containing 'Item' exceeds the 'Item' hint provided. $t(solverError.chests, { \"count\": {{itemsSpecified}} }) containing 'Item', but the hints indicate $t(solverError.canOnlyBe, { \"count\": {{numItems}} }). Please increase the 'Item' hint in game info, or edit chests so that fewer contain 'Item'.",
-      "specifiedMimicsTooMany": "The number of chests containing 'Mimic' exceeds the 'Mimic' hint provided. $t(solverError.chests, { \"count\": {{mimicsSpecified}} }) containing 'Mimic', but the hints indicate $t(solverError.canOnlyBe, { \"count\": {{numMimics}} }). Please increase the 'Mimic' hint in game info, or edit chests so that fewer contain 'Mimic'.",
-      "chests_one": "There is currently {{count, number}} chest",
-      "chests_zero": "There are currently no chests",
-      "chests_other": "There are currently {{count, number}} chests",
-      "canOnlyBe_zero": "there cannot be any",
-      "canOnlyBe_other": "there can only be {{count, number}}."
+      "specifiedMimicsTooMany": "The number of chests containing 'Mimic' exceeds the 'Mimic' hint provided. $t(solverError.chests, { \"count\": {{mimicsSpecified}} }) containing 'Mimic', but the hints indicate $t(solverError.canOnlyBe, { \"count\": {{numMimics}} }). Please increase the 'Mimic' hint in game info, or edit chests so that fewer contain 'Mimic'."
     },
     "yup": {
       "mixed": {

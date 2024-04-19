@@ -20,7 +20,6 @@ const CHEST_HINT_TYPE = {
   mimicNotSelf: 'MIMIC_NOT_SELF',
   mimicDirection: 'MIMIC_DIRECTION',
   colorMoreMimics: 'COLOR_MORE_MIMICS',
-  unknown: 'UNKNOWN',
 } as const;
 
 type ChestHintType = (typeof CHEST_HINT_TYPE)[keyof typeof CHEST_HINT_TYPE];
@@ -63,7 +62,6 @@ interface ChestHints {
     typeof HINT_PARAMETER_TYPE.color,
     typeof HINT_PARAMETER_TYPE.color
   >;
-  Unknown: ChestHintBase<(typeof CHEST_HINT_TYPE)['unknown']>;
 }
 
 type ChestHint = ChestHints[keyof ChestHints];

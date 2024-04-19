@@ -1,13 +1,13 @@
 import {
   GenerateLabelCallback,
   MiniChestGridSelect,
-  OnClickChestCallback,
 } from '../mini-chest-grid-select/MiniChestGridSelect';
 import { useAtom, useAtomValue } from 'jotai';
 import { selectedChestAtom } from '@/atoms/selectedChestAtom';
 import { useCallback } from 'use-memo-one';
 import { derivedChestGridAtom } from '@/atoms/derivedChestGridAtom';
 import { useTranslation } from 'react-i18next';
+import { ChestGridCallback } from '@/hooks/useChestGridCallbacks';
 
 interface ChestSelectorProps {
   className?: string;
@@ -17,7 +17,7 @@ function ChestSelector({ className }: ChestSelectorProps) {
   const { t: localT } = useTranslation();
   const grid = useAtomValue(derivedChestGridAtom);
   const [selectedChest, setSelectedChest] = useAtom(selectedChestAtom);
-  const handleOnClick = useCallback<OnClickChestCallback>(
+  const handleOnClick = useCallback<ChestGridCallback>(
     (row, col) => {
       setSelectedChest([row, col]);
     },

@@ -10,11 +10,11 @@ interface MiniChestGridProps {
 
 function MiniChestGrid({ grid, className }: MiniChestGridProps) {
   return (
-    <GenericGrid gridSize={grid.numChests} className={clsx('gap-1', className)}>
-      {(chestLocation, className, chestNumber) => (
+    <GenericGrid grid={grid} className={clsx('gap-1', className)}>
+      {(chest, _chestLocation, chestClassName, chestNumber) => (
         <MiniChestIcon
-          chestColor={grid.rows[chestLocation[0]][chestLocation[1]].color}
-          className={className}
+          chestColor={chest.color}
+          className={chestClassName}
           key={`mini-chest-${chestNumber}`}
         />
       )}

@@ -25,6 +25,12 @@ onmessage = function (
     solution?.map((chestSolution) => Array.from(chestSolution.entries())) ??
     new Array(grid.numChests).fill(undefined).map(() => []);
 
+  if (!solution || solution[0].size === 0) {
+    this.postMessage({
+      type: SOLVER_MESSAGE_TYPE.noValidSolution,
+    });
+  }
+  
   postMessage({
     type: SOLVER_MESSAGE_TYPE.end,
     value: messageValue,

@@ -1,5 +1,5 @@
 import { ChestContents } from '@/types/chestProperties';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 
 const contentKeys: ChestContents[][] = [];
 

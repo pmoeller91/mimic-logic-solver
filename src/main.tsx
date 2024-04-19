@@ -4,7 +4,6 @@ import App from './App.tsx';
 import './index.scss';
 import '@/styles/react-tabs.scss';
 import './i18n.ts';
-import '@fontsource/noto-color-emoji';
 import '@fontsource/pixelify-sans';
 import { Provider } from 'jotai';
 import { store } from './atoms/store.ts';

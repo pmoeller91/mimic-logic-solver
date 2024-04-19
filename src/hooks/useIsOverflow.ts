@@ -1,4 +1,4 @@
-import { debounce } from 'lodash';
+import { debounce } from 'lodash-es';
 import { RefObject, useLayoutEffect, useState } from 'react';
 import { useMemo } from 'use-memo-one';
 

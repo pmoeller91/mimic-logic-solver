@@ -1,5 +1,6 @@
 import {
   CHEST_DIRECTION,
+  CHEST_HINT_TYPE,
   ChestHintOfType,
   ChestHintType,
 } from '@/types/chestHint';
@@ -12,16 +13,15 @@ const getDefaultHint = <T extends ChestHintType>(
   hintType: T
 ): ChestHintOfType<T> => {
   switch (hintType) {
-    case 'ASLEEP':
-    case 'MIMIC_NOT_SELF':
-    case 'UNKNOWN':
+    case CHEST_HINT_TYPE.asleep:
+    case CHEST_HINT_TYPE.mimicNotSelf:
       return { type: hintType, params: [] } as ChestHintOfType<T>;
-    case 'COLOR_MORE_MIMICS':
+    case CHEST_HINT_TYPE.colorMoreMimics:
       return {
         type: hintType,
         params: [defaultColor, defaultColor],
       } as ChestHintOfType<T>;
-    case 'MIMIC_DIRECTION':
+    case CHEST_HINT_TYPE.mimicDirection:
       return {
         type: hintType,
         params: [defaultDirection],

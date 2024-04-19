@@ -9,6 +9,7 @@ const SOLVER_MESSAGE_TYPE = {
   begin: 'BEGIN',
   error: 'ERROR',
   end: 'END',
+  noValidSolution: 'NO_VALID_SOLUTION',
 } as const;
 
 type SolverMessageType =
@@ -34,6 +35,9 @@ interface SolverMessages {
   ErrorMessage: SolverMessageBase<
     (typeof SOLVER_MESSAGE_TYPE)['error'],
     Parameters<TFunction>[]
+  >;
+  NoValidSolution: SolverMessageBase<
+    (typeof SOLVER_MESSAGE_TYPE)['noValidSolution']
   >;
 }
 
