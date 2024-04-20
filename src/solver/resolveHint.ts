@@ -18,7 +18,7 @@ interface ResolveHintParams {
  *  - For example, any non-mimic in standard mode always tells the truth
  * - The hint is FALSE and the chest LIES
  *  - For example, a mimic in standard mode always lies
- * 
+ *
  * If the hint can be valid but requires that a particular chest must fulfill
  * some criteria, this function will also pare down the contents of that chest
  * as needed. For example, given:
@@ -26,7 +26,7 @@ interface ResolveHintParams {
  *  - The chest giving the hint tells the truth
  *  - The chest below can contain gold (say it contains currently any of [Gold, Item, Gear])
  *  - Given this, the chest below will be updated to contain ONLY gold
- * 
+ *
  *  This narrowing will help prevent contradictory hints from slipping through. For
  *  example, if one hint says a chest must contain gold, and the other says it
  *  must contain an item, then they can never both be correct. Without the
@@ -39,7 +39,7 @@ const resolveHint = ({ grid, chest }: ResolveHintParams): boolean => {
     contents: CHEST_CONTENTS.mimic,
   });
   switch (chest.hint.type) {
-    case CHEST_HINT_TYPE.asleep:
+    case CHEST_HINT_TYPE.selfAsleep:
       return true;
     case CHEST_HINT_TYPE.mimicNotSelf:
       return true;
@@ -65,7 +65,7 @@ const resolveHint = ({ grid, chest }: ResolveHintParams): boolean => {
         numMimicsByColor[chest.hint.params[1]];
       return isLiar ? !hintTrue : hintTrue;
     }
-    case CHEST_HINT_TYPE.mimicDirection:
+    case CHEST_HINT_TYPE.directionMimic:
       {
         const adjacentChest = getAdjacentChest({
           grid,

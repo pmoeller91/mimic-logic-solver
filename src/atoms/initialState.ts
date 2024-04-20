@@ -2,8 +2,8 @@ import { GAME_MODE } from '@/types/gameMode';
 import { GameInfo } from '@/types/state/gameInfo';
 import { AllChests } from './allChestsAtom';
 import { createChest } from '@/util/createChest';
-import { CHEST_DIRECTION } from '@/types/chestHint';
-import { CHEST_COLOR } from '@/types/chestProperties';
+import { CHEST_DIRECTION, CHEST_HINT_TYPE } from '@/types/chestHint';
+import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
 
 interface GameState {
   gameInfo: GameInfo;
@@ -22,15 +22,15 @@ const initialState: GameState = {
   allChests: [
     [
       createChest({
-        color: 'BLUE',
-        contents: 'UNKNOWN',
-        hint: { type: 'MIMIC_NOT_SELF', params: [] },
+        color: CHEST_COLOR.blue,
+        contents: CHEST_CONTENTS.unknown,
+        hint: { type: CHEST_HINT_TYPE.selfNotMimic, params: [] },
       }),
       createChest({
-        color: 'BLACK',
-        contents: 'GEAR',
+        color: CHEST_COLOR.black,
+        contents: CHEST_CONTENTS.gear,
         hint: {
-          type: 'COLOR_MORE_MIMICS',
+          type: CHEST_HINT_TYPE.colorMoreMimics,
           params: [CHEST_COLOR.blue, CHEST_COLOR.red],
         },
       }),
@@ -38,17 +38,17 @@ const initialState: GameState = {
     ],
     [
       createChest({
-        color: 'RED',
-        contents: 'ITEM',
+        color: CHEST_COLOR.red,
+        contents: CHEST_CONTENTS.item,
         hint: {
-          type: 'MIMIC_DIRECTION',
+          type: CHEST_HINT_TYPE.directionMimic,
           params: [CHEST_DIRECTION.up],
         },
       }),
       createChest({
-        color: 'BLUE',
-        contents: 'ITEM',
-        hint: { type: 'ASLEEP', params: [] },
+        color: CHEST_COLOR.blue,
+        contents: CHEST_CONTENTS.item,
+        hint: { type: CHEST_HINT_TYPE.selfAsleep, params: [] },
       }),
       createChest(),
     ],

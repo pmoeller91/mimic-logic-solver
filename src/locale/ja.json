@@ -19,7 +19,6 @@
       "contextLabel": "宝箱{{totalChests, number}}個中{{chestNum, number}}個目 {{row, number}}行{{col, number}}列目"
     },
     "chestHint": {
-      "asleep": "Zzz...",
       "chestColors": {
         "BLACK": "黒い",
         "BLUE": "青い",
@@ -28,9 +27,9 @@
       "colorMoreMimics": "$t(chestHint.chestColors.{{param2}})箱より$t(chestHint.chestColors.{{param1}})箱の方がミミックが多い",
       "colorMoreMimics_blank": "【色】箱より【色】箱のほうがミミックが多い",
       "colorMoreMimics_paramsReversed": "true",
-      "mimicDirection": "$t(chestHint.mimicDirection_variations.{{param1}})",
-      "mimicDirection_blank": "【方向】の箱はミミックだ",
-      "mimicDirection_variations": {
+      "directionMimic": "$t(chestHint.directionMimic_variations.{{param1}})",
+      "directionMimic_blank": "【方向】の箱はミミックだ",
+      "directionMimic_variations": {
         "DOWN": "下の箱はミミックだ",
         "DOWN_LEFT": "左下の箱はミミックだ",
         "DOWN_RIGHT": "右下の箱はミミックだ",
@@ -40,7 +39,8 @@
         "UP_LEFT": "左上の箱はミミックだ",
         "UP_RIGHT": "右上の箱はミミックだ"
       },
-      "mimicNotSelf": "私はミミックじゃない"
+      "selfAsleep": "Zzz...",
+      "selfNotMimic": "私はミミックじゃない"
     },
     "chestLayoutSelector": {
       "numChests_other": "{{count, number}}個",

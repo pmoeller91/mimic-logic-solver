@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { ChestPropertiesField } from '../ChestPropertiesField';
 import { CHEST_HINT_TYPE, ChestHintType } from '@/types/chestHint';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +16,58 @@ interface ChestHintTypeFieldProps {
 }
 
 type SelectCallback = Required<JSX.IntrinsicElements['select']>['onChange'];
+
+interface ChestHintGroup {
+  label: string;
+  id: string;
+  options: ChestHintType[];
+}
+
+const chestHintGroups: ChestHintGroup[] = [
+  {
+    label: 'editChestInfo.chestHintSection.type.group.self',
+    id: 'self',
+    options: [CHEST_HINT_TYPE.selfAsleep, CHEST_HINT_TYPE.selfNotMimic],
+  },
+  {
+    label: 'editChestInfo.chestHintSection.type.group.direction',
+    id: 'direction',
+    options: [
+      CHEST_HINT_TYPE.directionMimic,
+      CHEST_HINT_TYPE.directionNotMimic,
+      CHEST_HINT_TYPE.directionGold,
+      CHEST_HINT_TYPE.directionNotGold,
+    ],
+  },
+  {
+    label: 'editChestInfo.chestHintSection.type.group.color',
+    id: 'color',
+    options: [
+      CHEST_HINT_TYPE.colorMimic,
+      CHEST_HINT_TYPE.colorNoMimic,
+      CHEST_HINT_TYPE.colorGold,
+      CHEST_HINT_TYPE.colorNoGold,
+      CHEST_HINT_TYPE.mimicsSameColor,
+      CHEST_HINT_TYPE.mimicsNotSameColor,
+      CHEST_HINT_TYPE.colorNumMimics,
+      CHEST_HINT_TYPE.colorMoreMimics,
+      CHEST_HINT_TYPE.colorSameMimics,
+    ],
+  },
+  {
+    label: 'editChestInfo.chestHintSection.type.group.rank',
+    id: 'rank',
+    options: [
+      CHEST_HINT_TYPE.rankMimic,
+      CHEST_HINT_TYPE.rankNoMimic,
+      CHEST_HINT_TYPE.rankGold,
+      CHEST_HINT_TYPE.rankNoGold,
+      CHEST_HINT_TYPE.rankMinimumMimics,
+      CHEST_HINT_TYPE.rankMoreMimics,
+      CHEST_HINT_TYPE.rankSameMimics,
+    ],
+  },
+];
 
 const ChestHintTypeField = forwardRef<
   HTMLSelectElement,
@@ -46,14 +98,21 @@ const ChestHintTypeField = forwardRef<
         value={selectedChestHint.type}
         ref={ref}
       >
-        {Object.values(CHEST_HINT_TYPE).map((chestHintType) => (
-          <option key={chestHintType} value={chestHintType}>
-            {getGameTranslation({
-              type: TRANSLATION_TYPE.chestHintBlank,
-              key: chestHintType,
-              t,
-            })}
-          </option>
+        {chestHintGroups.map(({ label, options, id }, idx, arr) => (
+          <React.Fragment key={id}>
+            <optgroup label={t(label)} key={id}>
+              {options.map((hintType) => (
+                <option key={hintType} value={hintType}>
+                  {getGameTranslation({
+                    type: TRANSLATION_TYPE.chestHintBlank,
+                    key: hintType,
+                    t,
+                  })}
+                </option>
+              ))}
+            </optgroup>
+            {idx !== arr.length - 1 && <hr />}
+          </React.Fragment>
         ))}
       </EditChestInfoSelect>
     </ChestPropertiesField>

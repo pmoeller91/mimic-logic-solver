@@ -7,7 +7,7 @@ import { CHEST_HINT_TYPE } from '@/types/chestHint';
 
 const defaultChest = {
   color: CHEST_COLOR.red,
-  hint: { type: CHEST_HINT_TYPE.asleep, params: [] },
+  hint: { type: CHEST_HINT_TYPE.selfAsleep, params: [] },
   contents: CHEST_CONTENTS.unknown,
 } as const satisfies Chest;
 
