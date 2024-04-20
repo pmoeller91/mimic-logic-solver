@@ -47,8 +47,6 @@ const chestHintGroups: ChestHintGroup[] = [
       CHEST_HINT_TYPE.colorNoMimic,
       CHEST_HINT_TYPE.colorGold,
       CHEST_HINT_TYPE.colorNoGold,
-      CHEST_HINT_TYPE.mimicsSameColor,
-      CHEST_HINT_TYPE.mimicsNotSameColor,
       CHEST_HINT_TYPE.colorNumMimics,
       CHEST_HINT_TYPE.colorMoreMimics,
       CHEST_HINT_TYPE.colorSameMimics,
@@ -62,9 +60,18 @@ const chestHintGroups: ChestHintGroup[] = [
       CHEST_HINT_TYPE.rankNoMimic,
       CHEST_HINT_TYPE.rankGold,
       CHEST_HINT_TYPE.rankNoGold,
-      CHEST_HINT_TYPE.rankMinimumMimics,
       CHEST_HINT_TYPE.rankMoreMimics,
       CHEST_HINT_TYPE.rankSameMimics,
+    ],
+  },
+  {
+    label: 'editChestInfo.chestHintSection.type.group.mimics',
+    id: 'mimics',
+    options: [
+      CHEST_HINT_TYPE.mimicsSameColor,
+      CHEST_HINT_TYPE.mimicsNotSameColor,
+      CHEST_HINT_TYPE.mimicsNeighbors,
+      CHEST_HINT_TYPE.mimicsNotNeighbors,
     ],
   },
 ];

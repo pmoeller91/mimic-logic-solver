@@ -62,11 +62,6 @@ const getDefaultHint = <T extends ChestHintType>(
         type: hintType,
         params: [defaultRank, defaultRank],
       } as ChestHintOfType<T>;
-    case CHEST_HINT_TYPE.rankMinimumMimics:
-      return {
-        type: hintType,
-        params: [defaultRank, defaultNumber],
-      } as ChestHintOfType<T>;
     default:
       return { type: hintType, params: [] } as ChestHintOfType<T>;
   }

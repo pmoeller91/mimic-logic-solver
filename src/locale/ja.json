@@ -24,22 +24,76 @@
         "BLUE": "青い",
         "RED": "赤い"
       },
+      "chestColors_colorOnly": {
+        "BLACK": "黒",
+        "BLUE": "青",
+        "RED": "赤"
+      },
+      "chestDirections": {
+        "DOWN": "下",
+        "DOWN_LEFT": "左下",
+        "DOWN_RIGHT": "右下",
+        "LEFT": "左",
+        "RIGHT": "右",
+        "UP": "上",
+        "UP_LEFT": "左上",
+        "UP_RIGHT": "右上"
+      },
+      "chestRank": {
+        "BOTTOM_MOST": "一番下の列",
+        "LEFT_MOST": "一番左の列",
+        "RIGHT_MOST": "一番右の列",
+        "TOP_MOST": "一番上の列"
+      },
+      "chestRank_directionOnly": {
+        "BOTTOM_MOST": "一番下",
+        "LEFT_MOST": "一番左",
+        "RIGHT_MOST": "一番右",
+        "TOP_MOST": "一番上"
+      },
+      "colorGold": "$t(chestHint.chestColors_colorOnly.{{param1}})の箱のどこかにお金が入っている",
+      "colorGold_blank": "【色】の箱のどこかにお金が入っている",
+      "colorMimic": "$t(chestHint.chestColors.{{param1}}箱のなかにミミックがいる",
+      "colorMimic_blank": "【色】箱のなかにミミックがいる",
       "colorMoreMimics": "$t(chestHint.chestColors.{{param2}})箱より$t(chestHint.chestColors.{{param1}})箱の方がミミックが多い",
       "colorMoreMimics_blank": "【色】箱より【色】箱のほうがミミックが多い",
       "colorMoreMimics_paramsReversed": "true",
-      "directionMimic": "$t(chestHint.directionMimic_variations.{{param1}})",
+      "colorNoGold": "$t(chestHint.chestColors_colorOnly.{{param1}})の箱にはお金は入っていない",
+      "colorNoGold_blank": "【色】の箱にお金は入っていない",
+      "colorNoMimic": "$t(chestHint.chestColors.{{param1}}箱のなかにミミックはいない",
+      "colorNoMimic_blank": "【色】箱のなかにミミックはいない",
+      "colorNumMimics": "$t(chestHint.chestColors.{{param2}})箱にミミックは{{param1, number}}匹いる",
+      "colorNumMimics_blank": "【色】箱にミミックは【＃】匹いる",
+      "colorNumMimics_paramsReversed": "true",
+      "colorSameMimics": "$t(chestHint.chestColors.{{param1}})箱と$t(chestHint.chestColors.{{param2}})箱のミミックの数は同じ",
+      "colorSameMimics_blank": "【色】は琴【色】箱のミミックの数は同じ",
+      "directionGold": "$t(chestHint.chestDirections.{{param1}})の箱にお金が入っている",
+      "directionGold_blank": "【方向】の箱にお金が入っている",
+      "directionMimic": "$t(chestHint.chestDirections.{{param1}})の箱はミミックだ",
       "directionMimic_blank": "【方向】の箱はミミックだ",
-      "directionMimic_variations": {
-        "DOWN": "下の箱はミミックだ",
-        "DOWN_LEFT": "左下の箱はミミックだ",
-        "DOWN_RIGHT": "右下の箱はミミックだ",
-        "LEFT": "左の箱はミミックだ",
-        "RIGHT": "右の箱はミミックだ",
-        "UP": "上の箱はミミックだ",
-        "UP_LEFT": "左上の箱はミミックだ",
-        "UP_RIGHT": "右上の箱はミミックだ"
-      },
+      "directionNotGold": "$t(chestHint.chestDirections.{{param1}})の箱にお金は入っていない",
+      "directionNotGold_blank": "【方向】の箱にお金は入っていない",
+      "directionNotMimic": "$t(chestHint.chestDirections.{{param1}})の箱はミミックじゃない",
+      "directionNotMimic_blank": "【方向】の箱はミミックじゃない",
+      "mimicsNeighbors": "ミミック２匹は隣同士だ",
+      "mimicsNotNeighbors": "ミミック２匹は隣同士じゃない",
+      "mimicsNotSameColor": "ミミック達の色は同じではない",
+      "mimicsSameColor": "ミミック達の色は全て同じだ",
+      "rankGold": "$t(chestHint.chestRank.{{param1}})のどこかにお金が入っている",
+      "rankGold_blank": "【列】のどこかにお金が入っている",
+      "rankMimic": "$t(chestHint.chestRank.{{param1}})にミミックがいる",
+      "rankMimic_blank": "【列】にミミックがいる",
+      "rankMoreMimics": "$t(chestHint.chestRank.{{param2}})より$t(chestHint.chestRank_directionOnly.{{param2}})の方がミミックが多い",
+      "rankMoreMimics_blank": "【列】より【列】のほうがミミックが多い",
+      "rankMoreMimics_paramsReversed": "true",
+      "rankNoGold": "$t(chestHint.chestRank.{{param1}})のどこにもお金は入っていない",
+      "rankNoGold_blank": "【列】のどこにもお金は入っていない",
+      "rankNoMimic": "$t(chestHint.chestRank.{{param1}})にミミックはいない",
+      "rankNoMimic_blank": "【列】にミミックはいない",
+      "rankSameMimics": "$t(chestHint.chestRank_directionOnly.{{param1}})と$t(chestHint.chestRank.{{param2}})のミミックの数は同じ",
+      "rankSameMimics_blank": "【列】と【列】のミミックの数は同じ",
       "selfAsleep": "Zzz...",
+      "selfAsleep_blank": "寝ている",
       "selfNotMimic": "私はミミックじゃない"
     },
     "chestLayoutSelector": {
@@ -97,7 +151,14 @@
         },
         "title": "宝箱のヒント",
         "type": {
-          "label": "タイプ"
+          "group": {
+            "color": "色",
+            "direction": "方向",
+            "mimics": "ミミック達",
+            "rank": "列",
+            "self": "自分"
+          },
+          "label": "種類"
         }
       },
       "chestPropertiesSection": {

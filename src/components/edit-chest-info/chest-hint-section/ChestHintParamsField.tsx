@@ -121,22 +121,6 @@ function ChestHintParamsField() {
           shouldProvidePosition
         />
       );
-    case CHEST_HINT_TYPE.rankMinimumMimics:
-      return (
-        <ReversibleParams
-          paramFields={[
-            <RankField
-              rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>}
-              key="param-1"
-            />,
-            <AmountField
-              amountAtom={paramAtoms[1] as SimpleWritableAtom<number>}
-              key="param-2"
-            />,
-          ]}
-          shouldReverse={isHintParamsReversed({ t, chestHintType })}
-        />
-      );
     default:
       return null;
   }

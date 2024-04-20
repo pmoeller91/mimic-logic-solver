@@ -27,11 +27,12 @@ const CHEST_HINT_TYPE = {
   directionMimic: 'DIRECTION_MIMIC',
   directionNotGold: 'DIRECTION_NOT_GOLD',
   directionNotMimic: 'DIRECTION_NOT_MIMIC',
+  mimicsNeighbors: 'MIMICS_NEIGHBORS',
+  mimicsNotNeighbors: 'MIMICS_NOT_NEIGHBORS',
   mimicsNotSameColor: 'MIMICS_NOT_ALL_SAME_COLOR',
   mimicsSameColor: 'MIMICS_ALL_SAME_COLOR',
   rankGold: 'RANK_GOLD',
   rankMimic: 'RANK_MIMIC',
-  rankMinimumMimics: 'RANK_MINIMUM_MIMICS',
   rankMoreMimics: 'RANK_MORE_MIMICS',
   rankNoGold: 'RANK_NO_GOLD',
   rankNoMimic: 'RANK_NO_MIMIC',
@@ -137,6 +138,8 @@ interface ChestHints {
     ChestHintTypes['directionNotMimic'],
     HintParameterTypes['direction']
   >;
+  MimicsNeighbors: ChestHintBase<ChestHintTypes['mimicsNeighbors']>;
+  MimicsNotNeighbors: ChestHintBase<ChestHintTypes['mimicsNotNeighbors']>;
   MimicsNotSameColor: ChestHintBase<ChestHintTypes['mimicsNotSameColor']>;
   MimicsSameColor: ChestHintBase<ChestHintTypes['mimicsSameColor']>;
   RankGold: ChestHintBase<
@@ -146,11 +149,6 @@ interface ChestHints {
   RankMimic: ChestHintBase<
     ChestHintTypes['rankMimic'],
     HintParameterTypes['rank']
-  >;
-  RankMinimumMimics: ChestHintBase<
-    ChestHintTypes['rankMinimumMimics'],
-    HintParameterTypes['rank'],
-    HintParameterTypes['number']
   >;
   RankMoreMimics: ChestHintBase<
     ChestHintTypes['rankMoreMimics'],

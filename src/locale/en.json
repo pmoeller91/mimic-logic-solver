@@ -19,8 +19,6 @@
       "contextLabel": "Chest {{chestNum, number}} of {{totalChests, number}}, Row {{row, number}} Column {{col, number}}"
     },
     "chestHint": {
-      "selfAsleep": "Zzz...",
-      "selfAsleep_blank": "Asleep.",
       "chestColors": {
         "BLACK": "black",
         "BLUE": "blue",
@@ -37,16 +35,16 @@
         "UP_RIGHT": "Diagonal up right from me"
       },
       "chestRank": {
-        "TOP_MOST": "top row",
-        "RIGHT_MOST": "rightmost column",
+        "BOTTOM_MOST": "bottom row",
         "LEFT_MOST": "leftmost column",
-        "BOTTOM_MOST": "bottom row"
+        "RIGHT_MOST": "rightmost column",
+        "TOP_MOST": "top row"
       },
       "chestRank_directionOnly": {
-        "TOP_MOST": "top",
-        "RIGHT_MOST": "rightmost",
+        "BOTTOM_MOST": "bottom",
         "LEFT_MOST": "leftmost",
-        "BOTTOM_MOST": "bottom"
+        "RIGHT_MOST": "rightmost",
+        "TOP_MOST": "top"
       },
       "colorGold": "There's some Gold hiding somewhere in a $t(chestHint.chestColors.{{param1}}) box.",
       "colorGold_blank": "There's some Gold hiding somewhere in a [color] box.",
@@ -59,10 +57,10 @@
       "colorNoGold_blank": "None of the [color] boxes contain any Gold.",
       "colorNoMimic": "There is no Mimic among the $t(chestHint.chestColors.{{param1}}) boxes.",
       "colorNoMimic_blank": "There is no Mimic among the [color] boxes.",
-      "colorNumMimics": "$t(chestHint.colorNumMimics_num, {\"count\": {{param2}}, \"param1\": \"{{param1}}\" })",
+      "colorNumMimics": "$t(chestHint.colorNumMimics_num, {\"count\": {{param1}}, \"param2\": \"{{param2}}\" })",
       "colorNumMimics_blank": "[#] Mimics are hiding in [color] boxes.",
-      "colorNumMimics_num_one": "{{count, number}} Mimic is hiding in a $t(chestHint.chestColors.{{param1}}) box.",
-      "colorNumMimics_num_other": "{{count, number}} Mimics are hiding in $t(chestHint.chestColors.{{param1}}) boxes.",
+      "colorNumMimics_num_one": "{{count, number}} Mimic is hiding in a $t(chestHint.chestColors.{{param2}}) box.",
+      "colorNumMimics_num_other": "{{count, number}} Mimics are hiding in $t(chestHint.chestColors.{{param2}}) boxes.",
       "colorNumMimics_paramsReversed": "false",
       "colorSameMimics": "Same number of Mimics in $t(chestHint.chestColors.{{param1}}) and $t(chestHint.chestColors.{{param2}}) boxes.",
       "colorSameMimics_blank": "Same number of Mimics in [color] and [color] boxes.",
@@ -74,17 +72,14 @@
       "directionNotGold_blank": "The box [direction] from me has no Gold.",
       "directionNotMimic": "$t(chestHint.chestDirections.{{param1}}) isn't a Mimic.",
       "directionNotMimic_blank": "The box [direction] from me isn't a Mimic.",
+      "mimicsNeighbors": "2 Mimics hide side-by-side.",
+      "mimicsNotNeighbors": "2 of the Mimics are not neighbors.",
       "mimicsNotSameColor": "Not all the Mimics are the same color.",
       "mimicsSameColor": "All the Mimics are the same color.",
       "rankGold": "There's some Gold somewhere in the $t(chestHint.chestRank.{{param1}}).",
       "rankGold_blank": "There's some Gold somewhere in the [row / column].",
-      "rankMimic": "The $t(chestHint.chestRank.{{param1}}) contains a Mimic.",
-      "rankMimic_blank": "The [row / column] contains a Mimic.",
-      "rankMinimumMimics": "$t(chestHint.rankMinimumMimics_num, { \"count\": {{param2}}, \"param1\": \"{{param1}}\" })",
-      "rankMinimumMimics_blank": "The [row / column] has at least [#] mimics.",
-      "rankMinimumMimics_num_one": "The $t(chestHint.chestRank.{{param1}}) has at least {{count, number}} Mimic.",
-      "rankMinimumMimics_num_other": "The $t(chestHint.chestRank.{{param1}}) has at least {{count, number}} Mimics.",
-      "rankMinimumMimics_paramsReversed": "false",
+      "rankMimic": "The $t(chestHint.chestRank.{{param1}}) has at least 1 Mimic.",
+      "rankMimic_blank": "The [row / column] has at least 1 Mimic.",
       "rankMoreMimics": "The $t(chestHint.chestRank.{{param1}}) has more Mimics than the $t(chestHint.chestRank_directionOnly.{{param2}}).",
       "rankMoreMimics_blank": "The [row / column] has more Mimics than the [row / column].",
       "rankNoGold": "There's no Gold in the $t(chestHint.chestRank.{{param1}}).",
@@ -93,6 +88,8 @@
       "rankNoMimic_blank": "The [row / column] contains no Mimics.",
       "rankSameMimics": "Same number of Mimics in $t(chestHint.chestRank_directionOnly.{{param1}}) and $t(chestHint.chestRank.{{param2}})s.",
       "rankSameMimics_blank": "Same number of Mimics in [row / column] and [row / column].",
+      "selfAsleep": "Zzz...",
+      "selfAsleep_blank": "Asleep.",
       "selfNotMimic": "I'm not a Mimic."
     },
     "chestLayoutSelector": {
@@ -170,20 +167,21 @@
             "label_ordinal_other": "{{count}}th Rank",
             "label_ordinal_two": "{{count}}nd Rank",
             "ranks": {
-              "TOP_MOST": "Top Row",
               "BOTTOM_MOST": "Bottom Row",
               "LEFT_MOST": "Leftmost Column",
-              "RIGHT_MOST": "Rightmost Column"
+              "RIGHT_MOST": "Rightmost Column",
+              "TOP_MOST": "Top Row"
             }
           }
         },
         "title": "Chest Hint",
         "type": {
           "group": {
-            "self": "Self",
             "color": "Color",
             "direction": "Direction",
-            "rank": "Rank"
+            "mimics": "Mimics",
+            "rank": "Rank",
+            "self": "Self"
           },
           "label": "Hint Type"
         }
