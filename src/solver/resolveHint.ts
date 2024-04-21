@@ -1,13 +1,34 @@
 import { Chest } from '@/types/chest';
 import { ChestGrid } from '@/types/chestGrid';
-import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
-import { chestContentIncludes } from '@/util/chest/chestContentIncludes';
-import { getAdjacentChest } from '@/util/chest-grid/getAdjacentChest';
 import { CHEST_HINT_TYPE } from '@/types/chestHint';
+import { GameInfo } from '@/types/state/gameInfo';
+import { resolveColorMoreMimics } from './hint-resolvers/resolveColorMoreMimics';
+import { chestHasHint } from '../util/chest/chestHasHint';
+import { resolveDirectionMimic } from './hint-resolvers/resolveDirectionMimic';
+import { resolveColorGold } from './hint-resolvers/resolveColorGold';
+import { resolveColorMimic } from './hint-resolvers/resolveColorMimic';
+import { resolveColorNoGold } from './hint-resolvers/resolveColorNoGold';
+import { resolveColorNoMimic } from './hint-resolvers/resolveColorNoMimic';
+import { resolveDirectionGold } from './hint-resolvers/resolveDirectionGold';
+import { resolveDirectionNotGold } from './hint-resolvers/resolveDirectionNotGold';
+import { resolveDirectionNotMimic } from './hint-resolvers/resolveDirectionNotMimic';
+import { resolveMimicsNeighbors } from './hint-resolvers/resolveMimicsNeighbors';
+import { resolveMimicsNotNeighbors } from './hint-resolvers/resolveMimicsNotNeighbors';
+import { resolveMimicsNotSameColor } from './hint-resolvers/resolveMimicsNotSameColor';
+import { resolveMimicsSameColor } from './hint-resolvers/resolveMimicsSameColor';
+import { resolveRankGold } from './hint-resolvers/resolveRankGold';
+import { resolveRankMimic } from './hint-resolvers/resolveRankMimic';
+import { resolveRankMoreMimics } from './hint-resolvers/resolveRankMoreMimics';
+import { resolveRankNoGold } from './hint-resolvers/resolveRankNoGold';
+import { resolveRankNoMimic } from './hint-resolvers/resolveRankNoMimic';
+import { resolveRankSameMimics } from './hint-resolvers/resolveRankSameMimics';
+import { resolveColorNumMimics } from './hint-resolvers/resolveColorNumMimics';
+import { resolveColorSameMimics } from './hint-resolvers/resolveColorSameMimics';
 
 interface ResolveHintParams {
   grid: ChestGrid;
   chest: Chest;
+  gameInfo: GameInfo;
 }
 
 /**
@@ -33,72 +54,58 @@ interface ResolveHintParams {
  *  narrowing this would be missed in cases where the chest contains multiple
  *  possible items.
  */
-const resolveHint = ({ grid, chest }: ResolveHintParams): boolean => {
-  const isLiar = chestContentIncludes({
-    chest,
-    contents: CHEST_CONTENTS.mimic,
-  });
-  switch (chest.hint.type) {
-    case CHEST_HINT_TYPE.selfAsleep:
+const resolveHint = ({ grid, chest, gameInfo }: ResolveHintParams): boolean => {
+  switch (true) {
+    case chestHasHint(chest, CHEST_HINT_TYPE.selfAsleep):
       return true;
-    case CHEST_HINT_TYPE.mimicNotSelf:
+    case chestHasHint(chest, CHEST_HINT_TYPE.selfNotMimic):
       return true;
-    case CHEST_HINT_TYPE.colorMoreMimics: {
-      const numMimicsByColor = grid.rows
-        .flat()
-        .filter((chest) =>
-          chestContentIncludes({ chest, contents: CHEST_CONTENTS.mimic })
-        )
-        .reduce(
-          (mimicsByColor, chest) => ({
-            ...mimicsByColor,
-            [chest.color]: mimicsByColor[chest.color] + 1,
-          }),
-          {
-            [CHEST_COLOR.red]: 0,
-            [CHEST_COLOR.black]: 0,
-            [CHEST_COLOR.blue]: 0,
-          }
-        );
-      const hintTrue =
-        numMimicsByColor[chest.hint.params[0]] >
-        numMimicsByColor[chest.hint.params[1]];
-      return isLiar ? !hintTrue : hintTrue;
-    }
-    case CHEST_HINT_TYPE.directionMimic:
-      {
-        const adjacentChest = getAdjacentChest({
-          grid,
-          chest,
-          direction: chest.hint.params[0],
-        });
-        if (!adjacentChest) {
-          return false;
-        }
-        const hintTrue = chestContentIncludes({
-          chest: adjacentChest,
-          contents: CHEST_CONTENTS.mimic,
-        });
-        if (hintTrue && !isLiar) {
-          adjacentChest.contents = CHEST_CONTENTS.mimic;
-          return true;
-        }
-        if (hintTrue && isLiar) {
-          return false;
-        }
-        if (!hintTrue && !isLiar) {
-          return false;
-        }
-        if (!hintTrue && isLiar) {
-          return true;
-        }
-      }
-      break;
+
+    case chestHasHint(chest, CHEST_HINT_TYPE.colorGold):
+      return resolveColorGold({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.colorMimic):
+      return resolveColorMimic({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.colorMoreMimics):
+      return resolveColorMoreMimics({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.colorNoGold):
+      return resolveColorNoGold({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.colorNoMimic):
+      return resolveColorNoMimic({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.colorNumMimics):
+      return resolveColorNumMimics({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.colorSameMimics):
+      return resolveColorSameMimics({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.directionGold):
+      return resolveDirectionGold({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.directionMimic):
+      return resolveDirectionMimic({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.directionNotGold):
+      return resolveDirectionNotGold({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.directionNotMimic):
+      return resolveDirectionNotMimic({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.mimicsNeighbors):
+      return resolveMimicsNeighbors({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.mimicsNotNeighbors):
+      return resolveMimicsNotNeighbors({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.mimicsNotSameColor):
+      return resolveMimicsNotSameColor({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.mimicsSameColor):
+      return resolveMimicsSameColor({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.rankGold):
+      return resolveRankGold({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.rankMimic):
+      return resolveRankMimic({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.rankMoreMimics):
+      return resolveRankMoreMimics({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.rankNoGold):
+      return resolveRankNoGold({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.rankNoMimic):
+      return resolveRankNoMimic({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.rankSameMimics):
+      return resolveRankSameMimics({ chest, grid, gameInfo });
     default:
       return false;
   }
-
-  return false;
 };
 
 export { resolveHint };

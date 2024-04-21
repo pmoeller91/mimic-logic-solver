@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { createChest, defaultChest } from './createChest';
 import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
 import { Chest } from '@/types/chest';
+import { CHEST_HINT_TYPE } from '@/types/chestHint';
 
 describe('createChest', () => {
   it('should create a default chest when provided with no parameters', () => {
@@ -20,7 +21,7 @@ describe('createChest', () => {
     const expectedChest: Required<Chest> = {
       color: CHEST_COLOR.red,
       contents: CHEST_CONTENTS.gear,
-      hint: { type: 'ASLEEP', params: [] },
+      hint: { type: CHEST_HINT_TYPE.selfAsleep, params: [] },
     };
     expect(createChest(expectedChest)).toEqual(expectedChest);
   });
@@ -28,7 +29,7 @@ describe('createChest', () => {
     const baseChest = {
       color: CHEST_COLOR.red,
       contents: CHEST_CONTENTS.gear,
-      hint: { type: 'ASLEEP', params: [] },
+      hint: { type: CHEST_HINT_TYPE.selfAsleep, params: [] },
     } satisfies Required<Chest>;
     const createdChest = createChest(baseChest);
     expect(createdChest).not.toBe(baseChest);

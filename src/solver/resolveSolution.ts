@@ -15,13 +15,13 @@ interface ResolveSolutionParams {
 // content to allow a hint to be valid for instance.
 const resolveSolution = ({
   grid,
-  gameInfo: _gameInfo,
+  gameInfo,
 }: ResolveSolutionParams): InternalSolverSolution | null => {
   const resolvedGrid = merge<ChestGrid>({}, grid);
   if (
     resolvedGrid.rows
       .flat()
-      .some((chest) => !resolveHint({ grid: resolvedGrid, chest }))
+      .some((chest) => !resolveHint({ grid: resolvedGrid, chest, gameInfo }))
   ) {
     return null;
   }
