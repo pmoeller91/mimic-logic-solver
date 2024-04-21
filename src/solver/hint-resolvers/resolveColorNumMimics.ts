@@ -10,8 +10,8 @@ const resolveColorNumMimics: HintResolver<ChestHintTypes['colorNumMimics']> = ({
   gameInfo,
 }: HintResolverParams<ChestHintTypes['colorNumMimics']>) => {
   const isTruthful = getIsTruthful({ chest, grid, gameInfo });
-  const chestColor = chest.hint.params[0];
-  const numMimics = chest.hint.params[1];
+  const chestColor = chest.hint.params[1];
+  const numMimics = chest.hint.params[0];
 
   const colorChests = grid.rows
     .flat()

@@ -38,7 +38,7 @@ const getDefaultHint = <T extends ChestHintType>(
     case CHEST_HINT_TYPE.colorNumMimics:
       return {
         type: hintType,
-        params: [defaultColor, defaultNumber],
+        params: [defaultNumber, defaultColor],
       } as ChestHintOfType<T>;
     case CHEST_HINT_TYPE.directionNotGold:
     case CHEST_HINT_TYPE.directionNotMimic:

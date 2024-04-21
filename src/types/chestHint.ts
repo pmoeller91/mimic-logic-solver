@@ -114,8 +114,8 @@ interface ChestHints {
   >;
   ColorNumMimics: ChestHintBase<
     ChestHintTypes['colorNumMimics'],
-    HintParameterTypes['color'],
-    HintParameterTypes['number']
+    HintParameterTypes['number'],
+    HintParameterTypes['color']
   >;
   ColorSameMimics: ChestHintBase<
     ChestHintTypes['colorSameMimics'],

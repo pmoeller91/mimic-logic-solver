@@ -11,7 +11,7 @@ interface IsTruthfulParams {
 }
 
 const getIsTruthful = ({ chest }: IsTruthfulParams) => {
-  return chestContentIncludes({
+  return !chestContentIncludes({
     chest,
     contents: CHEST_CONTENTS.mimic,
   });
