@@ -2,9 +2,18 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import legacy from '@vitejs/plugin-legacy';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        ja: resolve(__dirname, 'ja/index.html'),
+      },
+    },
+  },
   plugins: [
     react({
       plugins: [
