@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { ChestPropertiesField } from '../ChestPropertiesField';
+import { FormField } from '../../form-field/FormField';
 import { CHEST_HINT_TYPE, ChestHintType } from '@/types/chestHint';
 import { useTranslation } from 'react-i18next';
 import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
@@ -9,7 +9,7 @@ import { useAtom } from 'jotai';
 import { getGameTranslation } from '@/util/getGameTranslation';
 import { TRANSLATION_TYPE } from '@/types/translation';
 import { getDefaultHint } from '@/util/getDefaultHint';
-import { EditChestInfoSelect } from '../EditChestInfoSelect';
+import { FormSelect } from '../../form-field/FormSelect';
 
 interface ChestHintTypeFieldProps {
   className?: string;
@@ -72,6 +72,7 @@ const chestHintGroups: ChestHintGroup[] = [
       CHEST_HINT_TYPE.mimicsNotSameColor,
       CHEST_HINT_TYPE.mimicsNeighbors,
       CHEST_HINT_TYPE.mimicsNotNeighbors,
+      CHEST_HINT_TYPE.mimicsNumber,
     ],
   },
 ];
@@ -98,8 +99,8 @@ const ChestHintTypeField = forwardRef<
   const label = t('editChestInfo.chestHintSection.type.label');
 
   return (
-    <ChestPropertiesField label={label} className={className}>
-      <EditChestInfoSelect
+    <FormField label={label} className={className}>
+      <FormSelect
         className="lg:max-w-48"
         onChange={handleOnChange}
         value={selectedChestHint.type}
@@ -121,8 +122,8 @@ const ChestHintTypeField = forwardRef<
             {idx !== arr.length - 1 && <hr />}
           </React.Fragment>
         ))}
-      </EditChestInfoSelect>
-    </ChestPropertiesField>
+      </FormSelect>
+    </FormField>
   );
 });
 

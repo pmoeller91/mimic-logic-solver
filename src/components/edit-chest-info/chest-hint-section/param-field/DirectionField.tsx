@@ -1,7 +1,7 @@
 import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
 import { useAtom } from 'jotai';
-import { ChestPropertiesField } from '../../ChestPropertiesField';
-import { EditChestInfoSelect } from '../../EditChestInfoSelect';
+import { FormField } from '../../../form-field/FormField';
+import { FormSelect } from '../../../form-field/FormSelect';
 import { useCallback } from 'use-memo-one';
 import { DefinedAttribute } from '@/types/definedAttribute';
 import { useTranslation } from 'react-i18next';
@@ -33,8 +33,8 @@ function DirectionField({ directionAtom, position }: DirectionFieldProps) {
     label = t('editChestInfo.chestHintSection.param.direction.label');
   }
   return (
-    <ChestPropertiesField label={label}>
-      <EditChestInfoSelect value={selectedDirection} onChange={handleOnChange}>
+    <FormField label={label}>
+      <FormSelect value={selectedDirection} onChange={handleOnChange}>
         {Object.values(CHEST_DIRECTION).map((chestDirection) => (
           <option key={chestDirection} value={chestDirection}>
             {t(
@@ -42,8 +42,8 @@ function DirectionField({ directionAtom, position }: DirectionFieldProps) {
             )}
           </option>
         ))}
-      </EditChestInfoSelect>
-    </ChestPropertiesField>
+      </FormSelect>
+    </FormField>
   );
 }
 

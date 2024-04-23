@@ -8,6 +8,7 @@ type GetGameModeTranslationParams = GetTranslationParams<
 
 const gameModeTranslations: Record<GameMode, string> = {
   [GAME_MODE.standard]: 'gameMode.standard',
+  [GAME_MODE.random]: 'gameMode.random',
 };
 
 function getGameModeTranslation({ key, t }: GetGameModeTranslationParams) {

@@ -5,8 +5,8 @@ import { useCallback, useMemo } from 'use-memo-one';
 import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChestPropertiesField } from './ChestPropertiesField';
-import { EditChestInfoSelect } from './EditChestInfoSelect';
+import { FormField } from '../form-field/FormField';
+import { FormSelect } from '../form-field/FormSelect';
 
 interface ChestColorFieldProps {
   className?: string;
@@ -38,12 +38,8 @@ const ChestColorField = forwardRef<HTMLSelectElement, ChestColorFieldProps>(
     const label = t('editChestInfo.chestPropertiesSection.chestColor.label');
 
     return (
-      <ChestPropertiesField label={label} className={className}>
-        <EditChestInfoSelect
-          onChange={handleOnChange}
-          ref={ref}
-          value={chestColor}
-        >
+      <FormField label={label} className={className}>
+        <FormSelect onChange={handleOnChange} ref={ref} value={chestColor}>
           {Object.values(CHEST_COLOR).map((color) => (
             <option value={color} key={color}>
               {t(
@@ -51,8 +47,8 @@ const ChestColorField = forwardRef<HTMLSelectElement, ChestColorFieldProps>(
               )}
             </option>
           ))}
-        </EditChestInfoSelect>
-      </ChestPropertiesField>
+        </FormSelect>
+      </FormField>
     );
   }
 );

@@ -1,8 +1,8 @@
 import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
 import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
 import { useAtom } from 'jotai';
-import { ChestPropertiesField } from '../../ChestPropertiesField';
-import { EditChestInfoSelect } from '../../EditChestInfoSelect';
+import { FormField } from '../../../form-field/FormField';
+import { FormSelect } from '../../../form-field/FormSelect';
 import { useCallback } from 'use-memo-one';
 import { DefinedAttribute } from '@/types/definedAttribute';
 import { useTranslation } from 'react-i18next';
@@ -33,8 +33,8 @@ function ColorField({ colorAtom, position }: ColorFieldProps) {
     label = t('editChestInfo.chestHintSection.param.color.label');
   }
   return (
-    <ChestPropertiesField label={label}>
-      <EditChestInfoSelect value={selectedColor} onChange={handleOnChange}>
+    <FormField label={label}>
+      <FormSelect value={selectedColor} onChange={handleOnChange}>
         {Object.values(CHEST_COLOR).map((chestColor) => (
           <option key={chestColor} value={chestColor}>
             {t(
@@ -42,8 +42,8 @@ function ColorField({ colorAtom, position }: ColorFieldProps) {
             )}
           </option>
         ))}
-      </EditChestInfoSelect>
-    </ChestPropertiesField>
+      </FormSelect>
+    </FormField>
   );
 }
 

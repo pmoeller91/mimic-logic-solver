@@ -1,5 +1,13 @@
 {
   "translation": {
+    "resetPuzzleButton": {
+      "confirmDialogTitle": "パズルをリセットしますか？",
+      "confirmDialogExplanation": "本当にリセットしますか？パズルをリセットすると、すべてのヒントが 「寝ています」に、すべての色が「赤い」に、すべての中身が 「？」 に変わります。",
+      "resetButtonLabel": "リセット"
+    },
+    "confirmButton": {
+      "cancelLabel": "キャンセル"
+    },
     "centerPanel": {
       "gameFieldLabel": "ゲームフィールド ",
       "solutionLabel": "解答"
@@ -78,6 +86,8 @@
       "mimicsNeighbors": "ミミック２匹は隣同士だ",
       "mimicsNotNeighbors": "ミミック２匹は隣同士じゃない",
       "mimicsNotSameColor": "ミミック達の色は同じではない",
+      "mimicsNumber": "この中にミミックは{{param1, number}}匹いる",
+      "mimicsNumber_blank": "この中にミミックは【＃】匹いる",
       "mimicsSameColor": "ミミック達の色は全て同じだ",
       "rankGold": "$t(chestHint.chestRank.{{param1}})のどこかにお金が入っている",
       "rankGold_blank": "【列】のどこかにお金が入っている",
@@ -178,6 +188,7 @@
       "title": "宝箱の属性"
     },
     "editGameInfo": {
+      "gameModeLabel": "ゲームモード",
       "gearLabel": "装備",
       "goldLabel": "お金",
       "itemsLabel": "消費アイテム",
@@ -197,7 +208,8 @@
       "label_optional": "{{label}}　<secondary>任意</secondary>"
     },
     "gameMode": {
-      "standard": "スタンダード"
+      "standard": "スタンダード",
+      "random": "ランダム"
     },
     "header": {
       "chests": "宝箱",

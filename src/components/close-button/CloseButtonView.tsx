@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
-import clsx from 'clsx';
+import { forwardRef } from 'react';
+import { Button } from '../button/Button';
+import { BUTTON_TYPE } from '../button/buttonType';
 
 interface CloseButtonViewProps {
   ariaLabel: string;
@@ -8,20 +10,25 @@ interface CloseButtonViewProps {
   className?: string;
 }
 
-function CloseButtonView({
-  ariaLabel,
-  onClick,
-  className,
-}: CloseButtonViewProps) {
-  return (
-    <button
-      onClick={onClick}
-      className={clsx('bg-transparent h-12 w-12 p-2', className)}
-    >
-      <span className="sr-only">{ariaLabel}</span>
-      <FontAwesomeIcon icon={faXmark} role="presentation" size="xl" />
-    </button>
-  );
-}
+const CloseButtonView = forwardRef<HTMLButtonElement, CloseButtonViewProps>(
+  function CloseButtonView({ ariaLabel, onClick, className }, ref) {
+    return (
+      <Button
+        onClick={onClick}
+        className={className}
+        buttonType={BUTTON_TYPE.close}
+        ref={ref}
+      >
+        <span className="sr-only">{ariaLabel}</span>
+        <FontAwesomeIcon
+          icon={faXmark}
+          role="presentation"
+          size="xl"
+          className="m-auto"
+        />
+      </Button>
+    );
+  }
+);
 
 export { CloseButtonView };

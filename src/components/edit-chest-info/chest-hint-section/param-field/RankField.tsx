@@ -1,7 +1,7 @@
 import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
 import { useAtom } from 'jotai';
-import { ChestPropertiesField } from '../../ChestPropertiesField';
-import { EditChestInfoSelect } from '../../EditChestInfoSelect';
+import { FormField } from '../../../form-field/FormField';
+import { FormSelect } from '../../../form-field/FormSelect';
 import { useCallback } from 'use-memo-one';
 import { DefinedAttribute } from '@/types/definedAttribute';
 import { useTranslation } from 'react-i18next';
@@ -33,17 +33,15 @@ function RankField({ rankAtom, position }: RankFieldProps) {
     label = t('editChestInfo.chestHintSection.param.rank.label');
   }
   return (
-    <ChestPropertiesField label={label}>
-      <EditChestInfoSelect value={selectedRank} onChange={handleOnChange}>
+    <FormField label={label}>
+      <FormSelect value={selectedRank} onChange={handleOnChange}>
         {Object.values(CHEST_RANK).map((chestRank) => (
           <option key={chestRank} value={chestRank}>
-            {t(
-              `editChestInfo.chestHintSection.param.rank.ranks.${chestRank}`
-            )}
+            {t(`editChestInfo.chestHintSection.param.rank.ranks.${chestRank}`)}
           </option>
         ))}
-      </EditChestInfoSelect>
-    </ChestPropertiesField>
+      </FormSelect>
+    </FormField>
   );
 }
 

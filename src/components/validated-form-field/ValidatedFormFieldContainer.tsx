@@ -1,4 +1,7 @@
-import { FormFieldView, FormFieldViewProps } from './FormFieldView';
+import {
+  ValidatedFormFieldView,
+  ValidatedFormFieldViewProps,
+} from './ValidatedFormFieldView';
 import { useAtom } from 'jotai';
 import { useCallback } from 'use-memo-one';
 import { FormValueAtom } from '@/util/formValueAtom';
@@ -7,21 +10,21 @@ import { ComponentProps, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getLocalizedErrorMessage } from '@/util/yup/getLocalizedErrorMessage';
 
-interface FormFieldContainerProps<T> {
+interface ValidatedFormFieldContainerProps<T> {
   formValueAtom: FormValueAtom<T>;
-  inputAttributes?: FormFieldViewProps['inputAttributes'];
+  inputAttributes?: ValidatedFormFieldViewProps['inputAttributes'];
   label: string;
   className?: string;
   optional?: boolean;
 }
 
-function FormFieldContainer<T>({
+function ValidatedFormFieldContainer<T>({
   formValueAtom,
   label,
   inputAttributes,
   className,
   optional,
-}: FormFieldContainerProps<T>) {
+}: ValidatedFormFieldContainerProps<T>) {
   const [{ isDirty, validateImmediate, value, error, isValid }, setFormValue] =
     useAtom(formValueAtom);
   const [touched, setTouched] = useState(false);
@@ -29,7 +32,7 @@ function FormFieldContainer<T>({
   const { t } = useTranslation();
 
   const handleOnChange = useCallback<
-    ComponentProps<typeof FormFieldView>['onChange']
+    ComponentProps<typeof ValidatedFormFieldView>['onChange']
   >(
     (e) => {
       setFormValue(e.target.value);
@@ -38,7 +41,7 @@ function FormFieldContainer<T>({
   );
 
   const handleOnBlur = useCallback<
-    ComponentProps<typeof FormFieldView>['onBlur']
+    ComponentProps<typeof ValidatedFormFieldView>['onBlur']
   >(() => {
     setTouched(true);
     validateImmediate();
@@ -51,7 +54,7 @@ function FormFieldContainer<T>({
     : getLocalizedErrorMessage(error, t);
 
   return (
-    <FormFieldView
+    <ValidatedFormFieldView
       value={value}
       onChange={handleOnChange}
       onBlur={handleOnBlur}
@@ -66,5 +69,5 @@ function FormFieldContainer<T>({
   );
 }
 
-export { FormFieldContainer };
-export type { FormFieldContainerProps };
+export { ValidatedFormFieldContainer };
+export type { ValidatedFormFieldContainerProps };

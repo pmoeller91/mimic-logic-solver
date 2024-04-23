@@ -121,6 +121,10 @@ function ChestHintParamsField() {
           shouldProvidePosition
         />
       );
+    case CHEST_HINT_TYPE.mimicsNumber:
+      return (
+        <AmountField amountAtom={paramAtoms[0] as SimpleWritableAtom<number>} />
+      );
     default:
       return null;
   }

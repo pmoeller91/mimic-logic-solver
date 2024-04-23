@@ -1,4 +1,5 @@
 import { ComponentPropsWithRef, MouseEventHandler, forwardRef } from 'react';
+import { Button } from '../button/Button';
 
 interface OpenPropertiesDrawerButtonViewProps
   extends ComponentPropsWithRef<'button'> {
@@ -17,7 +18,7 @@ const OpenPropertiesDrawerButtonView = forwardRef<
   ref
 ) {
   return (
-    <button
+    <Button
       {...rest}
       onClick={handleOnClick}
       className={className}
@@ -27,7 +28,7 @@ const OpenPropertiesDrawerButtonView = forwardRef<
       ref={ref}
     >
       {children}
-    </button>
+    </Button>
   );
 });
 

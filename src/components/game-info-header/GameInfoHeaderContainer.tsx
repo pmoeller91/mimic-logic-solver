@@ -11,6 +11,7 @@ import { numGoldAtom } from '@/atoms/numGoldFormValueAtom';
 import { numItemsAtom } from '@/atoms/numItemsFormValueAtom';
 import { numChestsAtom } from '@/atoms/numChestsAtom';
 import { numGearAtom } from '@/atoms/numGearFormValueAtom';
+import { gameModeAtom } from '@/atoms/gameModeAtom';
 
 const headerTranslationKeys = {
   gameMode: 'header.gameMode',
@@ -27,38 +28,57 @@ function GameInfoHeaderContainer() {
     () => mapValues(headerTranslationKeys, (key) => t(key)),
     [t]
   );
-  const gameMode = useMemo(
+  const gameMode = useAtomValue(gameModeAtom);
+  const numMimics = useAtomValue(numMimicsAtom);
+  const numGear = useAtomValue(numGearAtom);
+  const numGold = useAtomValue(numGoldAtom);
+  const numItems = useAtomValue(numItemsAtom);
+
+  const gameModeTranslation = useMemo(
     () =>
       getGameTranslation({
         type: TRANSLATION_TYPE.gameMode,
-        key: GAME_MODE.standard,
+        key: gameMode,
         t,
       }),
-    [t]
+    [t, gameMode]
   );
 
   const unknownHeaderValue = t('header.unknownValue');
 
-  const numMimics = useAtomValue(numMimicsAtom);
-  const numGear = useAtomValue(numGearAtom)?.toString() ?? unknownHeaderValue;
-  const numGold = useAtomValue(numGoldAtom)?.toString() ?? unknownHeaderValue;
-  const numItems = useAtomValue(numItemsAtom)?.toString() ?? unknownHeaderValue;
-  const numChests = useAtomValue(numChestsAtom).toString();
+  const numChestsTranslation = useAtomValue(numChestsAtom).toString();
+
+  let numMimicsTranslation = '';
+  let numGearTranslation = '';
+  let numGoldTranslation = '';
+  let numItemsTranslation = '';
+
+  if (gameMode === GAME_MODE.random) {
+    numMimicsTranslation = unknownHeaderValue;
+    numGearTranslation = unknownHeaderValue;
+    numGoldTranslation = unknownHeaderValue;
+    numItemsTranslation = unknownHeaderValue;
+  } else {
+    numMimicsTranslation = numMimics.toString();
+    numGearTranslation = numGear?.toString() ?? unknownHeaderValue;
+    numGoldTranslation = numGold?.toString() ?? unknownHeaderValue;
+    numItemsTranslation = numItems?.toString() ?? unknownHeaderValue;
+  }
 
   return (
     <GameInfoHeaderView
       gameModeHeader={translatedHeaders.gameMode}
-      gameMode={gameMode}
+      gameMode={gameModeTranslation}
       chestsHeader={translatedHeaders.chests}
-      chests={numChests}
+      chests={numChestsTranslation}
       gearHeader={translatedHeaders.gear}
-      gear={numGear}
+      gear={numGearTranslation}
       goldHeader={translatedHeaders.gold}
-      gold={numGold}
+      gold={numGoldTranslation}
       itemsHeader={translatedHeaders.items}
-      items={numItems}
+      items={numItemsTranslation}
       mimicsHeader={translatedHeaders.mimics}
-      mimics={numMimics.toString()}
+      mimics={numMimicsTranslation.toString()}
     />
   );
 }

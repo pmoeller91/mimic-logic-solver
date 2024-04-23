@@ -1,12 +1,16 @@
 import { Trans } from 'react-i18next';
 
-interface FormFieldLabelProps {
+interface ValidatedFormFieldLabelProps {
   label: string;
   optional?: boolean;
   className?: string;
 }
 
-function FormFieldLabel({ label, optional, className }: FormFieldLabelProps) {
+function ValidatedFormFieldLabel({
+  label,
+  optional,
+  className,
+}: ValidatedFormFieldLabelProps) {
   return (
     <Trans
       i18nKey="formField.label"
@@ -20,4 +24,4 @@ function FormFieldLabel({ label, optional, className }: FormFieldLabelProps) {
   );
 }
 
-export { FormFieldLabel };
+export { ValidatedFormFieldLabel };

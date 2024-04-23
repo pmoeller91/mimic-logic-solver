@@ -1,17 +1,17 @@
 import clsx from 'clsx';
-import { FormFieldLabel } from './FormFieldLabel';
+import { ValidatedFormFieldLabel } from './ValidatedFormFieldLabel';
+import { ComponentPropsWithoutRef } from 'react';
 
-interface FormFieldViewProps {
+interface ValidatedFormFieldViewProps {
   onChange: Required<JSX.IntrinsicElements['input']>['onChange'];
   onBlur: Required<JSX.IntrinsicElements['input']>['onBlur'];
   value: string;
   label: string;
   inputAttributes?:
     | Omit<
-        JSX.IntrinsicElements['input'],
+        ComponentPropsWithoutRef<'input'>,
         'onChange' | 'onBlur' | 'value' | 'id'
-      >
-    | Record<string, unknown>;
+      > & Record<string, unknown>;
   idSuffix: string;
   error?: string;
   touched: boolean;
@@ -19,7 +19,7 @@ interface FormFieldViewProps {
   optional?: boolean;
 }
 
-function FormFieldView({
+function ValidatedFormFieldView({
   onChange,
   onBlur,
   value,
@@ -29,15 +29,15 @@ function FormFieldView({
   error,
   touched,
   className,
-  optional
-}: FormFieldViewProps) {
+  optional,
+}: ValidatedFormFieldViewProps) {
   const inputId = `form-field-input-${idSuffix}`;
   const errorId = `form-field-error-${idSuffix}`;
   return (
     <div className={className}>
       <div className="flex flex-row items-center gap-4">
         <label htmlFor={inputId} className="mr-auto">
-          <FormFieldLabel label={label} optional={optional} />
+          <ValidatedFormFieldLabel label={label} optional={optional} />
         </label>
         <input
           onChange={onChange}
@@ -47,7 +47,7 @@ function FormFieldView({
           aria-invalid={!!error}
           aria-describedby={errorId}
           {...inputAttributes}
-          className={clsx("w-12 text-right font-mono")}
+          className={clsx('w-12 text-right font-mono', inputAttributes?.className)}
         />
       </div>
       <div>
@@ -61,5 +61,5 @@ function FormFieldView({
   );
 }
 
-export { FormFieldView };
-export type { FormFieldViewProps };
+export { ValidatedFormFieldView };
+export type { ValidatedFormFieldViewProps };

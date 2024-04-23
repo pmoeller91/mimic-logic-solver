@@ -97,3 +97,16 @@ input {
   border: 1px solid theme('colors.pll');
   padding: 0.25rem 0.5rem;
 }
+
+input:disabled {
+  background-color: unset;
+  background: repeating-linear-gradient(
+      135deg,
+      theme('colors.bg-light'),
+      theme('colors.bg-light') 4px,
+      theme('colors.bg-dark') 4px,
+      theme('colors.bg-dark') 7px
+    );
+    color: theme('colors.gray.400');
+    border-color: theme('colors.gray.400');
+}

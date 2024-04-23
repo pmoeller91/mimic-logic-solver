@@ -30,6 +30,7 @@ const CHEST_HINT_TYPE = {
   mimicsNeighbors: 'MIMICS_NEIGHBORS',
   mimicsNotNeighbors: 'MIMICS_NOT_NEIGHBORS',
   mimicsNotSameColor: 'MIMICS_NOT_ALL_SAME_COLOR',
+  mimicsNumber: 'MIMICS_NUMBER',
   mimicsSameColor: 'MIMICS_ALL_SAME_COLOR',
   rankGold: 'RANK_GOLD',
   rankMimic: 'RANK_MIMIC',
@@ -142,6 +143,10 @@ interface ChestHints {
   MimicsNotNeighbors: ChestHintBase<ChestHintTypes['mimicsNotNeighbors']>;
   MimicsNotSameColor: ChestHintBase<ChestHintTypes['mimicsNotSameColor']>;
   MimicsSameColor: ChestHintBase<ChestHintTypes['mimicsSameColor']>;
+  MimicsNumber: ChestHintBase<
+    ChestHintTypes['mimicsNumber'],
+    HintParameterTypes['number']
+  >;
   RankGold: ChestHintBase<
     ChestHintTypes['rankGold'],
     HintParameterTypes['rank']

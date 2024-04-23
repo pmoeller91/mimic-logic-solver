@@ -1,7 +1,7 @@
 import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
 import { useAtom } from 'jotai';
-import { ChestPropertiesField } from '../../ChestPropertiesField';
-import { EditChestInfoSelect } from '../../EditChestInfoSelect';
+import { FormField } from '../../../form-field/FormField';
+import { FormSelect } from '../../../form-field/FormSelect';
 import { useCallback } from 'use-memo-one';
 import { DefinedAttribute } from '@/types/definedAttribute';
 import { useTranslation } from 'react-i18next';
@@ -34,8 +34,8 @@ function AmountField({ amountAtom, position }: AmountFieldProps) {
     label = t('editChestInfo.chestHintSection.param.amount.label');
   }
   return (
-    <ChestPropertiesField label={label}>
-      <EditChestInfoSelect value={amount} onChange={handleOnChange}>
+    <FormField label={label}>
+      <FormSelect value={amount} onChange={handleOnChange}>
         {validAmounts.map((validAmount) => (
           <option key={validAmount} value={validAmount}>
             {t(`editChestInfo.chestHintSection.param.amount.optionLabel`, {
@@ -43,8 +43,8 @@ function AmountField({ amountAtom, position }: AmountFieldProps) {
             })}
           </option>
         ))}
-      </EditChestInfoSelect>
-    </ChestPropertiesField>
+      </FormSelect>
+    </FormField>
   );
 }
 

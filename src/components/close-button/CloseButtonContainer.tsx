@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { CloseButtonView } from './CloseButtonView';
 import { useCallback } from 'use-memo-one';
-import { ComponentProps } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 
 interface CloseButtonContainerProps {
   close: () => void;
@@ -10,7 +10,7 @@ interface CloseButtonContainerProps {
 
 type OnClickHandler = ComponentProps<typeof CloseButtonView>['onClick'];
 
-function CloseButtonContainer({ close, className }: CloseButtonContainerProps) {
+const CloseButtonContainer = forwardRef<HTMLButtonElement, CloseButtonContainerProps>(function CloseButtonContainer({ close, className }, ref) {
   const { t } = useTranslation();
   const ariaLabel = t('closeButton.ariaLabel');
   const handleOnClick: OnClickHandler = useCallback(() => {
@@ -21,8 +21,9 @@ function CloseButtonContainer({ close, className }: CloseButtonContainerProps) {
       ariaLabel={ariaLabel}
       onClick={handleOnClick}
       className={className}
+      ref={ref}
     />
   );
-}
+});
 
 export { CloseButtonContainer };

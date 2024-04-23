@@ -9,6 +9,7 @@ import { useCallback } from 'use-memo-one';
 import { MAIN_TAB, MainTab } from '@/types/mainTab';
 import { invert } from 'lodash-es';
 import { useTranslation } from 'react-i18next';
+import { ResetPuzzleButton } from '../reset-puzzle-button/ResetPuzzleButton';
 
 const tabIndexes: Record<MainTab, number> = {
   [MAIN_TAB.gameField]: 0,
@@ -47,7 +48,8 @@ function CenterPanel() {
           <SolutionPanel />
         </TabPanel>
       </Tabs>
-      <div className="flex flex-row-reverse p-4 gap-4 bg-pd">
+      <div className="flex flex-row justify-end p-4 gap-4 bg-pd">
+        <ResetPuzzleButton />
         <SolveButtonContainer />
       </div>
     </div>

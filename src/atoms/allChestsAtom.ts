@@ -10,5 +10,13 @@ type AllChests = [
 
 const allChestsAtom = atom<AllChests>(initialState.allChests);
 
-export { allChestsAtom };
+const allChestsCallbackAtom = atom(
+  (get) => get(allChestsAtom),
+  (get, set, callback: (allChests: AllChests) => AllChests) => {
+    const currentAllChests = get(allChestsAtom);
+    set(allChestsAtom, callback(currentAllChests));
+  }
+);
+
+export { allChestsAtom, allChestsCallbackAtom };
 export type { AllChests };

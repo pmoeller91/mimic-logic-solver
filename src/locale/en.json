@@ -1,5 +1,13 @@
 {
   "translation": {
+    "resetPuzzleButton": {
+      "confirmDialogTitle": "Reset Puzzle?",
+      "confirmDialogExplanation": "Are you sure you want to reset the puzzle? Resetting the puzzle will change all hints to \"Asleep,\" all colors to \"Red,\" and all contents to \"?.\"",
+      "resetButtonLabel": "Reset"
+    },
+    "confirmButton": {
+      "cancelLabel": "Cancel"
+    },
     "centerPanel": {
       "gameFieldLabel": "Game Field",
       "solutionLabel": "Solution"
@@ -75,6 +83,10 @@
       "mimicsNeighbors": "2 Mimics hide side-by-side.",
       "mimicsNotNeighbors": "2 of the Mimics are not neighbors.",
       "mimicsNotSameColor": "Not all the Mimics are the same color.",
+      "mimicsNumber": "$t(chestHint.mimicsNumber_amount, {\"count\": {{param1}} })",
+      "mimicsNumber_amount_one": "{{count, number}} of these boxes contains a Mimic.",
+      "mimicsNumber_amount_other": "{{count, number}} of these boxes contain a Mimic.",
+      "mimicsNumber_blank": "[#] of these boxes contain a Mimic.",
       "mimicsSameColor": "All the Mimics are the same color.",
       "rankGold": "There's some Gold somewhere in the $t(chestHint.chestRank.{{param1}}).",
       "rankGold_blank": "There's some Gold somewhere in the [row / column].",
@@ -203,6 +215,7 @@
       "title": "Edit Chest Properties"
     },
     "editGameInfo": {
+      "gameModeLabel": "Game Mode",
       "gearLabel": "Gear",
       "goldLabel": "Gold",
       "itemsLabel": "Items",
@@ -222,7 +235,8 @@
       "label_optional": "{{label}} <secondary>(Optional)</secondary>"
     },
     "gameMode": {
-      "standard": "Standard"
+      "standard": "Standard",
+      "random": "Random"
     },
     "header": {
       "chests": "Chests",

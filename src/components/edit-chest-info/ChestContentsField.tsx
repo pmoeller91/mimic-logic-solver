@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import { ChestPropertiesField } from './ChestPropertiesField';
-import { EditChestInfoSelect } from './EditChestInfoSelect';
+import { FormField } from '../form-field/FormField';
+import { FormSelect } from '../form-field/FormSelect';
 import { useTranslation } from 'react-i18next';
 import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
 import { useCallback, useMemo } from 'use-memo-one';
@@ -39,12 +39,8 @@ const ChestContentsField = forwardRef<
   );
 
   return (
-    <ChestPropertiesField label={label} className={className}>
-      <EditChestInfoSelect
-        ref={ref}
-        value={chestContents}
-        onChange={handleOnChange}
-      >
+    <FormField label={label} className={className}>
+      <FormSelect ref={ref} value={chestContents} onChange={handleOnChange}>
         {Object.values(CHEST_CONTENTS).map((contents) => (
           <option key={contents} value={contents}>
             {getGameTranslation({
@@ -54,8 +50,8 @@ const ChestContentsField = forwardRef<
             })}
           </option>
         ))}
-      </EditChestInfoSelect>
-    </ChestPropertiesField>
+      </FormSelect>
+    </FormField>
   );
 });
 
