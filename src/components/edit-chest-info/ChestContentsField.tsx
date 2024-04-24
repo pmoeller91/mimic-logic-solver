@@ -2,13 +2,13 @@ import { forwardRef } from 'react';
 import { FormField } from '../form-field/FormField';
 import { FormSelect } from '../form-field/FormSelect';
 import { useTranslation } from 'react-i18next';
-import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
 import { useCallback, useMemo } from 'use-memo-one';
 import { focusAtom } from 'jotai-optics';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { CHEST_CONTENTS, ChestContents } from '@/types/chestProperties';
 import { getGameTranslation } from '@/util/getGameTranslation';
 import { TRANSLATION_TYPE } from '@/types/translation';
+import { selectedChestAtomAtom } from '@/atoms/selectedChestAtomAtom';
 
 interface ChestContentsFieldProps {
   className?: string;
@@ -22,7 +22,7 @@ const ChestContentsField = forwardRef<
   const { t } = useTranslation();
   const label = t('editChestInfo.chestPropertiesSection.chestContents.label');
 
-  const selectedChestAtom = useSelectedChestAtom();
+  const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
   const chestContentsAtom = useMemo(
     () => focusAtom(selectedChestAtom, (optic) => optic.prop('contents')),
     [selectedChestAtom]

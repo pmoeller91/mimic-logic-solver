@@ -3,7 +3,7 @@ import {
   MiniChestGridSelect,
 } from '../mini-chest-grid-select/MiniChestGridSelect';
 import { useAtom, useAtomValue } from 'jotai';
-import { selectedChestAtom } from '@/atoms/selectedChestAtom';
+import { selectedChestLocationAtom } from '@/atoms/selectedChestLocationAtom';
 import { useCallback } from 'use-memo-one';
 import { derivedChestGridAtom } from '@/atoms/derivedChestGridAtom';
 import { useTranslation } from 'react-i18next';
@@ -16,12 +16,14 @@ interface ChestSelectorProps {
 function ChestSelector({ className }: ChestSelectorProps) {
   const { t: localT } = useTranslation();
   const grid = useAtomValue(derivedChestGridAtom);
-  const [selectedChest, setSelectedChest] = useAtom(selectedChestAtom);
+  const [selectedChestLocation, setSelectedChestLocation] = useAtom(
+    selectedChestLocationAtom
+  );
   const handleOnClick = useCallback<ChestGridCallback>(
     (row, col) => {
-      setSelectedChest([row, col]);
+      setSelectedChestLocation([row, col]);
     },
-    [setSelectedChest]
+    [setSelectedChestLocation]
   );
   const handleGenAriaLabel = useCallback<GenerateLabelCallback>(
     ({ row, col, color, t }) =>
@@ -37,7 +39,7 @@ function ChestSelector({ className }: ChestSelectorProps) {
       className={className}
       genAriaLabel={handleGenAriaLabel}
       onClick={handleOnClick}
-      selectedChest={selectedChest}
+      selectedChestLocation={selectedChestLocation}
       legendString={legendString}
     />
   );

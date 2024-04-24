@@ -16,6 +16,8 @@ const getDefaultHint = <T extends ChestHintType>(
   hintType: T
 ): ChestHintOfType<T> => {
   switch (hintType) {
+    case CHEST_HINT_TYPE.mimicsNeighbors:
+    case CHEST_HINT_TYPE.mimicsNotNeighbors:
     case CHEST_HINT_TYPE.mimicsNotSameColor:
     case CHEST_HINT_TYPE.mimicsSameColor:
     case CHEST_HINT_TYPE.selfAsleep:
@@ -62,8 +64,16 @@ const getDefaultHint = <T extends ChestHintType>(
         type: hintType,
         params: [defaultRank, defaultRank],
       } as ChestHintOfType<T>;
+    case CHEST_HINT_TYPE.mimicsNumber:
+      return {
+        type: hintType,
+        params: [defaultNumber],
+      } as ChestHintOfType<T>;
     default:
-      return { type: hintType, params: [] } as ChestHintOfType<T>;
+      return {
+        type: CHEST_HINT_TYPE.__error,
+        params: [],
+      } as ChestHintOfType<T>;
   }
 };
 

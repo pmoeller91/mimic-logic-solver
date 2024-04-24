@@ -56,7 +56,7 @@
       },
       "colorGold": "There's some Gold hiding somewhere in a $t(chestHint.chestColors.{{param1}}) box.",
       "colorGold_blank": "There's some Gold hiding somewhere in a [color] box.",
-      "colorMimic": "There is a Mimic among the $t(chestHint.chestColors.{{param1}} boxes.",
+      "colorMimic": "There is a Mimic among the $t(chestHint.chestColors.{{param1}}) boxes.",
       "colorMimic_blank": "There is a Mimic among the [color] boxes.",
       "colorMoreMimics": "There are more Mimics in $t(chestHint.chestColors.{{param1}}) than $t(chestHint.chestColors.{{param2}}) boxes.",
       "colorMoreMimics_blank": "There are more Mimics in [color] than [color] boxes.",
@@ -102,7 +102,8 @@
       "rankSameMimics_blank": "Same number of Mimics in [row / column] and [row / column].",
       "selfAsleep": "Zzz...",
       "selfAsleep_blank": "Asleep.",
-      "selfNotMimic": "I'm not a Mimic."
+      "selfNotMimic": "I'm not a Mimic.",
+      "__error": "ERROR"
     },
     "chestLayoutSelector": {
       "numChests_one": "{{count, number}} Chest",

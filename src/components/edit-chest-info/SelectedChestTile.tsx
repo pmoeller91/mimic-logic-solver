@@ -1,13 +1,13 @@
-import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
 import { useAtomValue } from 'jotai';
 import { ChestTileContainer } from '../chest-tile/ChestTileContainer';
+import { selectedChestAtomAtom } from '@/atoms/selectedChestAtomAtom';
 
 interface SelectedChestTileProps {
   className?: string;
 }
 
 function SelectedChestTile({ className }: SelectedChestTileProps) {
-  const selectedChestAtom = useSelectedChestAtom();
+  const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
   const selectedChest = useAtomValue(selectedChestAtom);
 
   return (

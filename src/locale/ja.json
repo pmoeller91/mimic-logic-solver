@@ -104,7 +104,8 @@
       "rankSameMimics_blank": "【列】と【列】のミミックの数は同じ",
       "selfAsleep": "Zzz...",
       "selfAsleep_blank": "寝ている",
-      "selfNotMimic": "私はミミックじゃない"
+      "selfNotMimic": "私はミミックじゃない",
+      "__error": "エラー"
     },
     "chestLayoutSelector": {
       "numChests_other": "{{count, number}}個",

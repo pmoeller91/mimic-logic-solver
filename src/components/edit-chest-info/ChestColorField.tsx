@@ -1,5 +1,4 @@
-import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { focusAtom } from 'jotai-optics';
 import { useCallback, useMemo } from 'use-memo-one';
 import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
@@ -7,6 +6,7 @@ import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FormField } from '../form-field/FormField';
 import { FormSelect } from '../form-field/FormSelect';
+import { selectedChestAtomAtom } from '@/atoms/selectedChestAtomAtom';
 
 interface ChestColorFieldProps {
   className?: string;
@@ -21,7 +21,7 @@ type SelectCallback = Required<JSX.IntrinsicElements['select']>['onChange'];
 const ChestColorField = forwardRef<HTMLSelectElement, ChestColorFieldProps>(
   function ChestColorField({ className }, ref) {
     const { t } = useTranslation();
-    const selectedChestAtom = useSelectedChestAtom();
+    const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
     const chestColorAtom = useMemo(
       () => focusAtom(selectedChestAtom, (optic) => optic.prop('color')),
       [selectedChestAtom]

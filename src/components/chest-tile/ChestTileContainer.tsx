@@ -5,7 +5,7 @@ import { getGameTranslation } from '@/util/getGameTranslation';
 import { TRANSLATION_TYPE } from '@/types/translation';
 import { ChestLocation } from '@/types/chestLocation';
 import { useSetAtom } from 'jotai';
-import { selectedChestAtom } from '@/atoms/selectedChestAtom';
+import { selectedChestLocationAtom } from '@/atoms/selectedChestLocationAtom';
 import { useCallback } from 'use-memo-one';
 
 interface ChestTileContainerProps {
@@ -61,7 +61,7 @@ function ChestTileContainer({
     t,
   });
   const iconAltText = t('chestTile.iconAltText', { color: chest.color });
-  const setSelectedChest = useSetAtom(selectedChestAtom);
+  const setSelectedChest = useSetAtom(selectedChestLocationAtom);
 
   const selectChest = useCallback(() => {
     if (location && isValidLocation(location)) {

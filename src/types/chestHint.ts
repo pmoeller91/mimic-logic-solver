@@ -40,6 +40,7 @@ const CHEST_HINT_TYPE = {
   rankSameMimics: 'RANK_SAME_MIMICS',
   selfAsleep: 'SELF_ASLEEP',
   selfNotMimic: 'SELF_NOT_MIMIC',
+  __error: '__ERROR',
 } as const;
 
 type ChestHintType = (typeof CHEST_HINT_TYPE)[keyof typeof CHEST_HINT_TYPE];
@@ -175,6 +176,7 @@ interface ChestHints {
   >;
   SelfAsleep: ChestHintBase<ChestHintTypes['selfAsleep']>;
   SelfNotMimic: ChestHintBase<ChestHintTypes['selfNotMimic']>;
+  Error: ChestHintBase<ChestHintTypes['__error']>;
 }
 
 type ChestHint = ChestHints[keyof ChestHints];

@@ -2,14 +2,14 @@ import React, { forwardRef } from 'react';
 import { FormField } from '../../form-field/FormField';
 import { CHEST_HINT_TYPE, ChestHintType } from '@/types/chestHint';
 import { useTranslation } from 'react-i18next';
-import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
 import { focusAtom } from 'jotai-optics';
 import { useCallback, useMemo } from 'use-memo-one';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { getGameTranslation } from '@/util/getGameTranslation';
 import { TRANSLATION_TYPE } from '@/types/translation';
 import { getDefaultHint } from '@/util/getDefaultHint';
 import { FormSelect } from '../../form-field/FormSelect';
+import { selectedChestAtomAtom } from '@/atoms/selectedChestAtomAtom';
 
 interface ChestHintTypeFieldProps {
   className?: string;
@@ -82,7 +82,7 @@ const ChestHintTypeField = forwardRef<
   ChestHintTypeFieldProps
 >(function ChestHintField({ className }, ref) {
   const { t } = useTranslation();
-  const selectedChestAtom = useSelectedChestAtom();
+  const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
   const chestHintAtom = useMemo(
     () => focusAtom(selectedChestAtom, (optic) => optic.prop('hint')),
     [selectedChestAtom]
@@ -119,6 +119,10 @@ const ChestHintTypeField = forwardRef<
                 </option>
               ))}
             </optgroup>
+            {/* React does not like <hr /> in select currently, but the
+            HTML spec has been updated to allow this. React itself has
+            an update to not flag this with validateDomNesting in the
+            future. */}
             {idx !== arr.length - 1 && <hr />}
           </React.Fragment>
         ))}

@@ -24,7 +24,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "__mocks__"],
   "exclude": ["src/solver"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

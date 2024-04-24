@@ -24,6 +24,7 @@ import { resolveRankNoMimic } from './hint-resolvers/resolveRankNoMimic';
 import { resolveRankSameMimics } from './hint-resolvers/resolveRankSameMimics';
 import { resolveColorNumMimics } from './hint-resolvers/resolveColorNumMimics';
 import { resolveColorSameMimics } from './hint-resolvers/resolveColorSameMimics';
+import { resolveMimicsNumber } from './hint-resolvers/resolveMimicsNumber';
 
 interface ResolveHintParams {
   grid: ChestGrid;
@@ -89,6 +90,8 @@ const resolveHint = ({ grid, chest, gameInfo }: ResolveHintParams): boolean => {
       return resolveMimicsNotNeighbors({ chest, grid, gameInfo });
     case chestHasHint(chest, CHEST_HINT_TYPE.mimicsNotSameColor):
       return resolveMimicsNotSameColor({ chest, grid, gameInfo });
+    case chestHasHint(chest, CHEST_HINT_TYPE.mimicsNumber):
+      return resolveMimicsNumber({ chest, grid, gameInfo });
     case chestHasHint(chest, CHEST_HINT_TYPE.mimicsSameColor):
       return resolveMimicsSameColor({ chest, grid, gameInfo });
     case chestHasHint(chest, CHEST_HINT_TYPE.rankGold):

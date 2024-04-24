@@ -1,4 +1,3 @@
-import { useSelectedChestAtom } from '@/hooks/useSelectedChestAtom';
 import { CHEST_HINT_TYPE, ChestDirection, ChestRank } from '@/types/chestHint';
 import { useAtomValue } from 'jotai';
 import { focusAtom } from 'jotai-optics';
@@ -12,6 +11,8 @@ import { isHintParamsReversed } from '@/util/isHintParamsReversed';
 import { useTranslation } from 'react-i18next';
 import { AmountField } from './param-field/AmountField';
 import { RankField } from './param-field/RankField';
+import { ErrorField } from './param-field/ErrorField';
+import { selectedChestAtomAtom } from '@/atoms/selectedChestAtomAtom';
 
 /**
  * Component that allows modifying all parameters associated with the current
@@ -19,7 +20,7 @@ import { RankField } from './param-field/RankField';
  */
 function ChestHintParamsField() {
   const { t } = useTranslation();
-  const selectedChestAtom = useSelectedChestAtom();
+  const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
   const chestHintTypeAtom = useMemo(
     () =>
       focusAtom(selectedChestAtom, (optic) => optic.prop('hint').prop('type')),
@@ -43,6 +44,8 @@ function ChestHintParamsField() {
     case CHEST_HINT_TYPE.selfNotMimic:
     case CHEST_HINT_TYPE.mimicsNotSameColor:
     case CHEST_HINT_TYPE.mimicsSameColor:
+    case CHEST_HINT_TYPE.mimicsNeighbors:
+    case CHEST_HINT_TYPE.mimicsNotNeighbors:
       return null;
     case CHEST_HINT_TYPE.directionMimic:
     case CHEST_HINT_TYPE.directionGold:
@@ -126,7 +129,7 @@ function ChestHintParamsField() {
         <AmountField amountAtom={paramAtoms[0] as SimpleWritableAtom<number>} />
       );
     default:
-      return null;
+      return <ErrorField />;
   }
 }
 

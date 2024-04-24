@@ -26,7 +26,7 @@ type GenerateLabelCallback = ({
 interface MiniChestGridSelectProps {
   grid: ChestGridType;
   className?: string;
-  selectedChest?: ChestLocation;
+  selectedChestLocation?: ChestLocation;
   onClick: ChestGridCallback;
   genAriaLabel: GenerateLabelCallback;
   legendString: string;
@@ -36,13 +36,13 @@ function MiniChestGridSelect({
   grid,
   className,
   onClick,
-  selectedChest,
+  selectedChestLocation,
   genAriaLabel,
   legendString,
 }: MiniChestGridSelectProps) {
   const onClickCallbacks = useChestGridCallbacks(onClick);
   const { t } = useTranslation();
-  const [selectedRow, selectedCol] = selectedChest ?? [-1, -1];
+  const [selectedRow, selectedCol] = selectedChestLocation ?? [-1, -1];
   return (
     <fieldset>
       <legend className="sr-only">{legendString}</legend>

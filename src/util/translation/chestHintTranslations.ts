@@ -25,6 +25,7 @@ const chestHintTranslations: Record<ChestHint['type'], string> = {
   [CHEST_HINT_TYPE.rankSameMimics]: 'chestHint.rankSameMimics',
   [CHEST_HINT_TYPE.selfAsleep]: 'chestHint.selfAsleep',
   [CHEST_HINT_TYPE.selfNotMimic]: 'chestHint.selfNotMimic',
+  [CHEST_HINT_TYPE.__error]: 'chestHint.__error',
 };
 
 export { chestHintTranslations };
