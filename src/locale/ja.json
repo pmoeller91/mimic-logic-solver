@@ -95,7 +95,7 @@
       "rankGold_blank": "【列】のどこかにお金が入っている",
       "rankMimic": "$t(chestHint.chestRank.{{param1}})にミミックがいる",
       "rankMimic_blank": "【列】にミミックがいる",
-      "rankMoreMimics": "$t(chestHint.chestRank.{{param2}})より$t(chestHint.chestRank_directionOnly.{{param2}})の方がミミックが多い",
+      "rankMoreMimics": "$t(chestHint.chestRank.{{param2}})より$t(chestHint.chestRank_directionOnly.{{param1}})の方がミミックが多い",
       "rankMoreMimics_blank": "【列】より【列】のほうがミミックが多い",
       "rankMoreMimics_paramsReversed": "true",
       "rankNoGold": "$t(chestHint.chestRank.{{param1}})のどこにもお金は入っていない",
@@ -145,7 +145,7 @@
               "RED": "赤い"
             },
             "label": "色",
-            "label_ordinal_other": "{{count}}番目色"
+            "label_ordinal_other": "{{count, number}}番目色"
           },
           "direction": {
             "directions": {
@@ -159,7 +159,21 @@
               "UP_RIGHT": "右上"
             },
             "label": "方向",
-            "label_ordinal_other": "{{count}}番目方向"
+            "label_ordinal_other": "{{count, number}}番目方向"
+          },
+          "rank": {
+            "ranks": {
+              "BOTTOM_MOST": "一番下の列",
+              "LEFT_MOST": "一番左の列",
+              "RIGHT_MOST": "一番右の列",
+              "TOP_MOST": "一番上の列"
+            },
+            "label": "列",
+            "label_ordinal_other": "{{count, number}}番目列"
+          },
+          "amount": {
+            "label": "数",
+            "label_ordinal_other": "{{count, number}}番目数"
           }
         },
         "title": "宝箱のヒント",
