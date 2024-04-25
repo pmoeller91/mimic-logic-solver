@@ -89,6 +89,8 @@
       "mimicsNumber": "この中にミミックは{{param1, number}}匹いる",
       "mimicsNumber_blank": "この中にミミックは【＃】匹いる",
       "mimicsSameColor": "ミミック達の色は全て同じだ",
+      "number": "{{param1, number}}",
+      "number_blank": "【＃】",
       "rankGold": "$t(chestHint.chestRank.{{param1}})のどこかにお金が入っている",
       "rankGold_blank": "【列】のどこかにお金が入っている",
       "rankMimic": "$t(chestHint.chestRank.{{param1}})にミミックがいる",

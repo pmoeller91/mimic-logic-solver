@@ -32,6 +32,7 @@ const CHEST_HINT_TYPE = {
   mimicsNotSameColor: 'MIMICS_NOT_ALL_SAME_COLOR',
   mimicsNumber: 'MIMICS_NUMBER',
   mimicsSameColor: 'MIMICS_ALL_SAME_COLOR',
+  number: 'NUMBER',
   rankGold: 'RANK_GOLD',
   rankMimic: 'RANK_MIMIC',
   rankMoreMimics: 'RANK_MORE_MIMICS',
@@ -148,6 +149,7 @@ interface ChestHints {
     ChestHintTypes['mimicsNumber'],
     HintParameterTypes['number']
   >;
+  Number: ChestHintBase<ChestHintTypes['number'], HintParameterTypes['number']>
   RankGold: ChestHintBase<
     ChestHintTypes['rankGold'],
     HintParameterTypes['rank']

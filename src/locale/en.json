@@ -88,6 +88,8 @@
       "mimicsNumber_amount_other": "{{count, number}} of these boxes contain a Mimic.",
       "mimicsNumber_blank": "[#] of these boxes contain a Mimic.",
       "mimicsSameColor": "All the Mimics are the same color.",
+      "number": "{{param1, number}}",
+      "number_blank": "[#]",
       "rankGold": "There's some Gold somewhere in the $t(chestHint.chestRank.{{param1}}).",
       "rankGold_blank": "There's some Gold somewhere in the [row / column].",
       "rankMimic": "The $t(chestHint.chestRank.{{param1}}) has at least 1 Mimic.",

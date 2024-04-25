@@ -73,6 +73,7 @@ const chestHintGroups: ChestHintGroup[] = [
       CHEST_HINT_TYPE.mimicsNeighbors,
       CHEST_HINT_TYPE.mimicsNotNeighbors,
       CHEST_HINT_TYPE.mimicsNumber,
+      CHEST_HINT_TYPE.number,
     ],
   },
 ];

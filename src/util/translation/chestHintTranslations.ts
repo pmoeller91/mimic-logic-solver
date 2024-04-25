@@ -17,6 +17,7 @@ const chestHintTranslations: Record<ChestHint['type'], string> = {
   [CHEST_HINT_TYPE.mimicsNotSameColor]: 'chestHint.mimicsNotSameColor',
   [CHEST_HINT_TYPE.mimicsNumber]: 'chestHint.mimicsNumber',
   [CHEST_HINT_TYPE.mimicsSameColor]: 'chestHint.mimicsSameColor',
+  [CHEST_HINT_TYPE.number]: 'chestHint.number',
   [CHEST_HINT_TYPE.rankGold]: 'chestHint.rankGold',
   [CHEST_HINT_TYPE.rankMimic]: 'chestHint.rankMimic',
   [CHEST_HINT_TYPE.rankMoreMimics]: 'chestHint.rankMoreMimics',

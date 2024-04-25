@@ -125,6 +125,7 @@ function ChestHintParamsField() {
         />
       );
     case CHEST_HINT_TYPE.mimicsNumber:
+    case CHEST_HINT_TYPE.number:
       return (
         <AmountField amountAtom={paramAtoms[0] as SimpleWritableAtom<number>} />
       );

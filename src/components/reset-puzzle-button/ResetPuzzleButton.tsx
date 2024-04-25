@@ -7,6 +7,8 @@ import { useCallback } from 'use-memo-one';
 import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
 import { getDefaultHint } from '@/util/getDefaultHint';
 import { CHEST_HINT_TYPE } from '@/types/chestHint';
+import { selectedTabAtom } from '@/atoms/selectedTabAtom';
+import { MAIN_TAB } from '@/types/mainTab';
 
 interface ResetPuzzleButtonProps {
   className?: string;
@@ -21,6 +23,7 @@ const ResetPuzzleButton = forwardRef<HTMLButtonElement, ResetPuzzleButtonProps>(
       'resetPuzzleButton.confirmDialogExplanation'
     );
     const setAllChestsCallback = useSetAtom(allChestsCallbackAtom);
+    const setSelectedTab = useSetAtom(selectedTabAtom);
     const handleOnConfirm = useCallback(() => {
       setAllChestsCallback(
         (allChests) =>
@@ -33,7 +36,10 @@ const ResetPuzzleButton = forwardRef<HTMLButtonElement, ResetPuzzleButtonProps>(
             }))
           ) as AllChests
       );
-    }, [setAllChestsCallback]);
+      // If we're resetting we'd probably like to immediately go set up a new
+      // puzzle to solve, so go ahead and move back to the game field
+      setSelectedTab(MAIN_TAB.gameField);
+    }, [setAllChestsCallback, setSelectedTab]);
     return (
       <ConfirmButtonContainer
         className={className}

@@ -36,5 +36,6 @@ module.exports = {
       'error',
       { ignoreRestSiblings: true, argsIgnorePattern: '^_' },
     ],
+    'no-console': ['error'],
   },
 };

@@ -65,6 +65,7 @@ const getDefaultHint = <T extends ChestHintType>(
         params: [defaultRank, defaultRank],
       } as ChestHintOfType<T>;
     case CHEST_HINT_TYPE.mimicsNumber:
+    case CHEST_HINT_TYPE.number:
       return {
         type: hintType,
         params: [defaultNumber],

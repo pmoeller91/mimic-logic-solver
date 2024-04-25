@@ -14,7 +14,6 @@ interface SolveStandardParams {
 }
 
 const solveStandard = ({ grid, gameInfo }: SolveStandardParams) => {
-  console.log({ grid, gameInfo });
   const solutionGrid = merge<ChestGrid>({}, grid);
 
   // These are the empty chests that the solver will attempt to solve for. It's

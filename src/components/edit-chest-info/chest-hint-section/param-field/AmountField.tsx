@@ -20,12 +20,9 @@ function AmountField({ amountAtom, position }: AmountFieldProps) {
   const [amount, setAmount] = useAtom(amountAtom);
   const handleOnChange = useCallback<DefinedAttribute<'select', 'onChange'>>(
     (e) => {
-      console.log(e.target.value);
       setAmount(Number.parseInt(e.target.value, 10));
-      console.log(amount);
-      console.log(amountAtom);
     },
-    [setAmount, amount, amountAtom]
+    [setAmount]
   );
   let label: string;
   if (position) {
