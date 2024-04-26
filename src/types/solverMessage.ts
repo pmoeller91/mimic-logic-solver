@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import { ChestGrid } from './chestGrid';
 import { GameInfo } from './state/gameInfo';
-import { ChestContents } from './chestProperties';
+import { ChestContents } from './chestContents';
 
 const SOLVER_MESSAGE_TYPE = {
   // Currently unused due to completing too quickly.

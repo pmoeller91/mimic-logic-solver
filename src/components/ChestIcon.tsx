@@ -1,4 +1,4 @@
-import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
+import { CHEST_COLOR, ChestColor } from '@/types/chestColor';
 import chestRed from '@/assets/chest-red.svg';
 import chestBlack from '@/assets/chest-black.svg';
 import chestBlue from '@/assets/chest-blue.svg';

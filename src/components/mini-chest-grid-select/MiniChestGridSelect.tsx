@@ -3,7 +3,7 @@ import {
   ChestGridCallback,
   useChestGridCallbacks,
 } from '@/hooks/useChestGridCallbacks';
-import { ChestColor } from '@/types/chestProperties';
+import { ChestColor } from '@/types/chestColor';
 import { TFunction } from 'i18next';
 import { GenericGrid } from '../generic-grid/GenericGrid';
 import { MiniChestSelectIcon } from './MiniChestSelectIcon';

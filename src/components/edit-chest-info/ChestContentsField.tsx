@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useCallback, useMemo } from 'use-memo-one';
 import { focusAtom } from 'jotai-optics';
 import { useAtom, useAtomValue } from 'jotai';
-import { CHEST_CONTENTS, ChestContents } from '@/types/chestProperties';
+import { CHEST_CONTENTS, ChestContents } from '@/types/chestContents';
 import { getGameTranslation } from '@/util/getGameTranslation';
 import { TRANSLATION_TYPE } from '@/types/translation';
 import { selectedChestAtomAtom } from '@/atoms/selectedChestAtomAtom';

@@ -6,7 +6,7 @@ import { CHEST_DIRECTION } from '@/types/chestHint';
 import { ChestGrid } from '@/types/chestGrid';
 import { ChestLocation } from '@/types/chestLocation';
 import { Chest } from '@/types/chest';
-import { CHEST_COLOR } from '@/types/chestProperties';
+import { CHEST_COLOR } from '@/types/chestColor';
 
 function replaceChest({
   grid,

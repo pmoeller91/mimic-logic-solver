@@ -2,7 +2,7 @@ import { CHEST_HINT_TYPE, ChestDirection, ChestRank } from '@/types/chestHint';
 import { useAtomValue } from 'jotai';
 import { focusAtom } from 'jotai-optics';
 import { useMemo } from 'use-memo-one';
-import { ChestColor } from '@/types/chestProperties';
+import { ChestColor } from '@/types/chestColor';
 import { ColorField } from './param-field/ColorField';
 import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
 import { DirectionField } from './param-field/DirectionField';

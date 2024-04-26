@@ -5,7 +5,7 @@ import {
   ChestHintOfType,
   ChestHintType,
 } from '@/types/chestHint';
-import { CHEST_COLOR } from '@/types/chestProperties';
+import { CHEST_COLOR } from '@/types/chestColor';
 
 const defaultColor = CHEST_COLOR.red;
 const defaultDirection = CHEST_DIRECTION.up;

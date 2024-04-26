@@ -1,7 +1,8 @@
 import { HintResolver, HintResolverParams } from './hintResolverTypes';
 import { getIsTruthful } from './getIsTruthful';
 import { chestContentIncludes } from '@/util/chest/chestContentIncludes';
-import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_CONTENTS } from '@/types/chestContents';
+import { CHEST_COLOR } from '@/types/chestColor';
 import { ChestHintTypes } from '@/types/chestHint';
 
 const resolveColorMoreMimics: HintResolver<

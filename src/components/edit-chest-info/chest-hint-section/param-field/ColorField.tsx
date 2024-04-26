@@ -1,4 +1,4 @@
-import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
+import { CHEST_COLOR, ChestColor } from '@/types/chestColor';
 import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
 import { useAtom } from 'jotai';
 import { FormField } from '../../../form-field/FormField';

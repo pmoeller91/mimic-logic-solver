@@ -3,7 +3,8 @@ import { GameInfo } from '@/types/state/gameInfo';
 import { AllChests } from './allChestsAtom';
 import { createChest } from '@/util/createChest';
 import { CHEST_DIRECTION, CHEST_HINT_TYPE } from '@/types/chestHint';
-import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_CONTENTS } from '@/types/chestContents';
+import { CHEST_COLOR } from '@/types/chestColor';
 
 interface GameState {
   gameInfo: GameInfo;

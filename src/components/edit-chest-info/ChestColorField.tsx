@@ -1,7 +1,7 @@
 import { useAtom, useAtomValue } from 'jotai';
 import { focusAtom } from 'jotai-optics';
 import { useCallback, useMemo } from 'use-memo-one';
-import { CHEST_COLOR, ChestColor } from '@/types/chestProperties';
+import { CHEST_COLOR, ChestColor } from '@/types/chestColor';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FormField } from '../form-field/FormField';

@@ -1,7 +1,7 @@
 import { HintResolver, HintResolverParams } from './hintResolverTypes';
 import { getIsTruthful } from './getIsTruthful';
 import { ChestHintTypes } from '@/types/chestHint';
-import { CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_CONTENTS } from '@/types/chestContents';
 import { getSurroundingChests } from '@/util/chest-grid/getSurroundingChests';
 import { chestContentIncludes } from '@/util/chest/chestContentIncludes';
 

@@ -1,6 +1,7 @@
 import { pickBy } from 'lodash-es';
 import { Chest } from '@/types/chest';
-import { CHEST_COLOR, CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_CONTENTS } from '@/types/chestContents';
+import { CHEST_COLOR } from '@/types/chestColor';
 import merge from 'deepmerge';
 import { DeepReadonly, DeepWritable } from 'ts-essentials';
 import { CHEST_HINT_TYPE } from '@/types/chestHint';

@@ -1,4 +1,4 @@
-import { ChestColor } from './chestProperties';
+import { ChestColor } from './chestColor';
 
 type ChestHintParamDefinition<P1 = never, P2 = never> = [P1] extends [never]
   ? []

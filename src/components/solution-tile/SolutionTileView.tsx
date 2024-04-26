@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { ChestIcon } from '../ChestIcon';
-import { ChestColor } from '@/types/chestProperties';
+import { ChestColor } from '@/types/chestColor';
 import clsx from 'clsx';
 
 interface SolutionTileViewProps {

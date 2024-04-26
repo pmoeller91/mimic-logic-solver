@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { ChestIcon } from '../ChestIcon';
-import { CHEST_COLOR } from '@/types/chestProperties';
+import { CHEST_COLOR } from '@/types/chestColor';
 
 interface SiteHeaderProps {
   className?: string;

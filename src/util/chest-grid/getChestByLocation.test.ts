@@ -1,7 +1,7 @@
 import { Chest } from '@/types/chest';
 import { ChestGrid } from '@/types/chestGrid';
 import { ChestLocation } from '@/types/chestLocation';
-import { CHEST_COLOR } from '@/types/chestProperties';
+import { CHEST_COLOR } from '@/types/chestColor';
 import { describe, expect, it } from 'vitest';
 import { getChestByLocation } from './getChestByLocation';
 import { createChest } from '../createChest';

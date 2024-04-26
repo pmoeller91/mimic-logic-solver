@@ -1,5 +1,5 @@
 import { Chest } from '@/types/chest';
-import { ChestContents } from '@/types/chestProperties';
+import { ChestContents } from '@/types/chestContents';
 
 interface ChestExcludeContentsParams {
   chest: Chest;

@@ -2,7 +2,7 @@ import { HintResolver, HintResolverParams } from './hintResolverTypes';
 import { getIsTruthful } from './getIsTruthful';
 import { ChestHintTypes } from '@/types/chestHint';
 import { chestContentIs } from '@/util/chest/chestContentIs';
-import { CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_CONTENTS } from '@/types/chestContents';
 
 const resolveColorNumMimics: HintResolver<ChestHintTypes['colorNumMimics']> = ({
   grid,

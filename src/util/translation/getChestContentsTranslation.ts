@@ -1,4 +1,4 @@
-import { CHEST_CONTENTS, ChestContents } from '@/types/chestProperties';
+import { CHEST_CONTENTS, ChestContents } from '@/types/chestContents';
 import { GetTranslationParams, TRANSLATION_TYPE } from '@/types/translation';
 
 type GetChestContentsTranslationParams = GetTranslationParams<

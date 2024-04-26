@@ -1,5 +1,5 @@
 import { ChestGrid } from '@/types/chestGrid';
-import { CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_CONTENTS } from '@/types/chestContents';
 import { GameInfo } from '@/types/state/gameInfo';
 import { TFunction } from 'i18next';
 

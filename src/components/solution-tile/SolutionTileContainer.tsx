@@ -5,7 +5,7 @@ import { SolutionTileView } from './SolutionTileView';
 import { getGameTranslation } from '@/util/getGameTranslation';
 import { TRANSLATION_TYPE } from '@/types/translation';
 import { useTranslation } from 'react-i18next';
-import { CHEST_CONTENTS, ChestContents } from '@/types/chestProperties';
+import { CHEST_CONTENTS, ChestContents } from '@/types/chestContents';
 
 interface SolutionTileContainerProps {
   contextLabel: string;
@@ -82,7 +82,8 @@ const SolutionTileContainer = forwardRef<
 
   // If there is a solution with mimic, and it's among the most likely solutions.
   const likelyMimic =
-    !!mimicSolution && Math.abs(mimicSolution[1] - percentageSolutions[0][1]) < 0.01;
+    !!mimicSolution &&
+    Math.abs(mimicSolution[1] - percentageSolutions[0][1]) < 0.01;
 
   return (
     <SolutionTileView

@@ -1,6 +1,6 @@
 import { Chest } from '@/types/chest';
 import { ChestGrid } from '@/types/chestGrid';
-import { CHEST_CONTENTS } from '@/types/chestProperties';
+import { CHEST_CONTENTS } from '@/types/chestContents';
 import { GameInfo } from '@/types/state/gameInfo';
 import { chestContentIncludes } from '@/util/chest/chestContentIncludes';
 
