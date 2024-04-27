@@ -163,6 +163,13 @@ const recursiveSolve = ({
     ) {
       return;
     }
+
+    // If the chest is confused, it cannot also be a mimic according to the
+    // rules, so skip any contents including a mimic
+    if (unknownChest.isConfused && possibleContent[0].includes(CHEST_CONTENTS.mimic)) {
+      return;
+    }
+
     // The content for the next iteration, with the content about to be used
     // removed.
     let newPossibleContents: [ChestContents | ChestContents[], number][];

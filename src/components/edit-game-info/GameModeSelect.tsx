@@ -16,6 +16,7 @@ const gameModeOptions: GameMode[] = [
   GAME_MODE.random,
   GAME_MODE.robbers,
   GAME_MODE.doubt,
+  GAME_MODE.confuse,
 ];
 
 interface GameModeSelectProps extends ComponentPropsWithRef<"div"> {

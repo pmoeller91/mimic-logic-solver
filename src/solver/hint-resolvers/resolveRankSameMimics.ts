@@ -22,10 +22,10 @@ const resolveRankSameMimics: HintResolver<ChestHints["RankSameMimics"]> = ({
     chestContentIncludes({ chest, contents: CHEST_CONTENTS.mimic }),
   );
 
-  if (isTruthful && rankOneMimicChests === rankTwoMimicChests) {
+  if (isTruthful && rankOneMimicChests.length === rankTwoMimicChests.length) {
     return true;
   }
-  if (!isTruthful && rankOneMimicChests !== rankTwoMimicChests) {
+  if (!isTruthful && rankOneMimicChests.length !== rankTwoMimicChests.length) {
     return true;
   }
   return false;

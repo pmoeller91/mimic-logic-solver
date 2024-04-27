@@ -1,7 +1,7 @@
-import React, { forwardRef } from 'react';
-import { ChestIcon } from '../ChestIcon';
-import { ChestColor } from '@/types/chestColor';
-import clsx from 'clsx';
+import React, { forwardRef } from "react";
+import { ChestIcon } from "../ChestIcon";
+import { ChestColor } from "@/types/chestColor";
+import clsx from "clsx";
 
 interface SolutionTileViewProps {
   contextLabel?: string;
@@ -9,29 +9,21 @@ interface SolutionTileViewProps {
   className?: string;
   solutions: string[][];
   iconAltText: string;
-  likelyMimic: boolean;
+  possibleMimic: boolean;
   chestHint: string;
 }
 
 const SolutionTileView = forwardRef<HTMLDivElement, SolutionTileViewProps>(
   function SolutionTileView(
-    {
-      className,
-      contextLabel,
-      chestColor,
-      iconAltText,
-      chestHint,
-      solutions,
-      likelyMimic,
-    },
-    ref
+    { className, contextLabel, chestColor, iconAltText, chestHint, solutions, possibleMimic },
+    ref,
   ) {
     return (
       <div className={className} ref={ref}>
         <div
           className={clsx(
-            'flex flex-col gap-4 p-4 items-center justify-between rounded-xl h-full w-full',
-            likelyMimic ? 'bg-red-700/60' : 'bg-bg-light/60'
+            "flex flex-col gap-4 p-4 items-center justify-between rounded-xl h-full w-full",
+            possibleMimic ? "bg-red-700/60" : "bg-bg-light/60",
           )}
         >
           <div className="sr-only">{contextLabel}</div>
@@ -55,7 +47,7 @@ const SolutionTileView = forwardRef<HTMLDivElement, SolutionTileViewProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export { SolutionTileView };

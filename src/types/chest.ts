@@ -6,6 +6,7 @@ interface Chest {
   hint: ChestHint;
   contents: ChestContents | ChestContents[];
   color: ChestColor;
+  isConfused?: boolean;
 }
 
 export type { Chest };

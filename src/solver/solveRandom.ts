@@ -7,7 +7,7 @@ import { mergeSolutions } from './mergeSolutions';
 import { InternalSolverSolution } from './internalSolverSolution';
 import { getBlankSolution } from './getBlankSolution';
 
-interface SolverParams {
+interface SolveRandomParams {
   grid: ChestGrid;
   gameInfo: GameInfo;
 }
@@ -16,7 +16,7 @@ interface SolverParams {
  * Returns all possible solutions for the random-mode puzzle described by the
  * corresponding grid and gameInfo.
  */
-const solveRandom = ({ grid, gameInfo }: SolverParams) => {
+const solveRandom = ({ grid, gameInfo }: SolveRandomParams) => {
   const modifiedGameInfo = merge<GameInfo>({}, gameInfo);
   modifiedGameInfo.gameMode = GAME_MODE.standard;
   modifiedGameInfo.numGear = undefined;

@@ -26,6 +26,9 @@ const getIsTruthful = ({ chest, gameInfo, grid }: IsTruthfulParams) => {
       .forEach((mimicChest) => mimicColors.add(mimicChest.color));
     return !mimicColors.has(chest.color);
   }
+  if (gameInfo.gameMode === GAME_MODE.confuse) {
+    return !(chestContentIncludes({ chest, contents: CHEST_CONTENTS.mimic }) || chest.isConfused);
+  }
   return !chestContentIncludes({
     chest,
     contents: CHEST_CONTENTS.mimic,

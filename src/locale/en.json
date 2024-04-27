@@ -248,6 +248,7 @@
       "label_optional": "{{label}} <secondary>(Optional)</secondary>"
     },
     "gameMode": {
+      "confuse": "Confuse",
       "doubt": "Doubt",
       "random": "Random",
       "robbers": "Robbers",

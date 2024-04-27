@@ -1,5 +1,5 @@
-import { GAME_MODE, GameMode } from '@/types/gameMode';
-import { GetTranslationParams, TRANSLATION_TYPE } from '@/types/translation';
+import { GAME_MODE, GameMode } from "@/types/gameMode";
+import { GetTranslationParams, TRANSLATION_TYPE } from "@/types/translation";
 
 type GetGameModeTranslationParams = GetTranslationParams<
   typeof TRANSLATION_TYPE.gameMode,
@@ -7,10 +7,11 @@ type GetGameModeTranslationParams = GetTranslationParams<
 >;
 
 const gameModeTranslations: Record<GameMode, string> = {
-  [GAME_MODE.doubt]: 'gameMode.doubt',
-  [GAME_MODE.standard]: 'gameMode.standard',
-  [GAME_MODE.random]: 'gameMode.random',
-  [GAME_MODE.robbers]: 'gameMode.robbers',
+  [GAME_MODE.doubt]: "gameMode.doubt",
+  [GAME_MODE.standard]: "gameMode.standard",
+  [GAME_MODE.random]: "gameMode.random",
+  [GAME_MODE.robbers]: "gameMode.robbers",
+  [GAME_MODE.confuse]: "gameMode.confuse",
 };
 
 function getGameModeTranslation({ key, t }: GetGameModeTranslationParams) {

@@ -235,6 +235,7 @@
       "label_optional": "{{label}}　<secondary>任意</secondary>"
     },
     "gameMode": {
+      "confuse": "狂った宝箱",
       "doubt": "疑心暗鬼",
       "random": "ランダム",
       "robber": "ドロボウ",
