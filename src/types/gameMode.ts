@@ -1,4 +1,5 @@
 const GAME_MODE = {
+  doubt: 'DOUBT',
   standard: 'STANDARD',
   random: 'RANDOM',
   robbers: 'ROBBERS',

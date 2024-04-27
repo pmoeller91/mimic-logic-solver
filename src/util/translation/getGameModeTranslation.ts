@@ -7,6 +7,7 @@ type GetGameModeTranslationParams = GetTranslationParams<
 >;
 
 const gameModeTranslations: Record<GameMode, string> = {
+  [GAME_MODE.doubt]: 'gameMode.doubt',
   [GAME_MODE.standard]: 'gameMode.standard',
   [GAME_MODE.random]: 'gameMode.random',
   [GAME_MODE.robbers]: 'gameMode.robbers',

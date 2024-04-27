@@ -235,6 +235,7 @@
       "label_optional": "{{label}}　<secondary>任意</secondary>"
     },
     "gameMode": {
+      "doubt": "疑心暗鬼",
       "random": "ランダム",
       "robber": "ドロボウ",
       "standard": "スタンダード"

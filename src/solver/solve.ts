@@ -1,8 +1,8 @@
-import { ChestGrid } from '@/types/chestGrid';
-import { GameInfo } from '@/types/state/gameInfo';
-import { GAME_MODE } from '@/types/gameMode';
-import { solveStandard } from './solveStandard';
-import { solveRandom } from './solveRandom';
+import { ChestGrid } from "@/types/chestGrid";
+import { GameInfo } from "@/types/state/gameInfo";
+import { GAME_MODE } from "@/types/gameMode";
+import { solveStandard } from "./solveStandard";
+import { solveRandom } from "./solveRandom";
 
 interface SolverParams {
   grid: ChestGrid;
@@ -15,6 +15,7 @@ interface SolverParams {
  */
 const solve = ({ grid, gameInfo }: SolverParams) => {
   switch (gameInfo.gameMode) {
+    case GAME_MODE.doubt:
     case GAME_MODE.standard:
     case GAME_MODE.robbers:
       return solveStandard({ grid, gameInfo });
@@ -23,7 +24,6 @@ const solve = ({ grid, gameInfo }: SolverParams) => {
     default:
       return null;
   }
-  
 };
 
 export { solve };
