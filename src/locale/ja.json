@@ -1,13 +1,5 @@
 {
   "translation": {
-    "resetPuzzleButton": {
-      "confirmDialogTitle": "パズルをリセットしますか？",
-      "confirmDialogExplanation": "本当にリセットしますか？パズルをリセットすると、すべてのヒントが 「寝ています」に、すべての色が「赤い」に、すべての中身が 「？」 に変わります。",
-      "resetButtonLabel": "リセット"
-    },
-    "confirmButton": {
-      "cancelLabel": "キャンセル"
-    },
     "centerPanel": {
       "gameFieldLabel": "ゲームフィールド ",
       "solutionLabel": "解答"
@@ -21,12 +13,15 @@
       "item": "消費アイテム",
       "mimic": "ミミック",
       "notMimic": "ミミックじゃない",
-      "unknown": "？"
+      "robber": "ドロボウ",
+      "unknown": "？",
+      "unknown_select": "不明"
     },
     "chestGrid": {
       "contextLabel": "宝箱{{totalChests, number}}個中{{chestNum, number}}個目 {{row, number}}行{{col, number}}列目"
     },
     "chestHint": {
+      "__error": "エラー",
       "chestColors": {
         "BLACK": "黒い",
         "BLUE": "青い",
@@ -70,19 +65,27 @@
       "colorNoGold_blank": "【色】の箱にお金は入っていない",
       "colorNoMimic": "$t(chestHint.chestColors.{{param1}}箱のなかにミミックはいない",
       "colorNoMimic_blank": "【色】箱のなかにミミックはいない",
+      "colorNoRobber": "$t(chestHint.chestColors.{{param1}})箱の中にドロボウはいない",
+      "colorNoRobber_blank": "【色】箱の中にドロボウはいない",
       "colorNumMimics": "$t(chestHint.chestColors.{{param2}})箱にミミックは{{param1, number}}匹いる",
       "colorNumMimics_blank": "【色】箱にミミックは【＃】匹いる",
       "colorNumMimics_paramsReversed": "true",
+      "colorRobber": "$t(chestHint.chestColors.{{param1}})箱の中にドロボウがいる",
+      "colorRobber_blank": "【色】箱の中にドロボウがいる",
       "colorSameMimics": "$t(chestHint.chestColors.{{param1}})箱と$t(chestHint.chestColors.{{param2}})箱のミミックの数は同じ",
       "colorSameMimics_blank": "【色】は琴【色】箱のミミックの数は同じ",
       "directionGold": "$t(chestHint.chestDirections.{{param1}})の箱にお金が入っている",
       "directionGold_blank": "【方向】の箱にお金が入っている",
       "directionMimic": "$t(chestHint.chestDirections.{{param1}})の箱はミミックだ",
       "directionMimic_blank": "【方向】の箱はミミックだ",
+      "directionNoRobber": "$t(chestHint.chestDirections.{{param1}})の箱はドロボウじゃない",
+      "directionNoRobber_blank": "【方向】の箱はドロボウじゃない",
       "directionNotGold": "$t(chestHint.chestDirections.{{param1}})の箱にお金は入っていない",
       "directionNotGold_blank": "【方向】の箱にお金は入っていない",
       "directionNotMimic": "$t(chestHint.chestDirections.{{param1}})の箱はミミックじゃない",
       "directionNotMimic_blank": "【方向】の箱はミミックじゃない",
+      "directionRobber": "$t(chestHint.chestDirections.{{param1}})の箱はドロボウだ",
+      "directionRobber_blank": "【方向】の箱はドロボウだ",
       "mimicsNeighbors": "ミミック２匹は隣同士だ",
       "mimicsNotNeighbors": "ミミック２匹は隣同士じゃない",
       "mimicsNotSameColor": "ミミック達の色は同じではない",
@@ -102,12 +105,15 @@
       "rankNoGold_blank": "【列】のどこにもお金は入っていない",
       "rankNoMimic": "$t(chestHint.chestRank.{{param1}})にミミックはいない",
       "rankNoMimic_blank": "【列】にミミックはいない",
+      "rankNoRobber": "$t(chestHint.chestRank.{{param1}})にドロボウはいない",
+      "rankNoRobber_blank": "【列】にドロボウはいない",
+      "rankRobber": "$t(chestHint.chestRank.{{param1}})にドロボウがいる",
+      "rankRobber_blank": "【列】にドロボウがいる",
       "rankSameMimics": "$t(chestHint.chestRank_directionOnly.{{param1}})と$t(chestHint.chestRank.{{param2}})のミミックの数は同じ",
       "rankSameMimics_blank": "【列】と【列】のミミックの数は同じ",
       "selfAsleep": "Zzz...",
       "selfAsleep_blank": "寝ている",
-      "selfNotMimic": "私はミミックじゃない",
-      "__error": "エラー"
+      "selfNotMimic": "私はミミックじゃない"
     },
     "chestLayoutSelector": {
       "numChests_other": "{{count, number}}個",
@@ -135,9 +141,16 @@
     "closeButton": {
       "ariaLabel": "閉じる"
     },
+    "confirmButton": {
+      "cancelLabel": "キャンセル"
+    },
     "editChestInfo": {
       "chestHintSection": {
         "param": {
+          "amount": {
+            "label": "数",
+            "label_ordinal_other": "{{count, number}}番目数"
+          },
           "color": {
             "colors": {
               "BLACK": "黒い",
@@ -162,18 +175,14 @@
             "label_ordinal_other": "{{count, number}}番目方向"
           },
           "rank": {
+            "label": "列",
+            "label_ordinal_other": "{{count, number}}番目列",
             "ranks": {
               "BOTTOM_MOST": "一番下の列",
               "LEFT_MOST": "一番左の列",
               "RIGHT_MOST": "一番右の列",
               "TOP_MOST": "一番上の列"
-            },
-            "label": "列",
-            "label_ordinal_other": "{{count, number}}番目列"
-          },
-          "amount": {
-            "label": "数",
-            "label_ordinal_other": "{{count, number}}番目数"
+            }
           }
         },
         "title": "宝箱のヒント",
@@ -211,6 +220,7 @@
       "itemsLabel": "消費アイテム",
       "mimicsLabel": "ミミック",
       "optionalPlaceholder": "？",
+      "robbersLabel": "ドロボウ",
       "title": "ゲーム設定"
     },
     "editGameInfoButton": {
@@ -225,8 +235,9 @@
       "label_optional": "{{label}}　<secondary>任意</secondary>"
     },
     "gameMode": {
-      "standard": "スタンダード",
-      "random": "ランダム"
+      "random": "ランダム",
+      "robber": "ドロボウ",
+      "standard": "スタンダード"
     },
     "header": {
       "chests": "宝箱",
@@ -244,6 +255,11 @@
     "languageSwitcher": {
       "label": "言語"
     },
+    "resetPuzzleButton": {
+      "confirmDialogExplanation": "本当にリセットしますか？パズルをリセットすると、すべてのヒントが 「寝ています」に、すべての色が「赤い」に、すべての中身が 「？」 に変わります。",
+      "confirmDialogTitle": "パズルをリセットしますか？",
+      "resetButtonLabel": "リセット"
+    },
     "solutionDisplay": {
       "noSolutionYet": "表示される解答はまだありません。「解く」を押して、現在のパズルの解答を生成してみてください。",
       "solvingLabel": "解いています…"
@@ -259,7 +275,8 @@
         "GEAR": "装備",
         "GOLD": "お金",
         "ITEM": "消費アイテム",
-        "MIMIC": "ミミック"
+        "MIMIC": "ミミック",
+        "ROBBER": "ドロボウ"
       }
     },
     "solveButton": {

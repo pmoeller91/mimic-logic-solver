@@ -1,7 +1,8 @@
-import { ChestGrid } from '@/types/chestGrid';
-import { CHEST_CONTENTS } from '@/types/chestContents';
-import { GameInfo } from '@/types/state/gameInfo';
-import { TFunction } from 'i18next';
+import { ChestGrid } from "@/types/chestGrid";
+import { CHEST_CONTENTS } from "@/types/chestContents";
+import { GameInfo } from "@/types/state/gameInfo";
+import { TFunction } from "i18next";
+import { GAME_MODE } from "@/types/gameMode";
 
 interface GetErrorsParams {
   grid: ChestGrid;
@@ -15,13 +16,18 @@ interface GetErrorsParams {
  */
 const getErrors = ({ grid, gameInfo }: GetErrorsParams) => {
   const errors: Parameters<TFunction>[] = [];
-  const { numMimics, numGear, numGold, numItems, numChests } = gameInfo;
+  const { numMimics, numGear, numGold, numItems, numChests, numRobbers } = gameInfo;
+  const isRobbers = gameInfo.gameMode === GAME_MODE.robbers;
   const allChests = grid.rows.flat();
   const totalContentsSpecified =
-    gameInfo.numMimics + (numGear ?? 0) + (numGold ?? 0) + (numItems ?? 0);
+    gameInfo.numMimics +
+    (numGear ?? 0) +
+    (numGold ?? 0) +
+    (numItems ?? 0) +
+    (isRobbers ? numRobbers : 0);
   if (totalContentsSpecified > numChests) {
     errors.push([
-      'solverError.contentsTooMany',
+      "solverError.contentsTooMany",
       { numChests: gameInfo.numChests, numSpecified: totalContentsSpecified },
     ]);
   }
@@ -32,18 +38,18 @@ const getErrors = ({ grid, gameInfo }: GetErrorsParams) => {
     numItems !== undefined
   ) {
     errors.push([
-      'solverError.contentsTooFew',
+      "solverError.contentsTooFew",
       { numChests: gameInfo.numChests, numSpecified: totalContentsSpecified },
     ]);
   }
 
   // Totals of chest contents pre-defined in the grid
-  const { mimicsSpecified, gearSpecified, goldSpecified, itemsSpecified } =
+  const { mimicsSpecified, gearSpecified, goldSpecified, itemsSpecified, robbersSpecified } =
     allChests
       .map((chest) => chest.contents)
       .reduce(
         (contentsSpecified, content) => {
-          if (typeof content !== 'string') {
+          if (typeof content !== "string") {
             return contentsSpecified;
           }
           switch (content) {
@@ -67,6 +73,11 @@ const getErrors = ({ grid, gameInfo }: GetErrorsParams) => {
                 ...contentsSpecified,
                 mimicsSpecified: contentsSpecified.mimicsSpecified + 1,
               };
+            case CHEST_CONTENTS.robber:
+              return {
+                ...contentsSpecified,
+                robbersSpecified: contentsSpecified.robbersSpecified + 1,
+              };
             default:
               return contentsSpecified;
           }
@@ -76,36 +87,43 @@ const getErrors = ({ grid, gameInfo }: GetErrorsParams) => {
           gearSpecified: 0,
           goldSpecified: 0,
           itemsSpecified: 0,
-        }
+          robbersSpecified: 0,
+        },
       );
 
   if (mimicsSpecified > numMimics) {
-    errors.push([
-      'solverError.specifiedMimicsTooMany',
-      { mimicsSpecified, numMimics },
-    ]);
+    errors.push(["solverError.specifiedMimicsTooMany", { mimicsSpecified, numMimics }]);
+  }
+
+  if ((!isRobbers && robbersSpecified > 0) || (isRobbers && robbersSpecified > numRobbers)) {
+    errors.push(["solverError.specifiedRobbersTooMany", { robbersSpecified, numRobbers }]);
   }
 
   // Total number of "free" chests which are not explicitly defined as any
   // particular content type in the game info.
   const numUnspecified =
-    numChests - numMimics - (numGear ?? 0) - (numGold ?? 0) - (numItems ?? 0);
+    numChests -
+    numMimics -
+    (numGear ?? 0) -
+    (numGold ?? 0) -
+    (numItems ?? 0) -
+    (isRobbers ? numRobbers : 0);
 
   if (gearSpecified > (numGear ?? numUnspecified)) {
     errors.push([
-      'solverError.specifiedGearTooMany',
+      "solverError.specifiedGearTooMany",
       { gearSpecified, numGear: numGear ?? numUnspecified },
     ]);
   }
   if (itemsSpecified > (numItems ?? numUnspecified)) {
     errors.push([
-      'solverError.specifiedItemsTooMany',
+      "solverError.specifiedItemsTooMany",
       { itemsSpecified, numItems: numItems ?? numUnspecified },
     ]);
   }
   if (goldSpecified > (numGold ?? numUnspecified)) {
     errors.push([
-      'solverError.specifiedGoldTooMany',
+      "solverError.specifiedGoldTooMany",
       { goldSpecified, numGold: numGold ?? numUnspecified },
     ]);
   }

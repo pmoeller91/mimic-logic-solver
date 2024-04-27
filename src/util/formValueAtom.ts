@@ -1,7 +1,7 @@
-import { Setter, atom } from 'jotai';
-import { atomWithValidate } from 'jotai-form';
-import { debounce } from 'lodash-es';
-import { Schema } from 'yup';
+import { Setter, atom } from "jotai";
+import { atomWithValidate } from "jotai-form";
+import { debounce } from "lodash-es";
+import { Schema } from "yup";
 
 interface FormValueAtomParams<T, S extends Schema<T>> {
   initialValue: T;
@@ -32,13 +32,12 @@ function formValueAtom<T, S extends Schema<T>>({
         state.setLastValidValue(validatedValue);
         return state;
       },
-    }
+    },
   );
 
   const debouncedSetValidateAtomAtom = atom({
     debouncedSetValidateAtom: debounce((set: Setter, value: string) => {
-      const setLastValidValue = (validValue: T) =>
-        set(lastValidValueAtom, validValue);
+      const setLastValidValue = (validValue: T) => set(lastValidValueAtom, validValue);
       set(validateAtom, { value, setLastValidValue });
     }, 250),
   });
@@ -71,17 +70,24 @@ function formValueAtom<T, S extends Schema<T>>({
         error,
       };
     },
-    (get, set, value: string) => {
+    (get, set, value: string, imperative?: boolean) => {
       set(formValueAtom, value);
+      // Bypass all validation and immediately set all relevant values.
+      if (imperative) {
+        set(lastValidValueAtom, schema.validateSync(value));
+        set(validateAtom, {
+          value,
+          setLastValidValue: (newValue: T) => set(lastValidValueAtom, newValue),
+        });
+        return;
+      }
       const { debouncedSetValidateAtom } = get(debouncedSetValidateAtomAtom);
       debouncedSetValidateAtom(set, value);
-    }
+    },
   );
 }
 
-type FormValueAtom<T, S extends Schema<T> = Schema<T>> = ReturnType<
-  typeof formValueAtom<T, S>
->;
+type FormValueAtom<T, S extends Schema<T> = Schema<T>> = ReturnType<typeof formValueAtom<T, S>>;
 
 export { formValueAtom };
 export type { FormValueAtom };

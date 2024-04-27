@@ -5,6 +5,9 @@ import {
 } from './EditGameInfoView';
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'use-memo-one';
+import { useAtomValue } from 'jotai';
+import { gameModeAtom } from '@/atoms/gameModeAtom';
+import { GAME_MODE } from '@/types/gameMode';
 
 interface EditGameInfoContainerProps {
   onClose: () => void;
@@ -18,6 +21,8 @@ const EditGameInfoContainer = forwardRef<
   { onClose, additionalProps }: EditGameInfoContainerProps,
   ref
 ) {
+  const gameMode = useAtomValue(gameModeAtom);
+  const isRobbers = gameMode === GAME_MODE.robbers;
   const { t } = useTranslation();
   const translations: EditGameInfoViewTranslations = useMemo(
     () => ({
@@ -26,6 +31,7 @@ const EditGameInfoContainer = forwardRef<
       goldLabel: t('editGameInfo.goldLabel'),
       itemsLabel: t('editGameInfo.itemsLabel'),
       mimicsLabel: t('editGameInfo.mimicsLabel'),
+      robbersLabel: t('editGameInfo.robbersLabel'),
       optionalPlaceholder: t('editGameInfo.optionalPlaceholder'),
     }),
     [t]
@@ -37,6 +43,7 @@ const EditGameInfoContainer = forwardRef<
       additionalProps={additionalProps}
       onClose={onClose}
       translations={translations}
+      showRobbers={isRobbers}
     />
   );
 });

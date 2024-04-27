@@ -1,13 +1,5 @@
 {
   "translation": {
-    "resetPuzzleButton": {
-      "confirmDialogTitle": "Reset Puzzle?",
-      "confirmDialogExplanation": "Are you sure you want to reset the puzzle? Resetting the puzzle will change all hints to \"Asleep,\" all colors to \"Red,\" and all contents to \"?.\"",
-      "resetButtonLabel": "Reset"
-    },
-    "confirmButton": {
-      "cancelLabel": "Cancel"
-    },
     "centerPanel": {
       "gameFieldLabel": "Game Field",
       "solutionLabel": "Solution"
@@ -21,12 +13,15 @@
       "item": "Item",
       "mimic": "Mimic",
       "notMimic": "Not a mimic",
-      "unknown": "?"
+      "robber": "Robber",
+      "unknown": "?",
+      "unknown_select": "Unknown"
     },
     "chestGrid": {
       "contextLabel": "Chest {{chestNum, number}} of {{totalChests, number}}, Row {{row, number}} Column {{col, number}}"
     },
     "chestHint": {
+      "__error": "ERROR",
       "chestColors": {
         "BLACK": "black",
         "BLUE": "blue",
@@ -65,21 +60,29 @@
       "colorNoGold_blank": "None of the [color] boxes contain any Gold.",
       "colorNoMimic": "There is no Mimic among the $t(chestHint.chestColors.{{param1}}) boxes.",
       "colorNoMimic_blank": "There is no Mimic among the [color] boxes.",
+      "colorNoRobber": "There is no Robber among the $t(chestHint.chestColors.{{param1}}) boxes.",
+      "colorNoRobber_blank": "There is no Robber among the [color] boxes.",
       "colorNumMimics": "$t(chestHint.colorNumMimics_num, {\"count\": {{param1}}, \"param2\": \"{{param2}}\" })",
       "colorNumMimics_blank": "[#] Mimics are hiding in [color] boxes.",
       "colorNumMimics_num_one": "{{count, number}} Mimic is hiding in a $t(chestHint.chestColors.{{param2}}) box.",
       "colorNumMimics_num_other": "{{count, number}} Mimics are hiding in $t(chestHint.chestColors.{{param2}}) boxes.",
       "colorNumMimics_paramsReversed": "false",
+      "colorRobber": "There is a Robber among the $t(chestHint.chestColors.{{param1}}) boxes.",
+      "colorRobber_blank": "There is a Robber among the [color] boxes.",
       "colorSameMimics": "Same number of Mimics in $t(chestHint.chestColors.{{param1}}) and $t(chestHint.chestColors.{{param2}}) boxes.",
       "colorSameMimics_blank": "Same number of Mimics in [color] and [color] boxes.",
       "directionGold": "$t(chestHint.chestDirections.{{param1}}) has some Gold in it.",
-      "directionGold_blank": "The chest [direction] from me has some Gold in it.",
+      "directionGold_blank": "The box [direction] from me has some Gold in it.",
       "directionMimic": "$t(chestHint.chestDirections.{{param1}}) is a Mimic.",
       "directionMimic_blank": "The box [direction] from me is a Mimic.",
+      "directionNoRobber": "$t(chestHint.chestDirections.{{param1}}) isn't a Robber.",
+      "directionNoRobber_blank": "The box [direction] from me isn't a Robber.",
       "directionNotGold": "$t(chestHint.chestDirections.{{param1}}) has no Gold.",
       "directionNotGold_blank": "The box [direction] from me has no Gold.",
       "directionNotMimic": "$t(chestHint.chestDirections.{{param1}}) isn't a Mimic.",
       "directionNotMimic_blank": "The box [direction] from me isn't a Mimic.",
+      "directionRobber": "$t(chestHint.chestDirections.{{param1}}) is a Robber.",
+      "directionRobber_blank": "The box [direction] from me is a Robber.",
       "mimicsNeighbors": "2 Mimics hide side-by-side.",
       "mimicsNotNeighbors": "2 of the Mimics are not neighbors.",
       "mimicsNotSameColor": "Not all the Mimics are the same color.",
@@ -100,12 +103,15 @@
       "rankNoGold_blank": "There's no Gold in the [row / column].",
       "rankNoMimic": "The $t(chestHint.chestRank.{{param1}}) contains no Mimics.",
       "rankNoMimic_blank": "The [row / column] contains no Mimics.",
+      "rankNoRobber": "The $t(chestHint.chestRank.{{param1}}) contains no Robbers.",
+      "rankNoRobber_blank": "The [row / column] contains no Robbers.",
+      "rankRobber": "The $t(chestHint.chestRank.{{param1}}) contains a Robber.",
+      "rankRobber_blank": "The [row / column] contains a Robber.",
       "rankSameMimics": "Same number of Mimics in $t(chestHint.chestRank_directionOnly.{{param1}}) and $t(chestHint.chestRank.{{param2}})s.",
       "rankSameMimics_blank": "Same number of Mimics in [row / column] and [row / column].",
       "selfAsleep": "Zzz...",
       "selfAsleep_blank": "Asleep.",
-      "selfNotMimic": "I'm not a Mimic.",
-      "__error": "ERROR"
+      "selfNotMimic": "I'm not a Mimic."
     },
     "chestLayoutSelector": {
       "numChests_one": "{{count, number}} Chest",
@@ -134,6 +140,9 @@
     },
     "closeButton": {
       "ariaLabel": "Close"
+    },
+    "confirmButton": {
+      "cancelLabel": "Cancel"
     },
     "editChestInfo": {
       "chestHintSection": {
@@ -224,6 +233,7 @@
       "itemsLabel": "Items",
       "mimicsLabel": "Mimics",
       "optionalPlaceholder": "?",
+      "robbersLabel": "Robbers",
       "title": "Edit Game Info"
     },
     "editGameInfoButton": {
@@ -238,8 +248,9 @@
       "label_optional": "{{label}} <secondary>(Optional)</secondary>"
     },
     "gameMode": {
-      "standard": "Standard",
-      "random": "Random"
+      "random": "Random",
+      "robbers": "Robbers",
+      "standard": "Standard"
     },
     "header": {
       "chests": "Chests",
@@ -248,6 +259,13 @@
       "gold": "Gold",
       "items": "Items",
       "mimics": "Mimics",
+      "numChests": "{{numChests, number}}",
+      "numGear": "{{numGear, number}}",
+      "numGold": "{{numGold, number}}",
+      "numItems": "{{numItems, number}}",
+      "numMimics": "{{numMimics, number}}",
+      "numRobbers": "{{numRobbers, number}}",
+      "robbers": "Robbers",
       "unknownValue": "?"
     },
     "languages": {
@@ -256,6 +274,11 @@
     },
     "languageSwitcher": {
       "label": "Language"
+    },
+    "resetPuzzleButton": {
+      "confirmDialogExplanation": "Are you sure you want to reset the puzzle? Resetting the puzzle will change all hints to \"Asleep,\" all colors to \"Red,\" and all contents to \"?.\"",
+      "confirmDialogTitle": "Reset Puzzle?",
+      "resetButtonLabel": "Reset"
     },
     "solutionDisplay": {
       "noSolutionYet": "There is no solution to display yet. Please press \"Solve\" to attempt to generate a solution for the current puzzle.",
@@ -272,7 +295,8 @@
         "GEAR": "Gear",
         "GOLD": "Gold",
         "ITEM": "Item",
-        "MIMIC": "Mimic"
+        "MIMIC": "Mimic",
+        "ROBBER": "Robber"
       }
     },
     "solveButton": {

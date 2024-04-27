@@ -1,18 +1,18 @@
-import { CHEST_HINT_TYPE, ChestDirection, ChestRank } from '@/types/chestHint';
-import { useAtomValue } from 'jotai';
-import { focusAtom } from 'jotai-optics';
-import { useMemo } from 'use-memo-one';
-import { ChestColor } from '@/types/chestColor';
-import { ColorField } from './param-field/ColorField';
-import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
-import { DirectionField } from './param-field/DirectionField';
-import { ReversibleParams } from './param-field/ReversibleParams';
-import { isHintParamsReversed } from '@/util/isHintParamsReversed';
-import { useTranslation } from 'react-i18next';
-import { AmountField } from './param-field/AmountField';
-import { RankField } from './param-field/RankField';
-import { ErrorField } from './param-field/ErrorField';
-import { selectedChestAtomAtom } from '@/atoms/selectedChestAtomAtom';
+import { CHEST_HINT_TYPE, ChestDirection, ChestRank } from "@/types/chestHint";
+import { useAtomValue } from "jotai";
+import { focusAtom } from "jotai-optics";
+import { useMemo } from "use-memo-one";
+import { ChestColor } from "@/types/chestColor";
+import { ColorField } from "./param-field/ColorField";
+import { SimpleWritableAtom } from "@/types/simpleWritableAtom";
+import { DirectionField } from "./param-field/DirectionField";
+import { ReversibleParams } from "./param-field/ReversibleParams";
+import { isHintParamsReversed } from "@/util/isHintParamsReversed";
+import { useTranslation } from "react-i18next";
+import { AmountField } from "./param-field/AmountField";
+import { RankField } from "./param-field/RankField";
+import { ErrorField } from "./param-field/ErrorField";
+import { selectedChestAtomAtom } from "@/atoms/selectedChestAtomAtom";
 
 /**
  * Component that allows modifying all parameters associated with the current
@@ -22,20 +22,15 @@ function ChestHintParamsField() {
   const { t } = useTranslation();
   const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
   const chestHintTypeAtom = useMemo(
-    () =>
-      focusAtom(selectedChestAtom, (optic) => optic.prop('hint').prop('type')),
-    [selectedChestAtom]
+    () => focusAtom(selectedChestAtom, (optic) => optic.prop("hint").prop("type")),
+    [selectedChestAtom],
   );
   const paramAtoms = useMemo(
     () => [
-      focusAtom(selectedChestAtom, (optic) =>
-        optic.prop('hint').prop('params').at(0)
-      ),
-      focusAtom(selectedChestAtom, (optic) =>
-        optic.prop('hint').prop('params').at(1)
-      ),
+      focusAtom(selectedChestAtom, (optic) => optic.prop("hint").prop("params").at(0)),
+      focusAtom(selectedChestAtom, (optic) => optic.prop("hint").prop("params").at(1)),
     ],
-    [selectedChestAtom]
+    [selectedChestAtom],
   );
   const chestHintType = useAtomValue(chestHintTypeAtom);
 
@@ -51,20 +46,16 @@ function ChestHintParamsField() {
     case CHEST_HINT_TYPE.directionGold:
     case CHEST_HINT_TYPE.directionNotMimic:
     case CHEST_HINT_TYPE.directionNotGold:
-      return (
-        <DirectionField
-          directionAtom={paramAtoms[0] as SimpleWritableAtom<ChestDirection>}
-        />
-      );
+    case CHEST_HINT_TYPE.directionRobber:
+    case CHEST_HINT_TYPE.directionNoRobber:
+      return <DirectionField directionAtom={paramAtoms[0] as SimpleWritableAtom<ChestDirection>} />;
     case CHEST_HINT_TYPE.colorGold:
     case CHEST_HINT_TYPE.colorMimic:
     case CHEST_HINT_TYPE.colorNoGold:
     case CHEST_HINT_TYPE.colorNoMimic:
-      return (
-        <ColorField
-          colorAtom={paramAtoms[0] as SimpleWritableAtom<ChestColor>}
-        />
-      );
+    case CHEST_HINT_TYPE.colorNoRobber:
+    case CHEST_HINT_TYPE.colorRobber:
+      return <ColorField colorAtom={paramAtoms[0] as SimpleWritableAtom<ChestColor>} />;
     case CHEST_HINT_TYPE.colorSameMimics:
     case CHEST_HINT_TYPE.colorMoreMimics:
       return (
@@ -87,10 +78,7 @@ function ChestHintParamsField() {
       return (
         <ReversibleParams
           paramFields={[
-            <AmountField
-              amountAtom={paramAtoms[0] as SimpleWritableAtom<number>}
-              key="param-1"
-            />,
+            <AmountField amountAtom={paramAtoms[0] as SimpleWritableAtom<number>} key="param-1" />,
             <ColorField
               colorAtom={paramAtoms[1] as SimpleWritableAtom<ChestColor>}
               key="param-2"
@@ -103,22 +91,16 @@ function ChestHintParamsField() {
     case CHEST_HINT_TYPE.rankMimic:
     case CHEST_HINT_TYPE.rankNoGold:
     case CHEST_HINT_TYPE.rankNoMimic:
-      return (
-        <RankField rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>} />
-      );
+    case CHEST_HINT_TYPE.rankNoRobber:
+    case CHEST_HINT_TYPE.rankRobber:
+      return <RankField rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>} />;
     case CHEST_HINT_TYPE.rankMoreMimics:
     case CHEST_HINT_TYPE.rankSameMimics:
       return (
         <ReversibleParams
           paramFields={[
-            <RankField
-              rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>}
-              key="param-1"
-            />,
-            <RankField
-              rankAtom={paramAtoms[1] as SimpleWritableAtom<ChestRank>}
-              key="param-2"
-            />,
+            <RankField rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>} key="param-1" />,
+            <RankField rankAtom={paramAtoms[1] as SimpleWritableAtom<ChestRank>} key="param-2" />,
           ]}
           shouldReverse={isHintParamsReversed({ t, chestHintType })}
           shouldProvidePosition
@@ -126,9 +108,7 @@ function ChestHintParamsField() {
       );
     case CHEST_HINT_TYPE.mimicsNumber:
     case CHEST_HINT_TYPE.number:
-      return (
-        <AmountField amountAtom={paramAtoms[0] as SimpleWritableAtom<number>} />
-      );
+      return <AmountField amountAtom={paramAtoms[0] as SimpleWritableAtom<number>} />;
     default:
       return <ErrorField />;
   }

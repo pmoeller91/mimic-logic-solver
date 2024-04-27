@@ -1,6 +1,7 @@
 const GAME_MODE = {
   standard: 'STANDARD',
   random: 'RANDOM',
+  robbers: 'ROBBERS',
 } as const;
 
 type GameMode = (typeof GAME_MODE)[keyof typeof GAME_MODE];

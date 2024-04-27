@@ -1,9 +1,9 @@
-import { ChestGrid } from '@/types/chestGrid';
-import { GameInfo } from '@/types/state/gameInfo';
-import { InternalSolverSolution } from './internalSolverSolution';
-import merge from 'deepmerge';
-import { resolveHint } from './resolveHint';
-import { getContentsKey } from './getContentsKey';
+import { ChestGrid } from "@/types/chestGrid";
+import { GameInfo } from "@/types/state/gameInfo";
+import { InternalSolverSolution } from "./internalSolverSolution";
+import merge from "deepmerge";
+import { resolveHint } from "./resolveHint";
+import { getContentsKey } from "./getContentsKey";
 
 interface ResolveSolutionParams {
   grid: ChestGrid;
@@ -19,19 +19,15 @@ const resolveSolution = ({
 }: ResolveSolutionParams): InternalSolverSolution | null => {
   const resolvedGrid = merge<ChestGrid>({}, grid);
   if (
-    resolvedGrid.rows
-      .flat()
-      .some((chest) => !resolveHint({ grid: resolvedGrid, chest, gameInfo }))
+    resolvedGrid.rows.flat().some((chest) => !resolveHint({ grid: resolvedGrid, chest, gameInfo }))
   ) {
     return null;
   }
-  const solution: InternalSolverSolution = new Array(
-    resolvedGrid.rows.flat().length
-  )
+  const solution: InternalSolverSolution = new Array(resolvedGrid.rows.flat().length)
     .fill(undefined)
     .map<InternalSolverSolution[number]>(() => new Map());
   resolvedGrid.rows.flat().forEach((chest, i) => {
-    if (typeof chest.contents === 'string') {
+    if (typeof chest.contents === "string") {
       solution[i].set(getContentsKey([chest.contents]), 1);
     } else {
       solution[i].set(getContentsKey(chest.contents), 1);

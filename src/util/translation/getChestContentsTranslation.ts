@@ -12,6 +12,7 @@ const chestContentsTranslations: Record<ChestContents, string> = {
   [CHEST_CONTENTS.item]: 'chestContents.item',
   [CHEST_CONTENTS.mimic]: 'chestContents.mimic',
   [CHEST_CONTENTS.not_mimic]: 'chestContents.notMimic',
+  [CHEST_CONTENTS.robber]: 'chestContents.robber',
   [CHEST_CONTENTS.unknown]: 'chestContents.unknown',
 };
 
@@ -25,5 +26,5 @@ function getChestContentsTranslation({
   return t(chestContentsTranslations[key]);
 }
 
-export { getChestContentsTranslation };
+export { getChestContentsTranslation, chestContentsTranslations };
 export type { GetChestContentsTranslationParams };

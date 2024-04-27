@@ -1,10 +1,10 @@
-import { GAME_MODE } from '@/types/gameMode';
-import { GameInfo } from '@/types/state/gameInfo';
-import { AllChests } from './allChestsAtom';
-import { createChest } from '@/util/createChest';
-import { CHEST_DIRECTION, CHEST_HINT_TYPE } from '@/types/chestHint';
-import { CHEST_CONTENTS } from '@/types/chestContents';
-import { CHEST_COLOR } from '@/types/chestColor';
+import { GAME_MODE } from "@/types/gameMode";
+import { GameInfo } from "@/types/state/gameInfo";
+import { AllChests } from "./allChestsAtom";
+import { createChest } from "@/util/createChest";
+import { CHEST_DIRECTION, CHEST_HINT_TYPE } from "@/types/chestHint";
+import { CHEST_CONTENTS } from "@/types/chestContents";
+import { CHEST_COLOR } from "@/types/chestColor";
 
 interface GameState {
   gameInfo: GameInfo;
@@ -15,6 +15,7 @@ const initialState: GameState = {
   gameInfo: {
     numChests: 4,
     numMimics: 1,
+    numRobbers: 1,
     numItems: undefined,
     numGear: undefined,
     numGold: undefined,

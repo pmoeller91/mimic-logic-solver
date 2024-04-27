@@ -4,17 +4,15 @@ import {
   CHEST_RANK,
   ChestHintOfType,
   ChestHintType,
-} from '@/types/chestHint';
-import { CHEST_COLOR } from '@/types/chestColor';
+} from "@/types/chestHint";
+import { CHEST_COLOR } from "@/types/chestColor";
 
 const defaultColor = CHEST_COLOR.red;
 const defaultDirection = CHEST_DIRECTION.up;
 const defaultNumber = 0;
 const defaultRank = CHEST_RANK.topMost;
 
-const getDefaultHint = <T extends ChestHintType>(
-  hintType: T
-): ChestHintOfType<T> => {
+const getDefaultHint = <T extends ChestHintType>(hintType: T): ChestHintOfType<T> => {
   switch (hintType) {
     case CHEST_HINT_TYPE.mimicsNeighbors:
     case CHEST_HINT_TYPE.mimicsNotNeighbors:
@@ -27,6 +25,8 @@ const getDefaultHint = <T extends ChestHintType>(
     case CHEST_HINT_TYPE.colorMimic:
     case CHEST_HINT_TYPE.colorNoGold:
     case CHEST_HINT_TYPE.colorNoMimic:
+    case CHEST_HINT_TYPE.colorNoRobber:
+    case CHEST_HINT_TYPE.colorRobber:
       return {
         type: hintType,
         params: [defaultColor],
@@ -44,8 +44,10 @@ const getDefaultHint = <T extends ChestHintType>(
       } as ChestHintOfType<T>;
     case CHEST_HINT_TYPE.directionNotGold:
     case CHEST_HINT_TYPE.directionNotMimic:
+    case CHEST_HINT_TYPE.directionNoRobber:
     case CHEST_HINT_TYPE.directionMimic:
     case CHEST_HINT_TYPE.directionGold:
+    case CHEST_HINT_TYPE.directionRobber:
       return {
         type: hintType,
         params: [defaultDirection],
@@ -54,6 +56,8 @@ const getDefaultHint = <T extends ChestHintType>(
     case CHEST_HINT_TYPE.rankMimic:
     case CHEST_HINT_TYPE.rankNoGold:
     case CHEST_HINT_TYPE.rankNoMimic:
+    case CHEST_HINT_TYPE.rankNoRobber:
+    case CHEST_HINT_TYPE.rankRobber:
       return {
         type: hintType,
         params: [defaultRank],

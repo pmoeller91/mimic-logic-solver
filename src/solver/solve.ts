@@ -16,6 +16,7 @@ interface SolverParams {
 const solve = ({ grid, gameInfo }: SolverParams) => {
   switch (gameInfo.gameMode) {
     case GAME_MODE.standard:
+    case GAME_MODE.robbers:
       return solveStandard({ grid, gameInfo });
     case GAME_MODE.random:
       return solveRandom({ grid, gameInfo });

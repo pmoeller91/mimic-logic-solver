@@ -1,12 +1,13 @@
-import { ChestGrid } from '@/types/chestGrid';
-import { CHEST_CONTENTS, ChestContents } from '@/types/chestContents';
-import { GameInfo } from '@/types/state/gameInfo';
-import merge from 'deepmerge';
-import { SolverChest } from './solverChest';
-import { InternalSolverSolution } from './internalSolverSolution';
-import { Chest } from '@/types/chest';
-import { resolveSolution } from './resolveSolution';
-import { mergeSolutions } from './mergeSolutions';
+import { ChestGrid } from "@/types/chestGrid";
+import { CHEST_CONTENTS, ChestContents } from "@/types/chestContents";
+import { GameInfo } from "@/types/state/gameInfo";
+import merge from "deepmerge";
+import { SolverChest } from "./solverChest";
+import { InternalSolverSolution } from "./internalSolverSolution";
+import { Chest } from "@/types/chest";
+import { resolveSolution } from "./resolveSolution";
+import { mergeSolutions } from "./mergeSolutions";
+import { GAME_MODE } from "@/types/gameMode";
 
 interface SolveStandardParams {
   grid: ChestGrid;
@@ -25,17 +26,18 @@ const solveStandard = ({ grid, gameInfo }: SolveStandardParams) => {
 
   // Object that maps individual contents to how many times it has already been
   // defined in the grid.
-  const alreadyDefinedContents = grid.rows
-    .flat()
-    .reduce((definedContents, chest) => {
-      if (typeof chest.contents !== 'string') {
+  const alreadyDefinedContents = grid.rows.flat().reduce(
+    (definedContents, chest) => {
+      if (typeof chest.contents !== "string") {
         return definedContents;
       }
       return {
         ...definedContents,
         [chest.contents]: (definedContents[chest.contents] ?? 0) + 1,
       };
-    }, {} as { [K in ChestContents]?: number });
+    },
+    {} as { [K in ChestContents]?: number },
+  );
 
   // This will represent all possible types of content that can go in the
   // remaining chests. Each entry in this array will: [ChestContent, number],
@@ -47,6 +49,11 @@ const solveStandard = ({ grid, gameInfo }: SolveStandardParams) => {
       gameInfo.numMimics - (alreadyDefinedContents[CHEST_CONTENTS.mimic] ?? 0),
     ],
   ];
+
+  // Account for robbers, but only when in the right game mode.
+  if (gameInfo.gameMode === GAME_MODE.robbers) {
+    possibleContents.push([CHEST_CONTENTS.robber, gameInfo.numRobbers]);
+  }
 
   // The "catch-all" content represents the left-over contents when some of
   // gold, item, or gear numbers are not specified. For example, if none of
@@ -94,8 +101,7 @@ const solveStandard = ({ grid, gameInfo }: SolveStandardParams) => {
   possibleContents = possibleContents.filter(([_content, num]) => num >= 1);
 
   const numCatchAll =
-    unknownChests.length -
-    possibleContents.reduce((total, [_content, num]) => total + num, 0);
+    unknownChests.length - possibleContents.reduce((total, [_content, num]) => total + num, 0);
 
   if (numCatchAll > 0) {
     possibleContents.push([catchAllContent, numCatchAll]);
