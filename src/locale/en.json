@@ -278,7 +278,7 @@
       "label": "Language"
     },
     "resetPuzzleButton": {
-      "confirmDialogExplanation": "Are you sure you want to reset the puzzle? Resetting the puzzle will change all hints to \"Asleep,\" all colors to \"Red,\" and all contents to \"?.\"",
+      "confirmDialogExplanation": "Are you sure you want to reset the puzzle? Resetting the puzzle will affect all chests, changing all hints to \"Asleep,\" all colors to \"Red,\" and all contents to \"Unknown.\" It will also affect game info, resetting all optional content fields (\"Gear\", \"Gold\", \"Items\") that have been set.",
       "confirmDialogTitle": "Reset Puzzle?",
       "resetButtonLabel": "Reset"
     },
