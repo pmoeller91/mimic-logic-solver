@@ -8,7 +8,7 @@ function ChestHintSection() {
   return (
     <>
       <h3 className="font-bold my-4 text-xl border-b-2">{title}</h3>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 w-full">
         <ChestHintTypeField />
         <ChestHintParamsField />
       </div>

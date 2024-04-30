@@ -12,7 +12,7 @@ function PropertiesDrawerHeaderView({
   titleId,
 }: PropertiesDrawerHeaderViewProps) {
   return (
-    <div className="flex flex-row items-center mb-4 pl-4 pr-2 py-4 bg-pd">
+    <div className="flex flex-row items-center pl-4 pr-2 py-4 bg-pd">
       <h2 className="text-xl" id={titleId}>
         {title}
       </h2>

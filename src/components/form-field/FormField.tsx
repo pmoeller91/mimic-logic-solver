@@ -38,7 +38,7 @@ const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
         ref={ref}
         {...additionalProps}
       >
-        <label id={labelId} htmlFor={inputId}>
+        <label id={labelId} htmlFor={inputId} className="block">
           {label}
         </label>
         {inputElement}
