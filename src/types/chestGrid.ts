@@ -1,4 +1,4 @@
-import { Chest } from './chest';
+import { Chest } from "./chest";
 
 interface ChestGridFour {
   numChests: 4;
@@ -22,17 +22,17 @@ interface ChestGridNine {
 
 type ChestGrid = ChestGridFour | ChestGridSix | ChestGridSeven | ChestGridNine;
 
-type ValidGridSizes = ChestGrid['numChests'];
+type ValidGridSizes = ChestGrid["numChests"];
 
 type ChestGridSized<T extends ValidGridSizes> = T extends 4
   ? ChestGridFour
   : T extends 6
-  ? ChestGridSix
-  : T extends 7
-  ? ChestGridSeven
-  : T extends 9
-  ? ChestGridNine
-  : never;
+    ? ChestGridSix
+    : T extends 7
+      ? ChestGridSeven
+      : T extends 9
+        ? ChestGridNine
+        : never;
 
 export type {
   ChestGrid,

@@ -1,4 +1,4 @@
-import { LocalizedValidationError } from './LocalizedValidationError';
+import { LocalizedValidationError } from "./LocalizedValidationError";
 
 /**
  * Used to throw multiple validation errors from a single 'throw', as the validator function for the overall form can only throw a single error.

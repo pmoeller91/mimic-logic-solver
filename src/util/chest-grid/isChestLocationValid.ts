@@ -1,15 +1,12 @@
-import { ChestGrid } from '@/types/chestGrid';
-import { ChestLocation } from '@/types/chestLocation';
+import { ChestGrid } from "@/types/chestGrid";
+import { ChestLocation } from "@/types/chestLocation";
 
 interface IsChestLocationValidParams {
-  numChests: ChestGrid['numChests'];
+  numChests: ChestGrid["numChests"];
   location: ChestLocation;
 }
 
-function isChestLocationValid({
-  numChests,
-  location,
-}: IsChestLocationValidParams): boolean {
+function isChestLocationValid({ numChests, location }: IsChestLocationValidParams): boolean {
   const [row, col] = location;
   if (row < 0 || col < 0) {
     return false;

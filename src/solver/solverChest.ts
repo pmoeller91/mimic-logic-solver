@@ -1,4 +1,4 @@
-import { Chest } from '@/types/chest';
+import { Chest } from "@/types/chest";
 
 interface SolverChest extends Chest {
   isNotMimic?: boolean;

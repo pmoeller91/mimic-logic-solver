@@ -1,15 +1,15 @@
-import { SolutionPanel } from '../solution-panel/SolutionPanel';
-import { SolveButtonContainer } from '../solve-button/SolveButtonContainer';
-import { MainChestGrid } from './MainChestGrid';
-import { Tab, Tabs, TabList, TabPanel, TabsProps } from 'react-tabs';
-import { GameInfoHeaderContainer } from '../game-info-header/GameInfoHeaderContainer';
-import { useAtom } from 'jotai';
-import { selectedTabAtom } from '@/atoms/selectedTabAtom';
-import { useCallback } from 'use-memo-one';
-import { MAIN_TAB, MainTab } from '@/types/mainTab';
-import { invert } from 'lodash-es';
-import { useTranslation } from 'react-i18next';
-import { ResetPuzzleButton } from '../reset-puzzle-button/ResetPuzzleButton';
+import { SolutionPanel } from "../solution-panel/SolutionPanel";
+import { SolveButtonContainer } from "../solve-button/SolveButtonContainer";
+import { MainChestGrid } from "./MainChestGrid";
+import { Tab, Tabs, TabList, TabPanel, TabsProps } from "react-tabs";
+import { GameInfoHeaderContainer } from "../game-info-header/GameInfoHeaderContainer";
+import { useAtom } from "jotai";
+import { selectedTabAtom } from "@/atoms/selectedTabAtom";
+import { useCallback } from "use-memo-one";
+import { MAIN_TAB, MainTab } from "@/types/mainTab";
+import { invert } from "lodash-es";
+import { useTranslation } from "react-i18next";
+import { ResetPuzzleButton } from "../reset-puzzle-button/ResetPuzzleButton";
 
 const tabIndexes: Record<MainTab, number> = {
   [MAIN_TAB.gameField]: 0,
@@ -20,15 +20,15 @@ const reverseTabIndexes = invert(tabIndexes) as Record<number, MainTab>;
 
 function CenterPanel() {
   const [selectedTab, setSelectedTab] = useAtom(selectedTabAtom);
-  const handleOnSelect = useCallback<Exclude<TabsProps['onSelect'], undefined>>(
+  const handleOnSelect = useCallback<Exclude<TabsProps["onSelect"], undefined>>(
     (index) => {
       setSelectedTab(reverseTabIndexes[index]);
     },
-    [setSelectedTab]
+    [setSelectedTab],
   );
   const { t } = useTranslation();
-  const gameFieldLabel = t('centerPanel.gameFieldLabel');
-  const solutionLabel = t('centerPanel.solutionLabel');
+  const gameFieldLabel = t("centerPanel.gameFieldLabel");
+  const solutionLabel = t("centerPanel.solutionLabel");
   return (
     <div className="flex flex-grow flex-col bg-bg-light/60">
       <GameInfoHeaderContainer />

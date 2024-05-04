@@ -1,5 +1,5 @@
-import { ChestContents } from '@/types/chestContents';
-import { isEqual } from 'lodash-es';
+import { ChestContents } from "@/types/chestContents";
+import { isEqual } from "lodash-es";
 
 const contentKeys: ChestContents[][] = [];
 
@@ -10,9 +10,7 @@ const contentKeys: ChestContents[][] = [];
  */
 const getContentsKey = (contents: ChestContents[]) => {
   const sortedContents = [...contents].sort();
-  const foundKey = contentKeys.find((contentKey) =>
-    isEqual(contentKey, sortedContents)
-  );
+  const foundKey = contentKeys.find((contentKey) => isEqual(contentKey, sortedContents));
   if (!foundKey) {
     contentKeys.push(sortedContents);
     return sortedContents;

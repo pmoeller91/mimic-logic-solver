@@ -2,32 +2,32 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    'a b'
-    'c d';
+    "a b"
+    "c d";
 }
 
 .grid-size-6 {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    'a b c'
-    'd e f';
+    "a b c"
+    "d e f";
 }
 
 .grid-size-7 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    '. a a b b .'
-    'c c d d e e'
-    '. f f g g .';
+    ". a a b b ."
+    "c c d d e e"
+    ". f f g g .";
 }
 
 .grid-size-9 {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    'a b c'
-    'd e f'
-    'g h i';
+    "a b c"
+    "d e f"
+    "g h i";
 }

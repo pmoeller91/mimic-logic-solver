@@ -1,19 +1,18 @@
-import { TFunction } from 'i18next';
-import { ChestGrid } from './chestGrid';
-import { GameInfo } from './state/gameInfo';
-import { ChestContents } from './chestContents';
+import { TFunction } from "i18next";
+import { ChestGrid } from "./chestGrid";
+import { GameInfo } from "./state/gameInfo";
+import { ChestContents } from "./chestContents";
 
 const SOLVER_MESSAGE_TYPE = {
   // Currently unused due to completing too quickly.
-  progress: 'PROGRESS',
-  begin: 'BEGIN',
-  error: 'ERROR',
-  end: 'END',
-  noValidSolution: 'NO_VALID_SOLUTION',
+  progress: "PROGRESS",
+  begin: "BEGIN",
+  error: "ERROR",
+  end: "END",
+  noValidSolution: "NO_VALID_SOLUTION",
 } as const;
 
-type SolverMessageType =
-  (typeof SOLVER_MESSAGE_TYPE)[keyof typeof SOLVER_MESSAGE_TYPE];
+type SolverMessageType = (typeof SOLVER_MESSAGE_TYPE)[keyof typeof SOLVER_MESSAGE_TYPE];
 
 interface SolverMessageBase<T extends SolverMessageType, V = undefined> {
   type: T;
@@ -23,22 +22,11 @@ interface SolverMessageBase<T extends SolverMessageType, V = undefined> {
 type SolverSolution = [ChestContents[], number][][];
 
 interface SolverMessages {
-  ProgressMessage: SolverMessageBase<
-    (typeof SOLVER_MESSAGE_TYPE)['progress'],
-    number
-  >;
-  BeginMessage: SolverMessageBase<(typeof SOLVER_MESSAGE_TYPE)['begin']>;
-  EndMessage: SolverMessageBase<
-    (typeof SOLVER_MESSAGE_TYPE)['end'],
-    SolverSolution
-  >;
-  ErrorMessage: SolverMessageBase<
-    (typeof SOLVER_MESSAGE_TYPE)['error'],
-    Parameters<TFunction>[]
-  >;
-  NoValidSolution: SolverMessageBase<
-    (typeof SOLVER_MESSAGE_TYPE)['noValidSolution']
-  >;
+  ProgressMessage: SolverMessageBase<(typeof SOLVER_MESSAGE_TYPE)["progress"], number>;
+  BeginMessage: SolverMessageBase<(typeof SOLVER_MESSAGE_TYPE)["begin"]>;
+  EndMessage: SolverMessageBase<(typeof SOLVER_MESSAGE_TYPE)["end"], SolverSolution>;
+  ErrorMessage: SolverMessageBase<(typeof SOLVER_MESSAGE_TYPE)["error"], Parameters<TFunction>[]>;
+  NoValidSolution: SolverMessageBase<(typeof SOLVER_MESSAGE_TYPE)["noValidSolution"]>;
 }
 
 type SolverMessage = SolverMessages[keyof SolverMessages];

@@ -42,7 +42,9 @@ function GameInfoHeaderView({
         <HeaderItem title={gameModeHeader} value={gameMode} />
         <HeaderItem title={chestsHeader} value={chests} valueClassName="font-mono" />
         <HeaderItem title={mimicsHeader} value={mimics} valueClassName="font-mono" />
-        {showRobbers && <HeaderItem title={robbersHeader} value={robbers} valueClassName="font-mono" />}
+        {showRobbers && (
+          <HeaderItem title={robbersHeader} value={robbers} valueClassName="font-mono" />
+        )}
         <HeaderItem title={goldHeader} value={gold} valueClassName="font-mono" />
         <HeaderItem title={gearHeader} value={gear} valueClassName="font-mono" />
         <HeaderItem title={itemsHeader} value={items} valueClassName="font-mono" />

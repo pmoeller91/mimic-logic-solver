@@ -169,11 +169,7 @@ const ChestHintTypeField = forwardRef<HTMLSelectElement, ChestHintTypeFieldProps
 
     return (
       <FormField label={label} className={className}>
-        <FormSelect
-          onChange={handleOnChange}
-          value={selectedChestHint.type}
-          ref={ref}
-        >
+        <FormSelect onChange={handleOnChange} value={selectedChestHint.type} ref={ref}>
           {chestHintGroups.map(({ label, options, id }, idx, arr) => (
             <React.Fragment key={id}>
               <optgroup label={t(label)} key={id}>

@@ -1,4 +1,4 @@
-import { SetStateAction, WritableAtom } from 'jotai';
+import { SetStateAction, WritableAtom } from "jotai";
 
 type SimpleWritableAtom<T> = WritableAtom<T, [SetStateAction<T>], void>;
 

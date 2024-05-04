@@ -1,6 +1,6 @@
 const MAIN_TAB = {
-  gameField: 'GAME_FIELD',
-  solution: 'SOLUTION',
+  gameField: "GAME_FIELD",
+  solution: "SOLUTION",
 } as const;
 
 type MainTab = (typeof MAIN_TAB)[keyof typeof MAIN_TAB];

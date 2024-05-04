@@ -1,16 +1,15 @@
-import { CenterPanelFallback } from './components/center-panel/CenterPanelFallback';
-import { SiteFooterContainer } from './components/site-footer/SiteFooterContainer';
-import { SiteHeader } from './components/site-header/SiteHeader';
-import { Suspense, lazy } from 'react';
+import { CenterPanelFallback } from "./components/center-panel/CenterPanelFallback";
+import { SiteFooterContainer } from "./components/site-footer/SiteFooterContainer";
+import { SiteHeader } from "./components/site-header/SiteHeader";
+import { Suspense, lazy } from "react";
 
 const PropertiesDrawerContainer = lazy(async () => ({
-  default: (
-    await import('@/components/properties-drawer/PropertiesDrawerContainer')
-  ).PropertiesDrawerContainer,
+  default: (await import("@/components/properties-drawer/PropertiesDrawerContainer"))
+    .PropertiesDrawerContainer,
 }));
 
 const CenterPanel = lazy(async () => ({
-  default: (await import('@/components/center-panel/CenterPanel')).CenterPanel,
+  default: (await import("@/components/center-panel/CenterPanel")).CenterPanel,
 }));
 
 function App() {

@@ -1,6 +1,6 @@
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { forwardRef } from 'react';
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { forwardRef } from "react";
 
 interface SpinnerProps {
   className?: string;
@@ -9,16 +9,12 @@ interface SpinnerProps {
 
 const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(function Spinner(
   { className, ariaLabel },
-  ref
+  ref,
 ) {
   return (
     <div className={className} ref={ref}>
       {ariaLabel && <div className="sr-only">{ariaLabel}</div>}
-      <FontAwesomeIcon
-        icon={faSpinner}
-        className="animate-spin w-full h-full"
-        aria-hidden="true"
-      />
+      <FontAwesomeIcon icon={faSpinner} className="animate-spin w-full h-full" aria-hidden="true" />
     </div>
   );
 });

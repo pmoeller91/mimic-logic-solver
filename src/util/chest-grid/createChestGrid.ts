@@ -1,10 +1,10 @@
-import { ChestGridSized, ValidGridSizes } from '@/types/chestGrid';
-import { createChest } from '../createChest';
-import { cloneDeep } from 'lodash-es';
+import { ChestGridSized, ValidGridSizes } from "@/types/chestGrid";
+import { createChest } from "../createChest";
+import { cloneDeep } from "lodash-es";
 
 interface CreateChestGridParams<T extends ValidGridSizes> {
   numChests: T;
-  initialRows?: ChestGridSized<T>['rows'];
+  initialRows?: ChestGridSized<T>["rows"];
 }
 
 function createChestGrid<T extends ValidGridSizes>({
@@ -50,7 +50,7 @@ function createChestGrid<T extends ValidGridSizes>({
         ],
       } as ChestGridSized<T>;
   }
-  throw new RangeError('Invalid number of chests provided');
+  throw new RangeError("Invalid number of chests provided");
 }
 
 export { createChestGrid };

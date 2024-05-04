@@ -1,8 +1,8 @@
-import { Chest } from '@/types/chest';
-import { ChestGrid } from '@/types/chestGrid';
-import { ChestDirection } from '@/types/chestHint';
-import { getChestByLocation } from './getChestByLocation';
-import { getAdjacentChestLocation } from './getAdjacentChestLocation';
+import { Chest } from "@/types/chest";
+import { ChestGrid } from "@/types/chestGrid";
+import { ChestDirection } from "@/types/chestHint";
+import { getChestByLocation } from "./getChestByLocation";
+import { getAdjacentChestLocation } from "./getAdjacentChestLocation";
 
 interface GetAdjacentChestParams {
   grid: ChestGrid;
@@ -10,11 +10,7 @@ interface GetAdjacentChestParams {
   direction: ChestDirection;
 }
 
-function getAdjacentChest({
-  grid,
-  chest,
-  direction,
-}: GetAdjacentChestParams): Chest | null {
+function getAdjacentChest({ grid, chest, direction }: GetAdjacentChestParams): Chest | null {
   const location = getAdjacentChestLocation({ grid, chest, direction });
   if (location === null) {
     return null;

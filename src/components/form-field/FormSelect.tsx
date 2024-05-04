@@ -1,7 +1,7 @@
-import clsx from 'clsx';
-import { ComponentPropsWithRef, forwardRef } from 'react';
+import clsx from "clsx";
+import { ComponentPropsWithRef, forwardRef } from "react";
 
-interface FormSelect extends ComponentPropsWithRef<'select'> {
+interface FormSelect extends ComponentPropsWithRef<"select"> {
   className?: string;
 }
 
@@ -9,24 +9,19 @@ interface FormSelect extends ComponentPropsWithRef<'select'> {
  * Basic wrapper component for select that provides consistent styling within
  * properties drawer.
  */
-const FormSelect = forwardRef<HTMLSelectElement, FormSelect>(
-  function EditChestInfoSelect(
-    { className, children, ...additionalProps },
-    ref
-  ) {
-    return (
-      <select
-        className={clsx(
-          'bg-bg-light px-2 py-1 w-full',
-          className
-        )}
-        ref={ref}
-        {...additionalProps}
-      >
-        {children}
-      </select>
-    );
-  }
-);
+const FormSelect = forwardRef<HTMLSelectElement, FormSelect>(function EditChestInfoSelect(
+  { className, children, ...additionalProps },
+  ref,
+) {
+  return (
+    <select
+      className={clsx("bg-bg-light px-2 py-1 w-full", className)}
+      ref={ref}
+      {...additionalProps}
+    >
+      {children}
+    </select>
+  );
+});
 
 export { FormSelect };

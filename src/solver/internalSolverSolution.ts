@@ -1,4 +1,4 @@
-import { ChestContents } from '@/types/chestContents';
+import { ChestContents } from "@/types/chestContents";
 
 // A full solution to a grid. Consists of an array of maps. Each entry of the
 // array represents the solutions for one chest (in order of flat() ing the rows

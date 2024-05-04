@@ -1,6 +1,6 @@
-import { ValidGridSizes } from '@/types/chestGrid';
-import { InternalSolverSolution } from './internalSolverSolution';
-import { ChestContents } from '@/types/chestContents';
+import { ValidGridSizes } from "@/types/chestGrid";
+import { InternalSolverSolution } from "./internalSolverSolution";
+import { ChestContents } from "@/types/chestContents";
 
 const getBlankSolution = (size: ValidGridSizes) => {
   const blankSolution: InternalSolverSolution = new Array(size)

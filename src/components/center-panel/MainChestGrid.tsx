@@ -1,6 +1,6 @@
-import { derivedChestGridAtom } from '@/atoms/derivedChestGridAtom';
-import { useAtomValue } from 'jotai';
-import { ChestGrid } from '../chest-grid/ChestGrid';
+import { derivedChestGridAtom } from "@/atoms/derivedChestGridAtom";
+import { useAtomValue } from "jotai";
+import { ChestGrid } from "../chest-grid/ChestGrid";
 
 function MainChestGrid() {
   const chestGrid = useAtomValue(derivedChestGridAtom);

@@ -1,10 +1,10 @@
 import {
   propertiesDrawerModeAtom,
   propertiesDrawerOpenAtom,
-} from '@/components/properties-drawer/propertiesDrawerAtoms';
-import { PropertiesDrawerMode } from '@/types/propertiesDrawer';
-import { useSetAtom } from 'jotai';
-import { useCallback } from 'react';
+} from "@/components/properties-drawer/propertiesDrawerAtoms";
+import { PropertiesDrawerMode } from "@/types/propertiesDrawer";
+import { useSetAtom } from "jotai";
+import { useCallback } from "react";
 
 interface UseOpenPropertiesDrawerParams {
   mode: PropertiesDrawerMode;

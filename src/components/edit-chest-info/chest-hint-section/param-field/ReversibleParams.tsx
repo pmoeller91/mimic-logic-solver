@@ -1,4 +1,4 @@
-import { ReactElement, cloneElement } from 'react';
+import { ReactElement, cloneElement } from "react";
 
 interface ReversibleParamsProps {
   paramFields: [ReactElement, ReactElement];

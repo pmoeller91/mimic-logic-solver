@@ -2,7 +2,7 @@ import { ValidGridSizes } from "../chestGrid";
 import { GameMode } from "../gameMode";
 
 interface GameInfo {
-  gameMode: GameMode,
+  gameMode: GameMode;
   numMimics: number;
   numRobbers: number;
   numItems?: number;

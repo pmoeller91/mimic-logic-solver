@@ -4,8 +4,8 @@ import { CHEST_DIRECTION } from "@/types/chestHint";
 import { getAdjacentChest } from "./getAdjacentChest";
 
 interface GetNeighborChestsParams {
-  chest: Chest,
-  grid: ChestGrid,
+  chest: Chest;
+  grid: ChestGrid;
 }
 
 /**
@@ -17,8 +17,10 @@ interface GetNeighborChestsParams {
  */
 const getNeighborChests = ({ chest, grid }: GetNeighborChestsParams): Chest[] => {
   const directions = Object.values(CHEST_DIRECTION);
-  const neighborChests = directions.map((direction) => getAdjacentChest({ grid, chest, direction })).filter((chest): chest is Chest => chest !== null);
+  const neighborChests = directions
+    .map((direction) => getAdjacentChest({ grid, chest, direction }))
+    .filter((chest): chest is Chest => chest !== null);
   return neighborChests;
-}
+};
 
 export { getNeighborChests };

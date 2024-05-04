@@ -1,7 +1,7 @@
-import { formValueAtom } from '@/util/formValueAtom';
-import { initialState } from './initialState';
-import { localizedYup } from '@/i18n';
-import { selectAtom } from 'jotai/utils';
+import { formValueAtom } from "@/util/formValueAtom";
+import { initialState } from "./initialState";
+import { localizedYup } from "@/i18n";
+import { selectAtom } from "jotai/utils";
 
 const initialValue = initialState.gameInfo.numMimics;
 const initialFormValue = initialValue.toString();
@@ -9,7 +9,7 @@ const initialFormValue = initialValue.toString();
 const numMimicsSchema = localizedYup
   .number()
   .transform((value, originalValue) => {
-    if (originalValue === '') {
+    if (originalValue === "") {
       return undefined;
     }
     return value as number;
@@ -25,9 +25,6 @@ const numMimicsFormValueAtom = formValueAtom({
   schema: numMimicsSchema,
 });
 
-const numMimicsAtom = selectAtom(
-  numMimicsFormValueAtom,
-  (v) => v.lastValidValue
-);
+const numMimicsAtom = selectAtom(numMimicsFormValueAtom, (v) => v.lastValidValue);
 
 export { numMimicsFormValueAtom, numMimicsAtom };

@@ -1,6 +1,6 @@
-import React from 'react';
-import { LanguageSwitcher } from '../language-switcher/LanguageSwitcher';
-import clsx from 'clsx';
+import React from "react";
+import { LanguageSwitcher } from "../language-switcher/LanguageSwitcher";
+import clsx from "clsx";
 
 interface SiteFooterViewProps {
   copyrightNotice: string;
@@ -8,16 +8,12 @@ interface SiteFooterViewProps {
   className?: string;
 }
 
-function SiteFooterView({
-  copyrightNotice,
-  sourceCode,
-  className,
-}: SiteFooterViewProps) {
+function SiteFooterView({ copyrightNotice, sourceCode, className }: SiteFooterViewProps) {
   return (
     <footer
       className={clsx(
-        'font-sans flex flex-row flex-wrap items-center justify-center gap-4 py-2 bg-bg-dark-primary',
-        className
+        "font-sans flex flex-row flex-wrap items-center justify-center gap-4 py-2 bg-bg-dark-primary",
+        className,
       )}
     >
       <p>{copyrightNotice}</p>

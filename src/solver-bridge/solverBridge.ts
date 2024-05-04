@@ -1,17 +1,17 @@
-import { isSolvingAtom } from '@/atoms/solver/isSolvingAtom';
-import { progressAtom } from '@/atoms/solver/progressAtom';
-import { solutionAtom } from '@/atoms/solver/solutionAtom';
-import { workerAtom } from '@/atoms/solver/workerAtom';
-import { SOLVER_MESSAGE_TYPE } from '@/types/solverMessage';
-import { ChestGrid } from '@/types/chestGrid';
-import { GameInfo } from '@/types/state/gameInfo';
-import SolverWorker from '../solver/worker?worker';
-import { isErrorAtom } from '@/atoms/solver/isErrorAtom';
-import { errorMessagesAtom } from '@/atoms/solver/errorMessagesAtom';
-import { store } from '@/atoms/store';
-import { solutionGridAtom } from '@/atoms/solver/solutionGridAtom';
-import merge from 'deepmerge';
-import { isNoValidSolutionAtom } from '@/atoms/solver/isNoValidSolutionAtom';
+import { isSolvingAtom } from "@/atoms/solver/isSolvingAtom";
+import { progressAtom } from "@/atoms/solver/progressAtom";
+import { solutionAtom } from "@/atoms/solver/solutionAtom";
+import { workerAtom } from "@/atoms/solver/workerAtom";
+import { SOLVER_MESSAGE_TYPE } from "@/types/solverMessage";
+import { ChestGrid } from "@/types/chestGrid";
+import { GameInfo } from "@/types/state/gameInfo";
+import SolverWorker from "../solver/worker?worker";
+import { isErrorAtom } from "@/atoms/solver/isErrorAtom";
+import { errorMessagesAtom } from "@/atoms/solver/errorMessagesAtom";
+import { store } from "@/atoms/store";
+import { solutionGridAtom } from "@/atoms/solver/solutionGridAtom";
+import merge from "deepmerge";
+import { isNoValidSolutionAtom } from "@/atoms/solver/isNoValidSolutionAtom";
 
 const createWorker = () => {
   let worker = store.get(workerAtom);

@@ -23,8 +23,8 @@ To run tests, run `npm run test`. Tests currently include linting using ESLint,
 and a limited set of unit tests using [Vitest](https://vitest.dev/). To run
 these test suites separately the following commands can be used:
 
- - `npm run test:lint` to run linting
- - `npm run test:unit` to run the Vitest unit test suites
+- `npm run test:lint` to run linting
+- `npm run test:unit` to run the Vitest unit test suites
 
 To create a production build of the application, run `npm run build`. The output
 will be placed in `./dist`.

@@ -1,9 +1,8 @@
-import { debounce } from 'lodash-es';
-import { RefObject, useLayoutEffect, useState } from 'react';
-import { useMemo } from 'use-memo-one';
+import { debounce } from "lodash-es";
+import { RefObject, useLayoutEffect, useState } from "react";
+import { useMemo } from "use-memo-one";
 
-const isElemOverflowing = (elem: Element) =>
-  elem.scrollHeight > elem.clientHeight;
+const isElemOverflowing = (elem: Element) => elem.scrollHeight > elem.clientHeight;
 
 /**
  * Returns whether the element referred to by the passed ref currently has a
@@ -18,11 +17,11 @@ const useIsOverflow = <T extends HTMLElement>(overflowRef: RefObject<T>) => {
           setIsOverflow(isElemOverflowing(entry.target));
         });
       }, 50),
-    []
+    [],
   );
 
   const resizeObserver = useMemo(() => {
-    if ('ResizeObserver' in window) {
+    if ("ResizeObserver" in window) {
       return new ResizeObserver(trigger);
     }
   }, [trigger]);

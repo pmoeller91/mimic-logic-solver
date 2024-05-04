@@ -1,12 +1,12 @@
-import './index.scss';
-import '@/styles/react-tabs.scss';
-import './i18n.ts';
-import '@fontsource/pixelify-sans';
+import "./index.scss";
+import "@/styles/react-tabs.scss";
+import "./i18n.ts";
+import "@fontsource/pixelify-sans";
 
-import { Provider } from 'jotai';
-import React, { Suspense } from 'react';
-import { store } from './atoms/store';
-import App from './App';
+import { Provider } from "jotai";
+import React, { Suspense } from "react";
+import { store } from "./atoms/store";
+import App from "./App";
 
 interface RootProps {
   translationFallbackLabel: string;

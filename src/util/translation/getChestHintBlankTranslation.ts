@@ -1,17 +1,14 @@
-import { ChestHint } from '@/types/chestHint';
-import { GetTranslationParams, TRANSLATION_TYPE } from '@/types/translation';
-import { chestHintTranslations } from './chestHintTranslations';
+import { ChestHint } from "@/types/chestHint";
+import { GetTranslationParams, TRANSLATION_TYPE } from "@/types/translation";
+import { chestHintTranslations } from "./chestHintTranslations";
 
 type GetChestHintBlankTranslationParams = GetTranslationParams<
   typeof TRANSLATION_TYPE.chestHintBlank,
-  ChestHint['type']
+  ChestHint["type"]
 >;
 
-function getChestHintBlankTranslation({
-  key,
-  t,
-}: GetChestHintBlankTranslationParams) {
-  return t(chestHintTranslations[key], { context: 'blank' });
+function getChestHintBlankTranslation({ key, t }: GetChestHintBlankTranslationParams) {
+  return t(chestHintTranslations[key], { context: "blank" });
 }
 
 export { getChestHintBlankTranslation };

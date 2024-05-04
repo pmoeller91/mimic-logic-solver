@@ -1,11 +1,11 @@
-import { SimpleWritableAtom } from '@/types/simpleWritableAtom';
-import { useAtom } from 'jotai';
-import { FormField } from '../../../form-field/FormField';
-import { FormSelect } from '../../../form-field/FormSelect';
-import { useCallback } from 'use-memo-one';
-import { DefinedAttribute } from '@/types/definedAttribute';
-import { useTranslation } from 'react-i18next';
-import { CHEST_RANK, ChestRank } from '@/types/chestHint';
+import { SimpleWritableAtom } from "@/types/simpleWritableAtom";
+import { useAtom } from "jotai";
+import { FormField } from "../../../form-field/FormField";
+import { FormSelect } from "../../../form-field/FormSelect";
+import { useCallback } from "use-memo-one";
+import { DefinedAttribute } from "@/types/definedAttribute";
+import { useTranslation } from "react-i18next";
+import { CHEST_RANK, ChestRank } from "@/types/chestHint";
 
 interface RankFieldProps {
   rankAtom: SimpleWritableAtom<ChestRank>;
@@ -17,20 +17,20 @@ interface RankFieldProps {
 function RankField({ rankAtom, position }: RankFieldProps) {
   const { t } = useTranslation();
   const [selectedRank, setSelectedRank] = useAtom(rankAtom);
-  const handleOnChange = useCallback<DefinedAttribute<'select', 'onChange'>>(
+  const handleOnChange = useCallback<DefinedAttribute<"select", "onChange">>(
     (e) => {
       setSelectedRank(e.target.value as ChestRank);
     },
-    [setSelectedRank]
+    [setSelectedRank],
   );
   let label: string;
   if (position) {
-    label = t('editChestInfo.chestHintSection.param.rank.label', {
+    label = t("editChestInfo.chestHintSection.param.rank.label", {
       count: position,
       ordinal: true,
     });
   } else {
-    label = t('editChestInfo.chestHintSection.param.rank.label');
+    label = t("editChestInfo.chestHintSection.param.rank.label");
   }
   return (
     <FormField label={label}>

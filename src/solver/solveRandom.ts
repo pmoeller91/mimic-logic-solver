@@ -1,11 +1,11 @@
-import { ChestGrid } from '@/types/chestGrid';
-import { GAME_MODE } from '@/types/gameMode';
-import { GameInfo } from '@/types/state/gameInfo';
-import merge from 'deepmerge';
-import { solveStandard } from './solveStandard';
-import { mergeSolutions } from './mergeSolutions';
-import { InternalSolverSolution } from './internalSolverSolution';
-import { getBlankSolution } from './getBlankSolution';
+import { ChestGrid } from "@/types/chestGrid";
+import { GAME_MODE } from "@/types/gameMode";
+import { GameInfo } from "@/types/state/gameInfo";
+import merge from "deepmerge";
+import { solveStandard } from "./solveStandard";
+import { mergeSolutions } from "./mergeSolutions";
+import { InternalSolverSolution } from "./internalSolverSolution";
+import { getBlankSolution } from "./getBlankSolution";
 
 interface SolveRandomParams {
   grid: ChestGrid;
@@ -23,9 +23,7 @@ const solveRandom = ({ grid, gameInfo }: SolveRandomParams) => {
   modifiedGameInfo.numItems = undefined;
   modifiedGameInfo.numGold = undefined;
   const maxMimics = Math.floor(gameInfo.numChests / 2);
-  const numMimicsToTry = new Array(maxMimics)
-    .fill(undefined)
-    .map((_value, i) => i + 1);
+  const numMimicsToTry = new Array(maxMimics).fill(undefined).map((_value, i) => i + 1);
   const solutions: InternalSolverSolution[] = [];
   numMimicsToTry.forEach((numMimics) => {
     modifiedGameInfo.numMimics = numMimics;

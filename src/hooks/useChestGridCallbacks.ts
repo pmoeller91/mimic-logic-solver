@@ -1,4 +1,4 @@
-import { useMemo } from 'use-memo-one';
+import { useMemo } from "use-memo-one";
 
 type ChestGridCallback = (row: 0 | 1 | 2, col: 0 | 1 | 2) => void;
 

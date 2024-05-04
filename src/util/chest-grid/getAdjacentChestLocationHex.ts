@@ -1,6 +1,6 @@
-import { CHEST_DIRECTION, ChestDirection } from '@/types/chestHint';
-import { ChestLocation } from '@/types/chestLocation';
-import { isChestLocationValid } from './isChestLocationValid';
+import { CHEST_DIRECTION, ChestDirection } from "@/types/chestHint";
+import { ChestLocation } from "@/types/chestLocation";
+import { isChestLocationValid } from "./isChestLocationValid";
 
 interface GetAdjacentChestLocationHexParams {
   location: ChestLocation;

@@ -1,17 +1,17 @@
-import clsx from 'clsx';
-import { ValidatedFormFieldLabel } from './ValidatedFormFieldLabel';
-import { ComponentPropsWithoutRef } from 'react';
+import clsx from "clsx";
+import { ValidatedFormFieldLabel } from "./ValidatedFormFieldLabel";
+import { ComponentPropsWithoutRef } from "react";
 
 interface ValidatedFormFieldViewProps {
-  onChange: Required<JSX.IntrinsicElements['input']>['onChange'];
-  onBlur: Required<JSX.IntrinsicElements['input']>['onBlur'];
+  onChange: Required<JSX.IntrinsicElements["input"]>["onChange"];
+  onBlur: Required<JSX.IntrinsicElements["input"]>["onBlur"];
   value: string;
   label: string;
-  inputAttributes?:
-    | Omit<
-        ComponentPropsWithoutRef<'input'>,
-        'onChange' | 'onBlur' | 'value' | 'id'
-      > & Record<string, unknown>;
+  inputAttributes?: Omit<
+    ComponentPropsWithoutRef<"input">,
+    "onChange" | "onBlur" | "value" | "id"
+  > &
+    Record<string, unknown>;
   idSuffix: string;
   error?: string;
   touched: boolean;
@@ -47,7 +47,7 @@ function ValidatedFormFieldView({
           aria-invalid={!!error}
           aria-describedby={errorId}
           {...inputAttributes}
-          className={clsx('w-12 text-right font-mono', inputAttributes?.className)}
+          className={clsx("w-12 text-right font-mono", inputAttributes?.className)}
         />
       </div>
       <div>

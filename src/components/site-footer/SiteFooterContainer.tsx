@@ -1,6 +1,6 @@
-import { Trans, useTranslation } from 'react-i18next';
-import { SiteFooterView } from './SiteFooterView';
-import * as packageJson from '@root/package.json';
+import { Trans, useTranslation } from "react-i18next";
+import { SiteFooterView } from "./SiteFooterView";
+import * as packageJson from "@root/package.json";
 
 interface SiteFooterContainerProps {
   className?: string;
@@ -14,17 +14,12 @@ function SiteFooterContainer({ className }: SiteFooterContainerProps) {
       i18nKey="footer.sourceCode"
       components={{
         sourceLink: (
-          <a
-            href={sourceLink}
-            rel="noreferrer noopener"
-            target="_blank"
-            className="light"
-          ></a>
+          <a href={sourceLink} rel="noreferrer noopener" target="_blank" className="light"></a>
         ),
       }}
     />
   );
-  const copyrightNotice = t('footer.copyrightNotice');
+  const copyrightNotice = t("footer.copyrightNotice");
   return (
     <SiteFooterView
       sourceCode={sourceCode}

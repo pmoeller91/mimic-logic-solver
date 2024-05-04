@@ -1,15 +1,12 @@
-import { PROPERTIES_DRAWER_MODE } from '@/types/propertiesDrawer';
-import { OpenPropertiesDrawerButtonContainer } from '../properties-drawer/OpenPropertiesDrawerButtonContainer';
+import { PROPERTIES_DRAWER_MODE } from "@/types/propertiesDrawer";
+import { OpenPropertiesDrawerButtonContainer } from "../properties-drawer/OpenPropertiesDrawerButtonContainer";
 
 interface EditGameSettingsButtonViewProps {
   buttonLabel: string;
   className?: string;
 }
 
-function EditGameSettingsButtonView({
-  buttonLabel,
-  className,
-}: EditGameSettingsButtonViewProps) {
+function EditGameSettingsButtonView({ buttonLabel, className }: EditGameSettingsButtonViewProps) {
   return (
     <OpenPropertiesDrawerButtonContainer
       mode={PROPERTIES_DRAWER_MODE.gameInfo}

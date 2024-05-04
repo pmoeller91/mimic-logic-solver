@@ -1,14 +1,8 @@
-import {
-  SOLVER_MESSAGE_TYPE,
-  type OutboundSolverMessage,
-} from '../types/solverMessage';
-import { getErrors } from './getErrors';
-import { solve } from './solve';
+import { SOLVER_MESSAGE_TYPE, type OutboundSolverMessage } from "../types/solverMessage";
+import { getErrors } from "./getErrors";
+import { solve } from "./solve";
 
-onmessage = function (
-  this: DedicatedWorkerGlobalScope,
-  ev: MessageEvent<OutboundSolverMessage>
-) {
+onmessage = function (this: DedicatedWorkerGlobalScope, ev: MessageEvent<OutboundSolverMessage>) {
   const { grid, gameInfo } = ev.data;
   const errors = getErrors({ grid, gameInfo });
   if (errors.length > 0) {
@@ -30,7 +24,7 @@ onmessage = function (
       type: SOLVER_MESSAGE_TYPE.noValidSolution,
     });
   }
-  
+
   postMessage({
     type: SOLVER_MESSAGE_TYPE.end,
     value: messageValue,

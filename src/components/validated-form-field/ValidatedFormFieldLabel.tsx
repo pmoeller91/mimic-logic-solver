@@ -1,4 +1,4 @@
-import { Trans } from 'react-i18next';
+import { Trans } from "react-i18next";
 
 interface ValidatedFormFieldLabelProps {
   label: string;
@@ -6,16 +6,12 @@ interface ValidatedFormFieldLabelProps {
   className?: string;
 }
 
-function ValidatedFormFieldLabel({
-  label,
-  optional,
-  className,
-}: ValidatedFormFieldLabelProps) {
+function ValidatedFormFieldLabel({ label, optional, className }: ValidatedFormFieldLabelProps) {
   return (
     <Trans
       i18nKey="formField.label"
       values={{ label }}
-      context={optional ? 'optional' : undefined}
+      context={optional ? "optional" : undefined}
       components={{
         secondary: <span className="italic text-cll/90 text-sm" />,
       }}

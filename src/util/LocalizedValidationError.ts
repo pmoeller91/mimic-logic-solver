@@ -1,6 +1,6 @@
-import { i18n } from '@/i18n';
+import { i18n } from "@/i18n";
 
-type TParams = Parameters<(typeof i18n)['t']>;
+type TParams = Parameters<(typeof i18n)["t"]>;
 
 /**
  * A validation error used for the forms which provides options for i18next's 't' function which can generate a localized error message.

@@ -1,8 +1,8 @@
-import { ChestGrid as ChestGridType } from '@/types/chestGrid';
-import { GenericGrid } from '../generic-grid/GenericGrid';
-import { ChestTileContainer } from '../chest-tile/ChestTileContainer';
-import { generateContextLabel } from './generateContextLabel';
-import { useTranslation } from 'react-i18next';
+import { ChestGrid as ChestGridType } from "@/types/chestGrid";
+import { GenericGrid } from "../generic-grid/GenericGrid";
+import { ChestTileContainer } from "../chest-tile/ChestTileContainer";
+import { generateContextLabel } from "./generateContextLabel";
+import { useTranslation } from "react-i18next";
 
 interface ChestGridProps {
   grid: ChestGridType;

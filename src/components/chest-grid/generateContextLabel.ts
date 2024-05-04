@@ -1,4 +1,4 @@
-import { TFunction } from 'i18next';
+import { TFunction } from "i18next";
 
 interface GenContextLabelParams {
   totalChests: number;
@@ -8,13 +8,7 @@ interface GenContextLabelParams {
   t: TFunction;
 }
 
-const generateContextLabel = ({
-  totalChests,
-  chestNum,
-  row,
-  col,
-  t,
-}: GenContextLabelParams) =>
-  t('chestGrid.contextLabel', { totalChests, chestNum, row, col });
+const generateContextLabel = ({ totalChests, chestNum, row, col, t }: GenContextLabelParams) =>
+  t("chestGrid.contextLabel", { totalChests, chestNum, row, col });
 
 export { generateContextLabel };

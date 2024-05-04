@@ -1,10 +1,10 @@
-import { ChestGrid, ValidGridSizes } from '@/types/chestGrid';
-import { ChestLocation } from '@/types/chestLocation';
-import { forwardRef } from 'react';
-import { GenericGridWrapper } from './GenericGridWrapper';
+import { ChestGrid, ValidGridSizes } from "@/types/chestGrid";
+import { ChestLocation } from "@/types/chestLocation";
+import { forwardRef } from "react";
+import { GenericGridWrapper } from "./GenericGridWrapper";
 
-import styles from './genericGrid.module.scss';
-import { Chest } from '@/types/chest';
+import styles from "./genericGrid.module.scss";
+import { Chest } from "@/types/chest";
 
 interface GenericGridProps {
   grid: ChestGrid;
@@ -13,7 +13,7 @@ interface GenericGridProps {
     chest: Chest,
     chestLocation: ChestLocation,
     className: string,
-    chestNumber: number
+    chestNumber: number,
   ) => JSX.Element;
 }
 
@@ -54,18 +54,19 @@ const gridCoords: Record<ValidGridSizes, ChestLocation[]> = {
   ],
 };
 
-const GenericGrid = forwardRef<HTMLDivElement, GenericGridProps>(
-  function GenericGrid({ grid, className, children }, ref) {
-    const gridSize = grid.numChests;
-    const flatChests = grid.rows.flat();
-    return (
-      <GenericGridWrapper gridSize={gridSize} className={className} ref={ref}>
-        {gridCoords[gridSize].map((chestLocation, i) =>
-          children(flatChests[i], chestLocation, styles[`chest-${i + 1}`], i + 1)
-        )}
-      </GenericGridWrapper>
-    );
-  }
-);
+const GenericGrid = forwardRef<HTMLDivElement, GenericGridProps>(function GenericGrid(
+  { grid, className, children },
+  ref,
+) {
+  const gridSize = grid.numChests;
+  const flatChests = grid.rows.flat();
+  return (
+    <GenericGridWrapper gridSize={gridSize} className={className} ref={ref}>
+      {gridCoords[gridSize].map((chestLocation, i) =>
+        children(flatChests[i], chestLocation, styles[`chest-${i + 1}`], i + 1),
+      )}
+    </GenericGridWrapper>
+  );
+});
 
 export { GenericGrid };

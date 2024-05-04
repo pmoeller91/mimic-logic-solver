@@ -1,7 +1,7 @@
-import { formValueAtom } from '@/util/formValueAtom';
-import { initialState } from './initialState';
-import { localizedYup } from '@/i18n';
-import { selectAtom } from 'jotai/utils';
+import { formValueAtom } from "@/util/formValueAtom";
+import { initialState } from "./initialState";
+import { localizedYup } from "@/i18n";
+import { selectAtom } from "jotai/utils";
 
 const initialValue = initialState.gameInfo.numRobbers;
 const initialFormValue = initialValue.toString();
@@ -9,7 +9,7 @@ const initialFormValue = initialValue.toString();
 const numRobbersSchema = localizedYup
   .number()
   .transform((value, originalValue) => {
-    if (originalValue === '') {
+    if (originalValue === "") {
       return undefined;
     }
     return value as number;
@@ -25,9 +25,6 @@ const numRobbersFormValueAtom = formValueAtom({
   schema: numRobbersSchema,
 });
 
-const numRobbersAtom = selectAtom(
-  numRobbersFormValueAtom,
-  (v) => v.lastValidValue
-);
+const numRobbersAtom = selectAtom(numRobbersFormValueAtom, (v) => v.lastValidValue);
 
 export { numRobbersFormValueAtom, numRobbersAtom };

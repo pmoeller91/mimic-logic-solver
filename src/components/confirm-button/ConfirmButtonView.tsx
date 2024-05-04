@@ -1,10 +1,10 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { ComponentPropsWithRef, forwardRef } from 'react';
-import { DialogWrapper } from '../dialog-wrapper/DialogWrapper';
-import { Button } from '../button/Button';
-import { BUTTON_TYPE } from '../button/buttonType';
+import * as Dialog from "@radix-ui/react-dialog";
+import { ComponentPropsWithRef, forwardRef } from "react";
+import { DialogWrapper } from "../dialog-wrapper/DialogWrapper";
+import { Button } from "../button/Button";
+import { BUTTON_TYPE } from "../button/buttonType";
 
-interface ConfirmButtonViewProps extends ComponentPropsWithRef<'button'> {
+interface ConfirmButtonViewProps extends ComponentPropsWithRef<"button"> {
   buttonLabel: string;
   onConfirm: () => void;
   className?: string;
@@ -29,7 +29,7 @@ const ConfirmButtonView = forwardRef<HTMLButtonElement, ConfirmButtonViewProps>(
       onConfirm,
       onOpenChange,
     },
-    ref
+    ref,
   ) {
     return (
       <Dialog.Root onOpenChange={onOpenChange} open={isOpen}>
@@ -47,10 +47,7 @@ const ConfirmButtonView = forwardRef<HTMLButtonElement, ConfirmButtonViewProps>(
             >
               <div className="mx-4 mb-4">{confirmDialogExplanation}</div>
               <div className="flex flex-row items-center justify-end gap-4 mx-4 mb-4 ">
-                <Button
-                  onClick={closeDialog}
-                  buttonType={BUTTON_TYPE.secondary}
-                >
+                <Button onClick={closeDialog} buttonType={BUTTON_TYPE.secondary}>
                   {cancelLabel}
                 </Button>
                 <Button onClick={onConfirm}>{buttonLabel}</Button>
@@ -60,7 +57,7 @@ const ConfirmButtonView = forwardRef<HTMLButtonElement, ConfirmButtonViewProps>(
         </Dialog.Portal>
       </Dialog.Root>
     );
-  }
+  },
 );
 
 export { ConfirmButtonView };

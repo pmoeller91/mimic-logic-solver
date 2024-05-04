@@ -1,19 +1,16 @@
-import { Drawer } from 'vaul';
-import {
-  PROPERTIES_DRAWER_MODE,
-  PropertiesDrawerMode,
-} from '@/types/propertiesDrawer';
-import { EditGameInfoContainer } from '../edit-game-info/EditGameInfoContainer';
-import { PropertiesDrawerWrapper } from './PropertiesDrawerWrapper';
-import { ComponentProps } from 'react';
-import { EditChestInfoContainer } from '../edit-chest-info/EditChestInfoContainer';
+import { Drawer } from "vaul";
+import { PROPERTIES_DRAWER_MODE, PropertiesDrawerMode } from "@/types/propertiesDrawer";
+import { EditGameInfoContainer } from "../edit-game-info/EditGameInfoContainer";
+import { PropertiesDrawerWrapper } from "./PropertiesDrawerWrapper";
+import { ComponentProps } from "react";
+import { EditChestInfoContainer } from "../edit-chest-info/EditChestInfoContainer";
 
 interface PropertiesDrawerViewProps {
   isOpen: boolean;
-  onCloseAutoFocus?: ComponentProps<typeof Drawer.Content>['onCloseAutoFocus'];
+  onCloseAutoFocus?: ComponentProps<typeof Drawer.Content>["onCloseAutoFocus"];
   onOpenChange: (open: boolean) => void;
   onClose: () => void;
-  direction?: 'bottom' | 'right';
+  direction?: "bottom" | "right";
   mode: PropertiesDrawerMode;
   titleId: string;
   descriptionId: string;
@@ -31,14 +28,9 @@ function PropertiesDrawerView({
   onCloseAutoFocus,
   propertiesDrawerId,
 }: PropertiesDrawerViewProps) {
-  const defaultDirection = direction ?? 'right';
+  const defaultDirection = direction ?? "right";
   return (
-    <Drawer.Root
-      open={isOpen}
-      onOpenChange={onOpenChange}
-      direction={direction}
-      modal
-    >
+    <Drawer.Root open={isOpen} onOpenChange={onOpenChange} direction={direction} modal>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
         <Drawer.Content
@@ -53,9 +45,7 @@ function PropertiesDrawerView({
             {mode === PROPERTIES_DRAWER_MODE.gameInfo && (
               <EditGameInfoContainer onClose={onClose} />
             )}
-            {mode === PROPERTIES_DRAWER_MODE.chest && (
-              <EditChestInfoContainer onClose={onClose} />
-            )}
+            {mode === PROPERTIES_DRAWER_MODE.chest && <EditChestInfoContainer onClose={onClose} />}
           </PropertiesDrawerWrapper>
         </Drawer.Content>
       </Drawer.Portal>

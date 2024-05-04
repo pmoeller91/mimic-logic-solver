@@ -3,14 +3,13 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Pixelify Sans', Inter, system-ui, Avenir, Helvetica, Arial,
-    sans-serif;
+  font-family: "Pixelify Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: normal;
-  color: theme('colors.text-primary / 90%');
-  background: theme('colors.bg-light');
+  color: theme("colors.text-primary / 90%");
+  background: theme("colors.bg-light");
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,8 +18,8 @@
 }
 
 :root::before {
-  content: '';
-  background: url('./assets/floor\ pattern\ tile\ pixel.png') repeat;
+  content: "";
+  background: url("./assets/floor\ pattern\ tile\ pixel.png") repeat;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -33,24 +32,24 @@
 
 a {
   font-weight: 500;
-  color: theme('colors.cll');
+  color: theme("colors.cll");
   text-decoration: inherit;
   &:hover {
-    color: theme('colors.cl');
+    color: theme("colors.cl");
   }
   &:visited {
-    color: theme('colors.c');
+    color: theme("colors.c");
   }
 }
 
 a.light {
-  color: theme('colors.cll');
+  color: theme("colors.cll");
   &:hover,
   &:hover:visited {
-    color: theme('colors.clll');
+    color: theme("colors.clll");
   }
   &:visited {
-    color: theme('colors.cllll');
+    color: theme("colors.cllll");
   }
 }
 
@@ -74,39 +73,39 @@ button {
   font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: theme('colors.c');
+  background-color: theme("colors.c");
   cursor: pointer;
   transition: border-color 0.25s;
   &:hover {
-    border-color: theme('colors.cl');
+    border-color: theme("colors.cl");
   }
   &:focus,
   &:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
   }
   &:disabled {
-    background-color: theme('colors.cdd');
-    color: theme('colors.gray.400');
+    background-color: theme("colors.cdd");
+    color: theme("colors.gray.400");
     border: none;
     border-color: transparent;
   }
 }
 
 input {
-  background-color: theme('colors.bg-light');
-  border: 1px solid theme('colors.pll');
+  background-color: theme("colors.bg-light");
+  border: 1px solid theme("colors.pll");
   padding: 0.25rem 0.5rem;
 }
 
 input:disabled {
   background-color: unset;
   background: repeating-linear-gradient(
-      135deg,
-      theme('colors.bg-light'),
-      theme('colors.bg-light') 4px,
-      theme('colors.bg-dark') 4px,
-      theme('colors.bg-dark') 7px
-    );
-    color: theme('colors.gray.400');
-    border-color: theme('colors.gray.400');
+    135deg,
+    theme("colors.bg-light"),
+    theme("colors.bg-light") 4px,
+    theme("colors.bg-dark") 4px,
+    theme("colors.bg-dark") 7px
+  );
+  color: theme("colors.gray.400");
+  border-color: theme("colors.gray.400");
 }

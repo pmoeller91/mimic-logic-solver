@@ -1,7 +1,7 @@
-import { ChestGrid } from '@/types/chestGrid';
-import { CHEST_DIRECTION, ChestDirection } from '@/types/chestHint';
-import { ChestLocation } from '@/types/chestLocation';
-import { isChestLocationValid } from './isChestLocationValid';
+import { ChestGrid } from "@/types/chestGrid";
+import { CHEST_DIRECTION, ChestDirection } from "@/types/chestHint";
+import { ChestLocation } from "@/types/chestLocation";
+import { isChestLocationValid } from "./isChestLocationValid";
 
 const orthogonalDirections: ChestDirection[] = [
   CHEST_DIRECTION.up,
@@ -12,7 +12,7 @@ const orthogonalDirections: ChestDirection[] = [
 
 interface GridOrthoGetAdjacentChestLocationParams {
   location: ChestLocation;
-  numChests: ChestGrid['numChests'] & (4 | 6 | 9);
+  numChests: ChestGrid["numChests"] & (4 | 6 | 9);
   direction: ChestDirection;
 }
 

@@ -1,5 +1,5 @@
-import { ChestColor } from '@/types/chestColor';
-import { ChestIcon } from '../ChestIcon';
+import { ChestColor } from "@/types/chestColor";
+import { ChestIcon } from "../ChestIcon";
 
 interface MiniChestIconProps {
   chestColor: ChestColor;

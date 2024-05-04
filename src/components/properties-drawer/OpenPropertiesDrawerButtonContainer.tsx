@@ -1,22 +1,16 @@
-import { useOpenPropertiesDrawer } from '@/hooks/useOpenPropertiesDrawer';
-import { OpenPropertiesDrawerButtonView } from './OpenPropertiesDrawerButtonView';
-import { PropertiesDrawerMode } from '@/types/propertiesDrawer';
-import React, {
-  ComponentPropsWithoutRef,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { useCallback } from 'use-memo-one';
-import { useAtomValue, useSetAtom } from 'jotai';
+import { useOpenPropertiesDrawer } from "@/hooks/useOpenPropertiesDrawer";
+import { OpenPropertiesDrawerButtonView } from "./OpenPropertiesDrawerButtonView";
+import { PropertiesDrawerMode } from "@/types/propertiesDrawer";
+import React, { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
+import { useCallback } from "use-memo-one";
+import { useAtomValue, useSetAtom } from "jotai";
 import {
   propertiesDrawerIdAtom,
   propertiesDrawerOpenAtom,
   propertiesDrawerOpeningElementAtom,
-} from '../properties-drawer/propertiesDrawerAtoms';
+} from "../properties-drawer/propertiesDrawerAtoms";
 
-interface OpenPropertiesDrawerButtonContainerProps
-  extends ComponentPropsWithoutRef<'button'> {
+interface OpenPropertiesDrawerButtonContainerProps extends ComponentPropsWithoutRef<"button"> {
   className?: string;
   mode: PropertiesDrawerMode;
   children?: React.ReactNode;
@@ -32,9 +26,7 @@ function OpenPropertiesDrawerButtonContainer({
 }: OpenPropertiesDrawerButtonContainerProps) {
   const [isOpenedBySelf, setIsOpenedBySelf] = useState(false);
   const propertiesDrawerOpen = useAtomValue(propertiesDrawerOpenAtom);
-  const setPropertiesDrawerOpeningElement = useSetAtom(
-    propertiesDrawerOpeningElementAtom
-  );
+  const setPropertiesDrawerOpeningElement = useSetAtom(propertiesDrawerOpeningElementAtom);
   const openPropertiesDrawer = useOpenPropertiesDrawer({
     mode,
   });

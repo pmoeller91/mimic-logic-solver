@@ -1,18 +1,15 @@
-import { ChestGrid, ValidGridSizes } from '@/types/chestGrid';
-import { CHEST_RANK, ChestRank } from '@/types/chestHint';
-import { ChestLocation } from '@/types/chestLocation';
-import { getChestByLocation } from './getChestByLocation';
-import { Chest } from '@/types/chest';
+import { ChestGrid, ValidGridSizes } from "@/types/chestGrid";
+import { CHEST_RANK, ChestRank } from "@/types/chestHint";
+import { ChestLocation } from "@/types/chestLocation";
+import { getChestByLocation } from "./getChestByLocation";
+import { Chest } from "@/types/chest";
 
 interface GetRankChestsParams {
   grid: ChestGrid;
   rank: ChestRank;
 }
 
-const rankChestLocations: Record<
-  ValidGridSizes,
-  Record<ChestRank, ChestLocation[]>
-> = {
+const rankChestLocations: Record<ValidGridSizes, Record<ChestRank, ChestLocation[]>> = {
   4: {
     [CHEST_RANK.topMost]: [
       [0, 0],
