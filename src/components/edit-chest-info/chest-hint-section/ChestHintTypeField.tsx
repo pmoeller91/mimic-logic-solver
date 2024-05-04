@@ -12,6 +12,8 @@ import { FormSelect } from "../../form-field/FormSelect";
 import { selectedChestAtomAtom } from "@/atoms/selectedChestAtomAtom";
 import { GAME_MODE, GameMode } from "@/types/gameMode";
 import { gameModeAtom } from "@/atoms/gameModeAtom";
+import { derivedChestGridAtom } from "@/atoms/derivedChestGridAtom";
+import { getValidHint } from "@/util/getValidHint";
 
 interface ChestHintTypeFieldProps {
   className?: string;
@@ -148,6 +150,8 @@ const ChestHintTypeField = forwardRef<HTMLSelectElement, ChestHintTypeFieldProps
   function ChestHintField({ className }, ref) {
     const { t } = useTranslation();
     const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
+    const selectedChest = useAtomValue(selectedChestAtom);
+    const chestGrid = useAtomValue(derivedChestGridAtom);
     const chestHintAtom = useMemo(
       () => focusAtom(selectedChestAtom, (optic) => optic.prop("hint")),
       [selectedChestAtom],
@@ -156,9 +160,11 @@ const ChestHintTypeField = forwardRef<HTMLSelectElement, ChestHintTypeFieldProps
     const handleOnChange = useCallback<SelectCallback>(
       (e) => {
         const newHintType = e.target.value as ChestHintType;
-        setSelectedChestHint(getDefaultHint(newHintType));
+        const newHint = getDefaultHint(newHintType);
+        const validHint = getValidHint({ hint: newHint, chest: selectedChest, grid: chestGrid });
+        setSelectedChestHint(validHint);
       },
-      [setSelectedChestHint],
+      [chestGrid, selectedChest, setSelectedChestHint],
     );
 
     const gameMode = useAtomValue(gameModeAtom);

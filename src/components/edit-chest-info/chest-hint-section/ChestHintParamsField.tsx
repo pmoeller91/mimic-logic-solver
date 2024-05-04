@@ -13,6 +13,9 @@ import { AmountField } from "./param-field/AmountField";
 import { RankField } from "./param-field/RankField";
 import { ErrorField } from "./param-field/ErrorField";
 import { selectedChestAtomAtom } from "@/atoms/selectedChestAtomAtom";
+import { derivedChestGridAtom } from "@/atoms/derivedChestGridAtom";
+import { getValidDirections } from "@/util/chest-grid/getValidDirections";
+import { getValidRanks } from "@/util/chest-grid/getValidRanks";
 
 /**
  * Component that allows modifying all parameters associated with the current
@@ -20,7 +23,9 @@ import { selectedChestAtomAtom } from "@/atoms/selectedChestAtomAtom";
  */
 function ChestHintParamsField() {
   const { t } = useTranslation();
+  const chestGrid = useAtomValue(derivedChestGridAtom);
   const selectedChestAtom = useAtomValue(selectedChestAtomAtom);
+  const selectedChest = useAtomValue(selectedChestAtom);
   const chestHintTypeAtom = useMemo(
     () => focusAtom(selectedChestAtom, (optic) => optic.prop("hint").prop("type")),
     [selectedChestAtom],
@@ -33,6 +38,14 @@ function ChestHintParamsField() {
     [selectedChestAtom],
   );
   const chestHintType = useAtomValue(chestHintTypeAtom);
+  const validDirections: ChestDirection[] = useMemo(
+    () => getValidDirections({ chest: selectedChest, grid: chestGrid }),
+    [chestGrid, selectedChest],
+  );
+  const validRanks: ChestRank[] = useMemo(
+    () => getValidRanks({ numChests: chestGrid.numChests }),
+    [chestGrid],
+  );
 
   switch (chestHintType) {
     case CHEST_HINT_TYPE.selfAsleep:
@@ -48,7 +61,12 @@ function ChestHintParamsField() {
     case CHEST_HINT_TYPE.directionNotGold:
     case CHEST_HINT_TYPE.directionRobber:
     case CHEST_HINT_TYPE.directionNoRobber:
-      return <DirectionField directionAtom={paramAtoms[0] as SimpleWritableAtom<ChestDirection>} />;
+      return (
+        <DirectionField
+          directionAtom={paramAtoms[0] as SimpleWritableAtom<ChestDirection>}
+          allowedDirections={validDirections}
+        />
+      );
     case CHEST_HINT_TYPE.colorGold:
     case CHEST_HINT_TYPE.colorMimic:
     case CHEST_HINT_TYPE.colorNoGold:
@@ -93,14 +111,27 @@ function ChestHintParamsField() {
     case CHEST_HINT_TYPE.rankNoMimic:
     case CHEST_HINT_TYPE.rankNoRobber:
     case CHEST_HINT_TYPE.rankRobber:
-      return <RankField rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>} />;
+      return (
+        <RankField
+          rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>}
+          allowedRanks={validRanks}
+        />
+      );
     case CHEST_HINT_TYPE.rankMoreMimics:
     case CHEST_HINT_TYPE.rankSameMimics:
       return (
         <ReversibleParams
           paramFields={[
-            <RankField rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>} key="param-1" />,
-            <RankField rankAtom={paramAtoms[1] as SimpleWritableAtom<ChestRank>} key="param-2" />,
+            <RankField
+              rankAtom={paramAtoms[0] as SimpleWritableAtom<ChestRank>}
+              allowedRanks={validRanks}
+              key="param-1"
+            />,
+            <RankField
+              rankAtom={paramAtoms[1] as SimpleWritableAtom<ChestRank>}
+              allowedRanks={validRanks}
+              key="param-2"
+            />,
           ]}
           shouldReverse={isHintParamsReversed({ t, chestHintType })}
           shouldProvidePosition
