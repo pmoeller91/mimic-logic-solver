@@ -37,6 +37,7 @@ function RadioTile({
         className="opacity-0 absolute top-0 left-0 h-full w-full m-0 cursor-pointer"
         value={value}
         id={inputId}
+        data-vaul-no-drag
       />
       <div
         className={clsx(
@@ -45,6 +46,7 @@ function RadioTile({
           "group-has-[:checked]:scale-105 group-has-[:focus]:border-cll",
           tileSizeClasses,
         )}
+        data-vaul-no-drag
       >
         {children}
       </div>

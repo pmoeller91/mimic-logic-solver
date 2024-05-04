@@ -32,13 +32,13 @@ const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
     return (
       <div
         className={clsx(
-          'flex flex-row items-center justify-between w-full',
+          'w-full',
           className
         )}
         ref={ref}
         {...additionalProps}
       >
-        <label id={labelId} htmlFor={inputId} className="block">
+        <label id={labelId} htmlFor={inputId} className="block mb-2">
           {label}
         </label>
         {inputElement}

@@ -170,7 +170,6 @@ const ChestHintTypeField = forwardRef<HTMLSelectElement, ChestHintTypeFieldProps
     return (
       <FormField label={label} className={className}>
         <FormSelect
-          className="lg:max-w-48"
           onChange={handleOnChange}
           value={selectedChestHint.type}
           ref={ref}

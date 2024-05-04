@@ -17,7 +17,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelect>(
     return (
       <select
         className={clsx(
-          'bg-bg-light px-2 py-1 ml-8 w-48 lg:w-auto text-right',
+          'bg-bg-light px-2 py-1 w-full',
           className
         )}
         ref={ref}
